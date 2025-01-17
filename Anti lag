@@ -1,0 +1,19 @@
+        if state then
+            for _, O in pairs(game:GetService("Workspace"):GetDescendants()) do
+                if O:IsA("BasePart") and not O.Parent:FindFirstChild("Humanoid") then
+                    originalMaterials[O] = O.Material
+                    O.Material = Enum.Material.SmoothPlastic
+                    if O:IsA("Texture") then
+                        table.insert(originalDecalsTextures, O)
+                        O:Destroy()
+                    end
+                end
+            end
+        else
+            for O, material in pairs(originalMaterials) do
+                if O and O:IsA("BasePart") then
+                    O.Material = material
+                end
+            end
+            originalMaterials = {}
+        end

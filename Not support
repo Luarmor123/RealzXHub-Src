@@ -1,0 +1,146 @@
+warn("YHUB System : Not supported for this game")
+warn("YHUB System : If you encounter a problem please report it to : https://t.me/YHUB_16 ")
+local FakeDisconnect = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Frame1 = Instance.new("Frame")
+local Line = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Page1 = Instance.new("TextLabel")
+local Page2 = Instance.new("TextLabel")
+local Page3 = Instance.new("TextLabel")
+local joinbt = Instance.new("TextButton")
+local nobt = Instance.new("TextButton")
+
+FakeDisconnect.Parent = game.CoreGui
+
+Frame.Parent = FakeDisconnect
+Frame.BackgroundColor3 = Color3.new(0,0,0)
+Frame.Transparency = 0.5
+Frame.BorderColor3 = Color3.new(1,1,1)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0,0,-0.2)
+Frame.Size = UDim2.new(1,0,1.2)
+Frame.Active = true
+Frame.Draggable = false
+
+Frame1.Parent = Frame
+Frame1.BackgroundColor3 = Color3.fromRGB(0,0,0)
+Frame1.BorderColor3 = Color3.new(1,1,1)
+Frame1.BorderSizePixel = 0
+Frame1.Position = UDim2.new(0.27,0,0.28)
+Frame1.Size = UDim2.new(0.43,0,0.48)
+Frame1.Active = true
+Frame1.Draggable = false
+
+Line.Parent = Frame1
+Line.BackgroundColor3 = Color3.new(0,0,0)
+Line.BorderColor3 = Color3.new(1,1,1)
+Line.BorderSizePixel = 2
+Line.Position = UDim2.new(0.1,0,0.28)
+Line.Size = UDim2.new(0.78,0,0.0000001)
+Line.Active = true
+
+Title.Parent = Frame1
+Title.BackgroundColor3 = Color3.fromRGB(35,35,35)
+Title.BackgroundTransparency = 1
+Title.Position = UDim2.new(0.1,0,0.07)
+Title.TextColor3 = Color3.new(1,1,1)
+Title.Size = UDim2.new(0.8,0,0.15)
+Title.Font = Enum.Font.FredokaOne
+Title.FontSize = Enum.FontSize.Size14
+Title.TextScaled = true
+Title.TextSize = 8
+Title.TextWrapped = true
+
+Page1.Parent = Frame1
+Page1.BackgroundColor3 = Color3.fromRGB(35,35,35)
+Page1.BackgroundTransparency = 1
+Page1.Position = UDim2.new(0.1,0,0.34)
+Page1.TextColor3 = Color3.new(1,1,1)
+Page1.Size = UDim2.new(0.8,0,0.1)
+Page1.Font = Enum.Font.SourceSansLight
+Page1.FontSize = Enum.FontSize.Size14
+Page1.TextScaled = true
+Page1.TextSize = 8
+Page1.TextWrapped = true
+
+Page2.Parent = Frame1
+Page2.BackgroundColor3 = Color3.fromRGB(35,35,35)
+Page2.BackgroundTransparency = 1
+Page2.Position = UDim2.new(0.1,0,0.43)
+Page2.TextColor3 = Color3.new(1,1,1)
+Page2.Size = UDim2.new(0.8,0,0.1)
+Page2.Font = Enum.Font.SourceSansLight
+Page2.FontSize = Enum.FontSize.Size14
+Page2.TextScaled = true
+Page2.TextSize = 8
+Page2.TextWrapped = true
+
+Page3.Parent = Frame1
+Page3.BackgroundColor3 = Color3.fromRGB(35,35,35)
+Page3.BackgroundTransparency = 1
+Page3.Position = UDim2.new(0.1,0,0.55)
+Page3.TextColor3 = Color3.new(1,1,1)
+Page3.Size = UDim2.new(0.8,0,0.1)
+Page3.Font = Enum.Font.SourceSansLight
+Page3.FontSize = Enum.FontSize.Size14
+Page3.Text = "( Error : Not supported )"
+Page3.TextScaled = true
+Page3.TextSize = 8
+Page3.TextWrapped = true
+
+joinbt.Parent = Frame1
+joinbt.BackgroundColor3 = Color3.new(1,1,1)
+joinbt.BackgroundTransparency = 0
+joinbt.Position = UDim2.new(0.1,0,0.7)
+joinbt.TextColor3 = Color3.new(0,0,0)
+joinbt.Size = UDim2.new(0.37,0,0.15)
+joinbt.Font = Enum.Font.SourceSans
+joinbt.FontSize = Enum.FontSize.Size14
+joinbt.TextScaled = true
+joinbt.TextSize = 8
+joinbt.TextWrapped = true
+
+nobt.Parent = Frame1
+nobt.BackgroundColor3 = Color3.new(1,1,1)
+nobt.BackgroundTransparency = 0
+nobt.Position = UDim2.new(0.52,0,0.7)
+nobt.TextColor3 = Color3.new(0,0,0)
+nobt.Size = UDim2.new(0.37,0,0.15)
+nobt.Font = Enum.Font.SourceSans
+nobt.FontSize = Enum.FontSize.Size14
+nobt.TextScaled = true
+nobt.TextSize = 8
+nobt.TextWrapped = true
+
+joinbt.MouseButton1Click:connect(function()
+FakeDisconnect:Destroy()
+--on Button1 Clicked
+local TeleportService = game:GetService("TeleportService")
+local level1Id = 4924922222
+local player = game.Players.LocalPlayer
+
+TeleportService:Teleport(level1Id, player)
+end)
+
+nobt.MouseButton1Click:connect(function()
+FakeDisconnect:Destroy()
+--on Button2 Clicked
+
+end)
+
+
+---------Filtering Text
+joinbt.Text = "Join"
+nobt.Text = "No"
+
+Title.Text = "YHUB System"
+Page1.Text = "This script is not supported for this game!"
+Page2.Text = "Do you want to teleport to the supported game? "
+end
+
+
+
+
+
+

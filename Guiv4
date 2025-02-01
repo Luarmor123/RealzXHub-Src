@@ -11,14 +11,14 @@ local LibraryRawUrl = "https://raw.githubusercontent.com/hacked-prototype/RedzLi
 
 local redzLib = {
   info = {
-    Version = "v1.2.2",
+    Version = "v1.2.3",
     PlaceName = MarketplaceService:GetProductInfo(game.PlaceId).Name
   },
   Themes = loadstring(game:HttpGet(LibraryRawUrl .. "/Themes.lua"))(),
   Flags = {},
   Save = {
     Theme = "Default",
-    UISize = {550, 310},
+    UISize = {550, 380},
     ScrollSize = 160,
     TransparencyHub = 1
   },

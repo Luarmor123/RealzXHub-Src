@@ -1,8 +1,8 @@
 local Themes = {
     -- Original Library's Theme
   ["Default"] = {
-    ["Color Hub 1"] = Color3.fromRGB(255, 255, 255),
-    ["Color Hub 2"] = Color3.fromRGB(25, 25, 25),
+    ["Color Hub 1"] = Color3.fromRGB(18, 18, 18),
+    ["Color Hub 2"] = Color3.fromRGB(0, 0, 0),
     ["Color Theme"] = Color3.fromRGB(30, 150, 240),
     ["Color Text"] = Color3.fromRGB(240, 240, 240),
     ["Color Dark Text"] = Color3.fromRGB(200, 200, 200),

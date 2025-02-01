@@ -146,7 +146,7 @@ function Library:Window(Title, Func, Options)
 	ShadeFrame.BorderColor3 = Color3.fromRGB(53, 53, 53)
 	ShadeFrame.BorderSizePixel = 0
     ShadeFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-    ShadeFrame.Size = UDim2.new(0, 580, 0, 430)
+    ShadeFrame.Size = UDim2.new(0, 624, 0, 430)
     ShadeFrame.ZIndex = 10
     ShadeFrame.Parent = MainFrame
 
@@ -154,7 +154,7 @@ function Library:Window(Title, Func, Options)
     Loader.Name = "Loader"
 	Loader.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
 	Loader.Position = UDim2.new(0.322, 0, 0.26315799355506897, 0)
-	Loader.Size = UDim2.new(0, 200, 0, 35)
+	Loader.Size = UDim2.new(0, 388, 0, 35)
     Loader.Parent = MainFrame
 
     local LoaderCorner = Instance.new("UICorner")
@@ -243,7 +243,7 @@ function Library:Window(Title, Func, Options)
 	ContentFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ContentFrame.BackgroundTransparency = 1
 	ContentFrame.Position = UDim2.new(0.5, 0, 0.165, 0)
-	ContentFrame.Size = UDim2.new(0, 560, 0, 345)
+	ContentFrame.Size = UDim2.new(0, 547, 0, 345)
 	ContentFrame.Transparency = 1
     ContentFrame.Parent = MainFrame
 

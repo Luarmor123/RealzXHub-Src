@@ -243,7 +243,7 @@ function Library:Window(Title, Func, Options)
 	ContentFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ContentFrame.BackgroundTransparency = 1
 	ContentFrame.Position = UDim2.new(0.5, 0, 0.165, 0)
-	ContentFrame.Size = UDim2.new(0, 500, 0, 345)
+	ContentFrame.Size = UDim2.new(0, 560, 0, 345)
 	ContentFrame.Transparency = 1
     ContentFrame.Parent = MainFrame
 

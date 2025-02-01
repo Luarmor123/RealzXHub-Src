@@ -7,7 +7,7 @@ local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
 local Player = Players.LocalPlayer
 
-local LibraryRawUrl = "https://raw.githubusercontent.com/Luarmor123/YHUB/refs/heads/main"
+local LibraryRawUrl = "https://raw.githubusercontent.com/Luarmor123/YHUB/refs/heads/main/Src"
 
 local redzLib = {
   info = {

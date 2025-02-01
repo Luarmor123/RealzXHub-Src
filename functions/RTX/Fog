@@ -1,1 +1,11 @@
 
+game.Lighting.Brightness = 1.1
+        game.Lighting.OutdoorAmbient = Color3.fromRGB(200, 200, 200)
+        game.Lighting.FogEnd = 120
+        game.Lighting.FogStart = 20
+        game.Lighting.FogColor = Color3.fromRGB(170, 170, 170)
+        game.Lighting.ShadowSoftness = 0.3
+        game.Lighting.EnvironmentDiffuseScale = 0.6
+        game.Lighting.EnvironmentSpecularScale = 0.1
+        game.Lighting.Atmosphere.Density = 0.5
+        game.Lighting.Atmosphere.Offset = 0.15

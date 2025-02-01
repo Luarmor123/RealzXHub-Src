@@ -1,1 +1,16 @@
+local Lighting = game:GetService("Lighting")
 
+local Minutes = 7 * 60
+
+while task.wait() do
+	Lighting:SetMinutesAfterMidnight(Minutes)
+	Minutes = Lighting:GetMinutesAfterMidnight()
+
+	if Minutes > 19 * 60 then
+		Minutes = Minutes + 3
+	elseif Minutes > 7 * 60 then
+		Minutes = Minutes + 1
+	else
+		Minutes = Minutes + 3
+	end
+end

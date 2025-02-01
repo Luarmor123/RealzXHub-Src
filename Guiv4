@@ -11,7 +11,7 @@ local LibraryRawUrl = "https://raw.githubusercontent.com/hacked-prototype/RedzLi
 
 local redzLib = {
   info = {
-    Version = "v1.2.3",
+    Version = "v1.2.2",
     PlaceName = MarketplaceService:GetProductInfo(game.PlaceId).Name
   },
   Themes = loadstring(game:HttpGet(LibraryRawUrl .. "/Themes.lua"))(),

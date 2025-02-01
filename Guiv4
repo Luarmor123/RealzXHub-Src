@@ -18,7 +18,7 @@ local redzLib = {
   Flags = {},
   Save = {
     Theme = "Default",
-    UISize = {550, 310},
+    UISize = {583, 363},
     ScrollSize = 160,
     TransparencyHub = 0.1
   },

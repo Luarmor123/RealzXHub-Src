@@ -154,7 +154,7 @@ function Library:Window(Title, Func, Options)
     Loader.Name = "Loader"
 	Loader.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
 	Loader.Position = UDim2.new(0.322, 0, 0.26315799355506897, 0)
-	Loader.Size = UDim2.new(0, 200, 0, 35)
+	Loader.Size = UDim2.new(0, 100, 0, 35)
     Loader.Parent = MainFrame
 
     local LoaderCorner = Instance.new("UICorner")

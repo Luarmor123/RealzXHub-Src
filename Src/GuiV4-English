@@ -2162,7 +2162,7 @@ function redzLib:MakeWindow(Configs)
     UIStroke[2] = UIStroke[2] or {}
     
     local ButtonMinimize = SetProps(MakeDrag(Create("ImageButton", ScreenGui, {
-      Size = UDim2.fromOffset(40, 40),
+      Size = UDim2.fromOffset(45, 45),
       Active = true,
       Position = UDim2.fromScale(0.15, 0.15),
       BackgroundColor3 = Theme["Color Hub 1"],

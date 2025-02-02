@@ -829,7 +829,7 @@ function redzLib:MakeWindow(Configs)
         PaddingLeft = UDim.new(0, 10),
         PaddingRight = UDim.new(0, 10),
         PaddingTop = UDim.new(0, 10),
-        PaddingBottom = UDim.new(0, 10)
+        PaddingBottom = UDim.new(0, 20)
       }), Create("UIListLayout", {
         Padding = UDim.new(0, 5)
       })

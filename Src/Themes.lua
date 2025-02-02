@@ -16,8 +16,8 @@ local Themes = {
     ["Stroke Thickness"] = 1,
     ["Tween Style"] = Enum.EasingStyle.Quad
   },
-  -- Credits to AstroXTeam
-  ["AstroXTeam"] = {
+  
+  ["T"] = {
     ["Color Hub 1"] = ColorSequence.new({
         ColorSequenceKeypoint.new(0.00, Color3.fromRGB(28, 23, 25.5)),
         ColorSequenceKeypoint.new(0.50, Color3.fromRGB(30.5, 30.5, 30.5)),

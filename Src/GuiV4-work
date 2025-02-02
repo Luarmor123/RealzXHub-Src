@@ -818,7 +818,7 @@ function redzLib:MakeWindow(Configs)
     end
     
     local Container = Create("ScrollingFrame", Containers, {
-      Size = UDim2.new(3, 0, 1, 0),
+      Size = UDim2.new(1, 0, 1, 0),
       ScrollBarThickness = 1,
       BackgroundTransparency = 1,
       AutomaticCanvasSize = "Y",
@@ -836,7 +836,7 @@ function redzLib:MakeWindow(Configs)
     })
     
     local FrameC = Button(MainScroll, {
-      Size = UDim2.new(1, 0, 0, 20),
+      Size = UDim2.new(3, 0, 0, 20),
     })
     
     local Text = insertTheme(Create("TextLabel", FrameC, {
@@ -857,7 +857,7 @@ function redzLib:MakeWindow(Configs)
       Position = UDim2.new(0, 8, 0.5, 0),
       AnchorPoint = Vector2.new(0, 0.5),
       BackgroundTransparency = IsFirst and 1 or 0,
-      BackgroundColor3 = Theme["Color Theme"]
+      BackgroundColor3 = Color3.fromRGB(0,255,255)
     }, {
       Corner()
     }), "Theme")

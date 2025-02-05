@@ -1,6 +1,6 @@
 game:GetService("StarterGui"):SetCore("SendNotification",{
                 Title = "YHUB",
-                Text = "انتظر قليلا لتحميل الرقصات",
+                Text = "Wait a little bit",
                  Duration = 15})
 
 if game:GetService("CoreGui"):FindFirstChild("Emotes") then
@@ -626,7 +626,7 @@ game.CoreGui.Emotes.Enabled = true
 
 game:GetService("StarterGui"):SetCore("SendNotification",{
                 Title = "YHUB",
-                Text = "تم تحميل الرقصات √",
+                Text = "complete √",
                  Duration = 10})
 
 game.Players.LocalPlayer.PlayerGui.ContextActionGui:Destroy()

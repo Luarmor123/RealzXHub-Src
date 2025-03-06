@@ -2433,14 +2433,18 @@ end
 				Size = UDim2.fromScale(0.3, 1),
 				BorderSizePixel = 0
 			}), "Theme")Make("Corner", Indicator)
-			
-			local SliderIcon = Create("Frame", SliderBar, {
-				Size = UDim2.new(0, 6, 0, 12),
-				BackgroundColor3 = Color3.fromRGB(220, 220, 220),
-				Position = UDim2.fromScale(0.3, 0.5),
-				AnchorPoint = Vector2.new(0.5, 0.5),
-				BackgroundTransparency = 0.2
-			})Make("Corner", SliderIcon)
+
+local SliderIcon = Create("Frame", SliderBar, {
+    Size = UDim2.new(0, 12, 0, 12),
+    BackgroundColor3 = Color3.fromRGB(220, 220, 220),
+    Position = UDim2.fromScale(0.3, 0.5),
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    BackgroundTransparency = 0.2
+})
+
+local SliderIconCorner = Create("UICorner", SliderIcon, {
+    CornerRadius = UDim.new(1, 0) -- جعل الزوايا دائرية بالكامل
+})
 			
 			local LabelVal = InsertTheme(Create("TextLabel", SliderHolder, {
 				Size = UDim2.new(0, 14, 0, 14),

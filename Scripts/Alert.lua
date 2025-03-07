@@ -1,4 +1,4 @@
-function Alert:create(desc, duration)
+function Alertcreate(desc, duration)
     duration = duration or 2  -- إذا لم يتم تحديد وقت، سيكون 2 ثانية بشكل افتراضي.
 
     if game.CoreGui:FindFirstChild("AlertFrame") then

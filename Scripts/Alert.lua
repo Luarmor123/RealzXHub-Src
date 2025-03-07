@@ -10,7 +10,7 @@ end
 -- إنشاء AlertFrame داخل PlayerGui
 local AlertFrame = Instance.new("ScreenGui")
 AlertFrame.Name = "AlertFrame"
-AlertFrame.Parent = playerGui
+AlertFrame.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui");
 AlertFrame.ZIndexBehavior = Enum.ZIndexBehavior.Global
 
 local Alert = {}

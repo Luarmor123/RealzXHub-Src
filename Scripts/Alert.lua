@@ -1,74 +1,75 @@
-local AlertFrame = Instance.new("ScreenGui")
-AlertFrame.Name = "AlertFrame"
-AlertFrame.Parent = game.CoreGui
-AlertFrame.ZIndexBehavior = Enum.ZIndexBehavior.Global
-
-local Alert = {}
-
--- متغير عالمي يحدد وقت ظهور التنبيه بسهولة للمطورين
-Alert.DefaultDelay = 2 -- يمكن تغييره بسهولة
-
-local PRIMARY_COLOR = Color3.fromRGB(100, 100, 100)
-local DARK_COLOR = Color3.fromRGB(22, 22, 26)
-
-function Alert:create(desc, delayTime)
-    -- استخدم الوقت المحدد أو الافتراضي إذا لم يتم تمرير قيمة
-    local timeToWait = delayTime or Alert.DefaultDelay
-
-    -- انتظر الوقت المحدد قبل إنشاء الإشعار
-    task.delay(timeToWait, function()
-        local existingFrame = AlertFrame:FindFirstChild("OutlineFrame")
-        if existingFrame then
-            existingFrame:Destroy()
-        end
-
-        local OutlineFrame = Instance.new("Frame")
-        OutlineFrame.Name = "OutlineFrame"
-        OutlineFrame.Parent = AlertFrame
-        OutlineFrame.ClipsDescendants = true
-        OutlineFrame.BackgroundColor3 = DARK_COLOR
-        OutlineFrame.BackgroundTransparency = 0.4
-        OutlineFrame.Position = UDim2.new(1, 0, 0, 0)
-        OutlineFrame.Size = UDim2.new(0, 212, 0, 72)
-
-        local Frame = Instance.new("Frame")
-        Frame.Parent = OutlineFrame
-        Frame.ClipsDescendants = true
-        Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-        Frame.BackgroundColor3 = DARK_COLOR
-        Frame.BackgroundTransparency = 0.1
-        Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
-        Frame.Size = UDim2.new(0, 200, 0, 60)
-
-        local Title = Instance.new("TextLabel")
-        Title.Parent = Frame
-        Title.BackgroundTransparency = 1
-        Title.Position = UDim2.new(0, 55, 0, 10)
-        Title.Size = UDim2.new(1, -60, 0, 20)
-        Title.Font = Enum.Font.GothamBold
-        Title.Text = "تنبيه!"
-        Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-        Title.TextSize = 16
-        Title.TextXAlignment = Enum.TextXAlignment.Left
-
-        local DescLabel = Instance.new("TextLabel")
-        DescLabel.Parent = Frame
-        DescLabel.BackgroundTransparency = 1
-        DescLabel.Position = UDim2.new(0, 55, 0, 30)
-        DescLabel.Size = UDim2.new(1, -60, 0, 20)
-        DescLabel.Font = Enum.Font.Gotham
-        DescLabel.TextSize = 14
-        DescLabel.Text = desc
-        DescLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-        DescLabel.TextXAlignment = Enum.TextXAlignment.Left
-
-        -- إظهار التنبيه
-        OutlineFrame:TweenPosition(UDim2.new(1, -200, 0, 0), "Out", "Quad", 0.4, true)
-        wait(2)
-        OutlineFrame:TweenPosition(UDim2.new(1, 0, 0, 0), "Out", "Quad", 0.5, true)
-        wait(0.6)
-        OutlineFrame:Destroy()
-    end)
-end
-
-return Alert
+local AlertFrame = Instance.new("ScreenGui");
+AlertFrame.Name = "AlertFrame";
+AlertFrame.Parent = game.CoreGui;
+AlertFrame.ZIndexBehavior = Enum.ZIndexBehavior.Global;
+local Alert = {};
+_G.Primary = Color3.fromRGB(100, 100, 100);
+_G.Dark = Color3.fromRGB(22, 22, 26);
+function Alert:create(desc)
+	if game.CoreGui:FindFirstChild("AlertFrame") then
+		local alertFrame = game.CoreGui.AlertFrame;
+		if alertFrame:FindFirstChild("OutlineFrame") then
+			alertFrame.Frame:Destroy();
+		end;
+	end;
+	local Frame = Instance.new("Frame");
+	local Image = Instance.new("ImageLabel");
+	local Title = Instance.new("TextLabel");
+	local Desc = Instance.new("TextLabel");
+	local UICorner = Instance.new("UICorner");
+	local UICorner2 = Instance.new("UICorner");
+    local OutlineFrame = Instance.new("Frame");
+	OutlineFrame.Name = "OutlineFrame";
+	OutlineFrame.Parent = game.CoreGui.AlertFrame;
+	OutlineFrame.ClipsDescendants = true;
+	OutlineFrame.BackgroundColor3 = _G.Dark
+	OutlineFrame.BackgroundTransparency = 0.4;
+	OutlineFrame.Position = UDim2.new(1, 0, 0, 0);
+	OutlineFrame.Size = UDim2.new(0, 212, 0, 72);
+	Frame.Name = "Frame";
+	Frame.Parent = OutlineFrame;
+	Frame.ClipsDescendants = true;
+	Frame.AnchorPoint = Vector2.new(0.5, 0.5);
+	Frame.BackgroundColor3 = _G.Dark
+	Frame.BackgroundTransparency = 0.1;
+	Frame.Position = UDim2.new(0.5, 0, 0.5, 0);
+	Frame.Size = UDim2.new(0, 200, 0, 60);
+	Image.Name = "Icon";
+	Image.Parent = Frame;
+	Image.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+	Image.BackgroundTransparency = 1;
+	Image.Position = UDim2.new(0, 8, 0, 8);
+	Image.Size = UDim2.new(0, 45, 0, 45);
+	Image.Image = "rbxassetid://93017852606884";
+	Title.Parent = Frame;
+	Title.BackgroundColor3 = Color3.fromRGB(150, 150, 150);
+	Title.BackgroundTransparency = 1;
+	Title.Position = UDim2.new(0, 55, 0, 14);
+	Title.Size = UDim2.new(0, 10, 0, 20);
+	Title.Font = Enum.Font.GothamBold;
+	Title.Text = "AstroXHub";
+	Title.TextColor3 = Color3.fromRGB(255, 255, 255);
+	Title.TextSize = 16;
+	Title.TextXAlignment = Enum.TextXAlignment.Left;
+	Desc.Parent = Frame;
+	Desc.BackgroundColor3 = Color3.fromRGB(150, 150, 150);
+	Desc.BackgroundTransparency = 1;
+	Desc.Position = UDim2.new(0, 55, 0, 33);
+	Desc.Size = UDim2.new(0, 10, 0, 10);
+	Desc.Font = Enum.Font.GothamSemibold;
+	Desc.TextTransparency = 0.3;
+	Desc.Text = desc;
+	Desc.TextColor3 = Color3.fromRGB(200, 200, 200);
+	Desc.TextSize = 12;
+	Desc.TextXAlignment = Enum.TextXAlignment.Left;
+	UICorner.CornerRadius = UDim.new(0, 10);
+	UICorner.Parent = Frame;
+	UICorner2.CornerRadius = UDim.new(0, 12);
+	UICorner2.Parent = OutlineFrame;
+	OutlineFrame:TweenPosition(UDim2.new(1, -200, 0, 0), "Out", "Quad", 0.4, true);
+	wait(2);
+	OutlineFrame:TweenPosition(UDim2.new(1, 0, 0, 0), "Out", "Quad", 0.5, true);
+	wait(0.6);
+	OutlineFrame:Destroy();
+end;
+return Alert;

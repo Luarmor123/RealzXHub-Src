@@ -5,71 +5,89 @@ AlertFrame.ZIndexBehavior = Enum.ZIndexBehavior.Global;
 local Alert = {};
 _G.Primary = Color3.fromRGB(100, 100, 100);
 _G.Dark = Color3.fromRGB(22, 22, 26);
-function Alert:create(TitleT, desc, ImageID)
-	if game.CoreGui:FindFirstChild("AlertFrame") then
-		local alertFrame = game.CoreGui.AlertFrame;
-		if alertFrame:FindFirstChild("OutlineFrame") then
-			alertFrame.Frame:Destroy();
-		end;
-	end;
-	local Frame = Instance.new("Frame");
-	local Image = Instance.new("ImageLabel");
-	local Title = Instance.new("TextLabel");
-	local Desc = Instance.new("TextLabel");
-	local UICorner = Instance.new("UICorner");
-	local UICorner2 = Instance.new("UICorner");
-    local OutlineFrame = Instance.new("Frame");
-	OutlineFrame.Name = "OutlineFrame";
-	OutlineFrame.Parent = game.CoreGui.AlertFrame;
-	OutlineFrame.ClipsDescendants = true;
-	OutlineFrame.BackgroundColor3 = _G.Dark
-	OutlineFrame.BackgroundTransparency = 0.4;
-	OutlineFrame.Position = UDim2.new(1, 0, 0, 0);
-	OutlineFrame.Size = UDim2.new(0, 212, 0, 72);
-	Frame.Name = "Frame";
-	Frame.Parent = OutlineFrame;
-	Frame.ClipsDescendants = true;
-	Frame.AnchorPoint = Vector2.new(0.5, 0.5);
-	Frame.BackgroundColor3 = _G.Dark
-	Frame.BackgroundTransparency = 0.1;
-	Frame.Position = UDim2.new(0.5, 0, 0.5, 0);
-	Frame.Size = UDim2.new(0, 200, 0, 60);
-	Image.Name = "Icon";
-	Image.Parent = Frame;
-	Image.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
-	Image.BackgroundTransparency = 1;
-	Image.Position = UDim2.new(0, 8, 0, 8);
-	Image.Size = UDim2.new(0, 45, 0, 45);
-	Image.Image = ImageID;
-	Title.Parent = Frame;
-	Title.BackgroundColor3 = Color3.fromRGB(150, 150, 150);
-	Title.BackgroundTransparency = 1;
-	Title.Position = UDim2.new(0, 55, 0, 14);
-	Title.Size = UDim2.new(0, 10, 0, 20);
-	Title.Font = Enum.Font.GothamBold;
-	Title.Text = TitleT;
-	Title.TextColor3 = Color3.fromRGB(255, 255, 255);
-	Title.TextSize = 16;
-	Title.TextXAlignment = Enum.TextXAlignment.Left;
-	Desc.Parent = Frame;
-	Desc.BackgroundColor3 = Color3.fromRGB(150, 150, 150);
-	Desc.BackgroundTransparency = 1;
-	Desc.Position = UDim2.new(0, 55, 0, 33);
-	Desc.Size = UDim2.new(0, 10, 0, 10);
-	Desc.Font = Enum.Font.GothamSemibold;
-	Desc.TextTransparency = 0.3;
-	Desc.Text = desc;
-	Desc.TextColor3 = Color3.fromRGB(200, 200, 200);
-	Desc.TextSize = 12;
-	Desc.TextXAlignment = Enum.TextXAlignment.Left;
-	UICorner.CornerRadius = UDim.new(0, 10);
-	UICorner.Parent = Frame;
-	UICorner2.CornerRadius = UDim.new(0, 12);
-	UICorner2.Parent = OutlineFrame;
-	OutlineFrame:TweenPosition(UDim2.new(1, -200, 0, 0), "Out", "Quad", 0.4, true);
-	wait(2);
-	OutlineFrame:TweenPosition(UDim2.new(1, 0, 0, 0), "Out", "Quad", 0.5, true);
-	wait(0.6);
-	OutlineFrame:Destroy();
-end;
-return Alert;
+function Alert:create(data)
+    local titleText = data.Title or "No Title"
+    local desc = data.D or "No Description"
+    local imageId = data.S or ""
+
+    -- التأكد من حذف الإشعار السابق إن وجد
+    if AlertFrame:FindFirstChild("OutlineFrame") then
+        AlertFrame.OutlineFrame:Destroy()
+    end
+
+    -- إنشاء الإطار الخارجي
+    local OutlineFrame = Instance.new("Frame")
+    OutlineFrame.Name = "OutlineFrame"
+    OutlineFrame.Parent = AlertFrame
+    OutlineFrame.ClipsDescendants = true
+    OutlineFrame.BackgroundColor3 = _G.Dark
+    OutlineFrame.BackgroundTransparency = 0.4
+    OutlineFrame.Position = UDim2.new(1, 0, 0.1, 0) -- يبدأ خارج الشاشة
+    OutlineFrame.Size = UDim2.new(0, 212, 0, 72)
+
+    -- إنشاء الإطار الداخلي
+    local Frame = Instance.new("Frame")
+    Frame.Name = "Frame"
+    Frame.Parent = OutlineFrame
+    Frame.ClipsDescendants = true
+    Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+    Frame.BackgroundColor3 = _G.Dark
+    Frame.BackgroundTransparency = 0.1
+    Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Frame.Size = UDim2.new(0, 200, 0, 60)
+
+    -- أيقونة الإشعار
+    local Image = Instance.new("ImageLabel")
+    Image.Name = "Icon"
+    Image.Parent = Frame
+    Image.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Image.BackgroundTransparency = 1
+    Image.Position = UDim2.new(0, 8, 0, 8)
+    Image.Size = UDim2.new(0, 45, 0, 45)
+    Image.Image = imageId -- استخدام الصورة من الجدول
+
+    -- عنوان الإشعار
+    local TitleLabel = Instance.new("TextLabel")
+    TitleLabel.Parent = Frame
+    TitleLabel.BackgroundTransparency = 1
+    TitleLabel.Position = UDim2.new(0, 55, 0, 14)
+    TitleLabel.Size = UDim2.new(1, -60, 0, 20)
+    TitleLabel.Font = Enum.Font.GothamBold
+    TitleLabel.Text = titleText
+    TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TitleLabel.TextSize = 16
+    TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+    -- نص الوصف
+    local DescLabel = Instance.new("TextLabel")
+    DescLabel.Parent = Frame
+    DescLabel.BackgroundTransparency = 1
+    DescLabel.Position = UDim2.new(0, 55, 0, 33)
+    DescLabel.Size = UDim2.new(1, -60, 0, 20)
+    DescLabel.Font = Enum.Font.GothamSemibold
+    DescLabel.TextTransparency = 0.3
+    DescLabel.Text = desc
+    DescLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+    DescLabel.TextSize = 12
+    DescLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+    -- إضافة الزوايا المستديرة
+    local UICorner = Instance.new("UICorner")
+    UICorner.CornerRadius = UDim.new(0, 10)
+    UICorner.Parent = Frame
+
+    local UICorner2 = Instance.new("UICorner")
+    UICorner2.CornerRadius = UDim.new(0, 12)
+    UICorner2.Parent = OutlineFrame
+
+    -- تحريك الإشعار للدخول
+    OutlineFrame:TweenPosition(UDim2.new(1, -220, 0.1, 0), "Out", "Quad", 0.4, true)
+
+    -- انتظر 3 ثوانٍ ثم اخفِ الإشعار
+    task.wait(3)
+    OutlineFrame:TweenPosition(UDim2.new(1, 0, 0.1, 0), "Out", "Quad", 0.5, true)
+
+    -- حذف الإشعار بعد الاختفاء
+    task.wait(0.6)
+    OutlineFrame:Destroy()
+end

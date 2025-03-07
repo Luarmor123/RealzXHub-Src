@@ -5,7 +5,7 @@ AlertFrame.ZIndexBehavior = Enum.ZIndexBehavior.Global;
 local Alert = {};
 _G.Primary = Color3.fromRGB(100, 100, 100);
 _G.Dark = Color3.fromRGB(22, 22, 26);
-function Alert:create(desc)
+function Alert:create(desc, Title)
 	if game.CoreGui:FindFirstChild("AlertFrame") then
 		local alertFrame = game.CoreGui.AlertFrame;
 		if alertFrame:FindFirstChild("OutlineFrame") then
@@ -47,7 +47,7 @@ function Alert:create(desc)
 	Title.Position = UDim2.new(0, 55, 0, 14);
 	Title.Size = UDim2.new(0, 10, 0, 20);
 	Title.Font = Enum.Font.GothamBold;
-	Title.Text = "AstroXHub";
+	Title.Text = Title;
 	Title.TextColor3 = Color3.fromRGB(255, 255, 255);
 	Title.TextSize = 16;
 	Title.TextXAlignment = Enum.TextXAlignment.Left;

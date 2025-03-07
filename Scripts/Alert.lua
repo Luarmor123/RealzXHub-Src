@@ -5,7 +5,7 @@ AlertFrame.ZIndexBehavior = Enum.ZIndexBehavior.Global;
 local Alert = {};
 _G.Primary = Color3.fromRGB(100, 100, 100);
 _G.Dark = Color3.fromRGB(22, 22, 26);
-function Alert:create(TitleT ,desc , ImageID)
+function Alert:create(TitleT, desc, ImageID)
 	if game.CoreGui:FindFirstChild("AlertFrame") then
 		local alertFrame = game.CoreGui.AlertFrame;
 		if alertFrame:FindFirstChild("OutlineFrame") then

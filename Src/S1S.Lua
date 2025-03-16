@@ -2543,7 +2543,7 @@ local SliderIconCorner = Create("UICorner", SliderIcon, {
     local TPlaceholderText = Configs[5] or Configs.PlaceholderText or "Input"
     local TClearText = Configs[3] or Configs.ClearText or false
     local Callback = Funcs:GetCallback(Configs, 4)
-
+    
     if type(TDefault) ~= "string" or TDefault:gsub(" ", ""):len() < 1 then
         TDefault = false
     end
@@ -2555,7 +2555,8 @@ local SliderIconCorner = Create("UICorner", SliderIcon, {
         Position = UDim2.new(1, -10, 0.5),
         AnchorPoint = Vector2.new(1, 0.5),
         BackgroundColor3 = Theme["Color Stroke"]
-    }), "Stroke")Make("Corner", SelectedFrame, UDim.new(0, 4))
+    }), "Stroke")
+    Make("Corner", SelectedFrame, UDim.new(0, 4))
 
     local TextBoxInput = InsertTheme(Create("TextBox", SelectedFrame, {
         Size = UDim2.new(0.85, 0, 0.85, 0),
@@ -2599,15 +2600,13 @@ local SliderIconCorner = Create("UICorner", SliderIcon, {
     end)
 
     TextBox.OnChanging = false
-
-    -- دالة SetValue لتغيير النص
-    function TextBox:SetValue(value)
-        TextBoxInput.Text = value
-        Input()  -- قم بإعادة تنفيذ دالة الإدخال لتفعيل أي منطق يعتمد على القيمة
-    end
-
     function TextBox:Visible(...) Funcs:ToggleVisible(Button, ...) end
     function TextBox:Destroy() Button:Destroy() end
+
+    -- إضافة دالة SetValue لتحديث قيمة الـ TextBox
+    function TextBox:SetValue(value)
+        TextBoxInput.Text = value
+    end
 
     return TextBox
 end

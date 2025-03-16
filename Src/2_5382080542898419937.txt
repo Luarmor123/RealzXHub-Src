@@ -1,0 +1,2212 @@
+local IceHub = {}
+local Utility = {}
+
+local discord1 = "nigha"
+local discord2 = "nigga"
+
+function Utility:TweenObject(obj, properties, duration, ...)
+	game:GetService("TweenService"):Create(obj, TweenInfo.new(duration, ...), properties):Play()
+end
+
+function IceHub.CreateMain(LibraryTitle)
+	local IceHub = Instance.new("ScreenGui")
+	local MainFrame = Instance.new("Frame")
+	local UICorner = Instance.new("UICorner")
+	local TabContainer = Instance.new("Frame")
+	local UICorner_2 = Instance.new("UICorner")
+	local ScrollingFrame = Instance.new("ScrollingFrame")
+	local UIListLayout = Instance.new("UIListLayout")
+	local Menu = Instance.new("TextButton")
+	local UICorner_3 = Instance.new("UICorner")
+	local FrameContainer = Instance.new("Folder")
+	local MenuPage = Instance.new("ScrollingFrame")
+	local ImageLabel = Instance.new("ImageLabel")
+	local UICorner_4 = Instance.new("UICorner")
+	local IcyImage = Instance.new("ImageLabel")
+	local UICorner_5 = Instance.new("UICorner")
+	local Discord = Instance.new("TextButton")
+	local UICorner_6 = Instance.new("UICorner")
+	local TemplateSmall = Instance.new("TextButton")
+	local UICorner_7 = Instance.new("UICorner")
+	local NameLabel = Instance.new("TextLabel")
+	local UICorner_8 = Instance.new("UICorner")
+	local NillestImage = Instance.new("ImageLabel")
+	local UICorner_9 = Instance.new("UICorner")
+	local IcyRoblox = Instance.new("TextLabel")
+	local IcyDiscord = Instance.new("TextLabel")
+	local IcyYoutube = Instance.new("TextLabel")
+	local NillestDiscord = Instance.new("TextLabel")
+	local NillestRoblox = Instance.new("TextLabel")
+	local Creator = Instance.new("TextLabel")
+	local SettingsPage = Instance.new("ScrollingFrame")
+	local UIListLayout_2 = Instance.new("UIListLayout")
+	local TopFrame = Instance.new("Frame")
+	local UICorner_13 = Instance.new("UICorner")
+	local Close = Instance.new("TextButton")
+	local UICorner_14 = Instance.new("UICorner")
+	local Minimize = Instance.new("TextButton")
+	local UICorner_15 = Instance.new("UICorner")
+	local Title = Instance.new("TextLabel")
+	local UICorner_16 = Instance.new("UICorner")
+	local ClosePage = Instance.new("TextButton")
+	local UICorner_17 = Instance.new("UICorner")
+	local CloseFrame = Instance.new("Frame")
+	local DontClose = Instance.new("TextButton")
+	local UICorner_18 = Instance.new("UICorner")
+	local YesClose = Instance.new("TextButton")
+	local UICorner_19 = Instance.new("UICorner")
+	local CloseMessage = Instance.new("TextLabel")
+	local UICorner_20 = Instance.new("UICorner")
+	local NotifyFolder = Instance.new("Folder")
+	local BlurFrame = Instance.new("TextButton")
+	local UICorner_31 = Instance.new("UICorner")
+	local BlurScrolling = Instance.new("ScrollingFrame")
+	local BlurLabel = Instance.new("TextLabel")
+	local UICorner_32 = Instance.new("UICorner")
+
+	IceHub.Name = "IceHubLoaded"
+	IceHub.Parent = game.CoreGui
+	IceHub.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	MainFrame.Name = "MainFrame"
+	MainFrame.Parent = IceHub
+	MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+	MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	MainFrame.BorderColor3 = Color3.fromRGB(30, 30, 30)
+	MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+	MainFrame.Size = UDim2.new(0, 425, 0, 210)
+	MainFrame.Active = true
+	MainFrame.Draggable = true
+
+	UICorner.CornerRadius = UDim.new(0, 4)
+	UICorner.Parent = MainFrame
+
+	TabContainer.Name = "TabContainer"
+	TabContainer.Parent = MainFrame
+	TabContainer.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	TabContainer.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	TabContainer.Size = UDim2.new(0, 110, 0, 210)
+
+	UICorner_2.CornerRadius = UDim.new(0, 3)
+	UICorner_2.Parent = TabContainer
+
+	ScrollingFrame.Parent = TabContainer
+	ScrollingFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	ScrollingFrame.BackgroundTransparency = 1.000
+	ScrollingFrame.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	ScrollingFrame.Position = UDim2.new(0.0454545468, 0, 0.176190615, 0)
+	ScrollingFrame.Size = UDim2.new(0, 100, 0, 172)
+	ScrollingFrame.CanvasSize = UDim2.new(0, 0, 3, 0)
+	ScrollingFrame.ScrollBarThickness = 5
+	ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
+
+	UIListLayout.Parent = ScrollingFrame
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.Padding = UDim.new(0, 3)
+
+	Menu.Name = "Menu"
+	Menu.Parent = ScrollingFrame
+	Menu.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	Menu.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	Menu.Position = UDim2.new(0, 0, -1.77427779e-07, 0)
+	Menu.Size = UDim2.new(0, 99, 0, 30)
+	Menu.AutoButtonColor = false
+	Menu.Font = Enum.Font.Gotham
+	Menu.Text = "Menu"
+	Menu.TextColor3 = Color3.fromRGB(0, 255, 255)
+	Menu.TextSize = 12.000
+
+	UICorner_3.CornerRadius = UDim.new(0, 3)
+	UICorner_3.Parent = Menu
+
+	FrameContainer.Name = "FrameContainer"
+	FrameContainer.Parent = MainFrame
+
+	MenuPage.Name = "MenuPage"
+	MenuPage.Parent = FrameContainer
+	MenuPage.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	MenuPage.BorderColor3 = Color3.fromRGB(30, 30, 30)
+	MenuPage.Position = UDim2.new(0.273000002, 0, 0.159999996, 0)
+	MenuPage.Size = UDim2.new(0, 303, 0, 170)
+	MenuPage.ScrollBarThickness = 5
+	MenuPage.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
+
+	ImageLabel.Parent = MenuPage
+	ImageLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	ImageLabel.Position = UDim2.new(0.0231023096, 0, 0.0178201124, 0)
+	ImageLabel.Size = UDim2.new(0, 90, 0, 90)
+	ImageLabel.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+
+	UICorner_4.CornerRadius = UDim.new(0, 4)
+	UICorner_4.Parent = ImageLabel
+
+	IcyImage.Name = "IcyImage"
+	IcyImage.Parent = MenuPage
+	IcyImage.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	IcyImage.Position = UDim2.new(0.0231023096, 0, 0.297231913, 0)
+	IcyImage.Size = UDim2.new(0, 90, 0, 90)
+	IcyImage.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+
+	UICorner_5.CornerRadius = UDim.new(0, 4)
+	UICorner_5.Parent = IcyImage
+
+	Discord.Name = "Discord"
+	Discord.Parent = MenuPage
+	Discord.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	Discord.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	Discord.Position = UDim2.new(0.353135347, 0, 0.0941176564, 0)
+	Discord.Size = UDim2.new(0, 185, 0, 27)
+	Discord.Font = Enum.Font.SourceSans
+	Discord.Text = "Discord"
+	Discord.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Discord.TextSize = 14.000
+
+	UICorner_6.CornerRadius = UDim.new(0, 4)
+	UICorner_6.Parent = Discord
+
+	NameLabel.Name = "NameLabel"
+	NameLabel.Parent = MenuPage
+	NameLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	NameLabel.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	NameLabel.Position = UDim2.new(0.353135318, 0, 0.0176470615, 0)
+	NameLabel.Size = UDim2.new(0, 185, 0, 27)
+	NameLabel.Font = Enum.Font.SourceSans
+	NameLabel.Text = "Hey,"
+	NameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	NameLabel.TextSize = 14.000
+
+	UICorner_8.CornerRadius = UDim.new(0, 4)
+	UICorner_8.Parent = NameLabel
+
+	NillestImage.Name = "NillestImage"
+	NillestImage.Parent = MenuPage
+	NillestImage.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	NillestImage.Position = UDim2.new(0.0231023096, 0, 0.544290781, 0)
+	NillestImage.Size = UDim2.new(0, 90, 0, 90)
+	NillestImage.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+
+	UICorner_9.CornerRadius = UDim.new(0, 4)
+	UICorner_9.Parent = NillestImage
+
+	IcyRoblox.Name = "IcyRoblox"
+	IcyRoblox.Parent = MenuPage
+	IcyRoblox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	IcyRoblox.BackgroundTransparency = 1.000
+	IcyRoblox.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	IcyRoblox.Position = UDim2.new(0.531353116, 0, 0.352941245, 0)
+	IcyRoblox.Size = UDim2.new(0, 100, 0, 15)
+	IcyRoblox.Font = Enum.Font.SourceSans
+	IcyRoblox.Text = "Roblox : IceMael7"
+	IcyRoblox.TextColor3 = Color3.fromRGB(255, 255, 255)
+	IcyRoblox.TextSize = 14.000
+	IcyRoblox.TextXAlignment = Enum.TextXAlignment.Left
+
+	IcyDiscord.Name = "IcyDiscord"
+	IcyDiscord.Parent = MenuPage
+	IcyDiscord.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	IcyDiscord.BackgroundTransparency = 1.000
+	IcyDiscord.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	IcyDiscord.Position = UDim2.new(0.531353116, 0, 0.38823536, 0)
+	IcyDiscord.Size = UDim2.new(0, 100, 0, 15)
+	IcyDiscord.Font = Enum.Font.SourceSans
+	IcyDiscord.Text = "Discord : "..discord1
+	IcyDiscord.TextColor3 = Color3.fromRGB(255, 255, 255)
+	IcyDiscord.TextSize = 14.000
+	IcyDiscord.TextXAlignment = Enum.TextXAlignment.Left
+
+	IcyYoutube.Name = "IcyYoutube"
+	IcyYoutube.Parent = MenuPage
+	IcyYoutube.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	IcyYoutube.BackgroundTransparency = 1.000
+	IcyYoutube.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	IcyYoutube.Position = UDim2.new(0.531353116, 0, 0.423529476, 0)
+	IcyYoutube.Size = UDim2.new(0, 100, 0, 15)
+	IcyYoutube.Font = Enum.Font.SourceSans
+	IcyYoutube.Text = "Youtube : IceHub"
+	IcyYoutube.TextColor3 = Color3.fromRGB(255, 255, 255)
+	IcyYoutube.TextSize = 14.000
+	IcyYoutube.TextXAlignment = Enum.TextXAlignment.Left
+
+	NillestDiscord.Name = "NillestDiscord"
+	NillestDiscord.Parent = MenuPage
+	NillestDiscord.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	NillestDiscord.BackgroundTransparency = 1.000
+	NillestDiscord.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	NillestDiscord.Position = UDim2.new(0.531353116, 0, 0.652941287, 0)
+	NillestDiscord.Size = UDim2.new(0, 100, 0, 15)
+	NillestDiscord.Font = Enum.Font.SourceSans
+	NillestDiscord.Text = "Discord : "..discord2
+	NillestDiscord.TextColor3 = Color3.fromRGB(255, 255, 255)
+	NillestDiscord.TextSize = 14.000
+	NillestDiscord.TextXAlignment = Enum.TextXAlignment.Left
+
+	NillestRoblox.Name = "NillestRoblox"
+	NillestRoblox.Parent = MenuPage
+	NillestRoblox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	NillestRoblox.BackgroundTransparency = 1.000
+	NillestRoblox.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	NillestRoblox.Position = UDim2.new(0.531353116, 0, 0.617647171, 0)
+	NillestRoblox.Size = UDim2.new(0, 100, 0, 15)
+	NillestRoblox.Font = Enum.Font.SourceSans
+	NillestRoblox.Text = "Roblox : grze2"
+	NillestRoblox.TextColor3 = Color3.fromRGB(255, 255, 255)
+	NillestRoblox.TextSize = 14.000
+	NillestRoblox.TextXAlignment = Enum.TextXAlignment.Left
+
+	Creator.Name = "Creator"
+	Creator.Parent = MenuPage
+	Creator.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	Creator.BackgroundTransparency = 1.000
+	Creator.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	Creator.Position = UDim2.new(0.462046206, 0, 0.261764765, 0)
+	Creator.Size = UDim2.new(0, 100, 0, 15)
+	Creator.Font = Enum.Font.SourceSans
+	Creator.Text = "Creator"
+	Creator.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Creator.TextSize = 14.000
+	Creator.TextXAlignment = Enum.TextXAlignment.Left
+
+	SettingsPage.Name = "SettingsPage"
+	SettingsPage.Parent = FrameContainer
+	SettingsPage.Active = true
+	SettingsPage.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	SettingsPage.BorderColor3 = Color3.fromRGB(30, 30, 30)
+	SettingsPage.Position = UDim2.new(0.273000002, 0, 0.159999996, 0)
+	SettingsPage.Size = UDim2.new(0, 303, 0, 170)
+	SettingsPage.Visible = false
+	SettingsPage.ScrollBarThickness = 5
+
+	UIListLayout_2.Parent = SettingsPage
+	UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout_2.Padding = UDim.new(0, 3)
+
+	TopFrame.Name = "TopFrame"
+	TopFrame.Parent = MainFrame
+	TopFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	TopFrame.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	TopFrame.Position = UDim2.new(0, 0, -0.00476175966, 0)
+	TopFrame.Size = UDim2.new(0, 425, 0, 30)
+
+	UICorner_13.CornerRadius = UDim.new(0, 4)
+	UICorner_13.Parent = TopFrame
+
+	Close.Name = "Close"
+	Close.Parent = TopFrame
+	Close.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	Close.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	Close.Position = UDim2.new(0.929411769, 0, 0, 0)
+	Close.Size = UDim2.new(0, 30, 0, 30)
+	Close.AutoButtonColor = false
+	Close.Font = Enum.Font.Gotham
+	Close.Text = "X"
+	Close.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Close.TextSize = 12.000
+
+	UICorner_14.CornerRadius = UDim.new(0, 4)
+	UICorner_14.Parent = Close
+
+	Minimize.Name = "Minimize"
+	Minimize.Parent = TopFrame
+	Minimize.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	Minimize.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	Minimize.Position = UDim2.new(0.858823538, 0, 0, 0)
+	Minimize.Size = UDim2.new(0, 30, 0, 30)
+	Minimize.AutoButtonColor = false
+	Minimize.Font = Enum.Font.Gotham
+	Minimize.Text = "-"
+	Minimize.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Minimize.TextSize = 12.000
+
+	UICorner_15.CornerRadius = UDim.new(0, 4)
+	UICorner_15.Parent = Minimize
+
+	Title.Name = "Title"
+	Title.Parent = TopFrame
+	Title.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	Title.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	Title.Position = UDim2.new(0.0305882357, 0, 0.233333349, 0)
+	Title.Size = UDim2.new(0, 200, 0, 15)
+	Title.Font = Enum.Font.Gotham
+	Title.Text = "IceHub - "..LibraryTitle
+	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Title.TextSize = 12.000
+	Title.TextXAlignment = Enum.TextXAlignment.Left
+
+	UICorner_16.CornerRadius = UDim.new(0, 4)
+	UICorner_16.Parent = Title
+
+	ClosePage.Name = "ClosePage"
+	ClosePage.Parent = MainFrame
+	ClosePage.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	ClosePage.BackgroundTransparency = 1.000
+	ClosePage.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	ClosePage.Size = UDim2.new(0, 425, 0, 210)
+	ClosePage.Visible = false
+	ClosePage.AutoButtonColor = false
+	ClosePage.Font = Enum.Font.SourceSans
+	ClosePage.Text = ""
+	ClosePage.TextColor3 = Color3.fromRGB(0, 0, 0)
+	ClosePage.TextSize = 14.000
+
+	UICorner_17.CornerRadius = UDim.new(0, 4)
+	UICorner_17.Parent = ClosePage
+
+	CloseFrame.Name = "CloseFrame"
+	CloseFrame.Parent = ClosePage
+	CloseFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	CloseFrame.BorderColor3 = Color3.fromRGB(30, 30, 30)
+	CloseFrame.Position = UDim2.new(0.485294133, 0, 0.467428595, 0)
+	CloseFrame.Size = UDim2.new(0, 12, 0, 12)
+
+	DontClose.Name = "DontClose"
+	DontClose.Parent = CloseFrame
+	DontClose.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	DontClose.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	DontClose.Position = UDim2.new(0.0993464887, 0, 0.550833881, 0)
+	DontClose.Size = UDim2.new(0, 110, 0, 40)
+	DontClose.Visible = false
+	DontClose.Font = Enum.Font.SourceSans
+	DontClose.Text = "Don't Close"
+	DontClose.TextColor3 = Color3.fromRGB(255, 0, 0)
+	DontClose.TextSize = 20.000
+
+	UICorner_18.CornerRadius = UDim.new(0, 4)
+	UICorner_18.Parent = DontClose
+
+	YesClose.Name = "YesClose"
+	YesClose.Parent = CloseFrame
+	YesClose.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	YesClose.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	YesClose.Position = UDim2.new(0.536449134, 0, 0.550833821, 0)
+	YesClose.Size = UDim2.new(0, 110, 0, 40)
+	YesClose.Visible = false
+	YesClose.Font = Enum.Font.SourceSans
+	YesClose.Text = "Yes, Close"
+	YesClose.TextColor3 = Color3.fromRGB(0, 255, 0)
+	YesClose.TextSize = 20.000
+
+	UICorner_19.CornerRadius = UDim.new(0, 4)
+	UICorner_19.Parent = YesClose
+
+	CloseMessage.Name = "CloseMessage"
+	CloseMessage.Parent = CloseFrame
+	CloseMessage.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	CloseMessage.BorderColor3 = Color3.fromRGB(30, 30, 30)
+	CloseMessage.Position = UDim2.new(0.219194219, 0, 0.136855215, 0)
+	CloseMessage.Size = UDim2.new(0, 169, 0, 50)
+	CloseMessage.Visible = false
+	CloseMessage.Font = Enum.Font.SourceSans
+	CloseMessage.Text = "Warning ! Are you sure to close IceHub ?"
+	CloseMessage.TextColor3 = Color3.fromRGB(255, 255, 255)
+	CloseMessage.TextSize = 18.000
+
+	UICorner_20.CornerRadius = UDim.new(0, 4)
+	UICorner_20.Parent = CloseFrame
+
+	NotifyFolder.Name = "NotifyFolder"
+	NotifyFolder.Parent = IceHub
+
+	BlurFrame.Name = "BlurFrame"
+	BlurFrame.Parent = MainFrame
+	BlurFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	BlurFrame.BackgroundTransparency = 1.000
+	BlurFrame.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	BlurFrame.Position = UDim2.new(0, 0, 0.137999997, 0)
+	BlurFrame.Size = UDim2.new(0, 425, 0, 180)
+	BlurFrame.Visible = false
+	BlurFrame.AutoButtonColor = false
+	BlurFrame.Font = Enum.Font.SourceSans
+	BlurFrame.Text = ""
+	BlurFrame.TextColor3 = Color3.fromRGB(0, 0, 0)
+	BlurFrame.TextSize = 14.000
+
+	UICorner_31.CornerRadius = UDim.new(0, 4)
+	UICorner_31.Parent = BlurFrame
+
+	BlurScrolling.Parent = BlurFrame
+	BlurScrolling.Active = true
+	BlurScrolling.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	BlurScrolling.BackgroundTransparency = 1.000
+	BlurScrolling.BorderSizePixel = 0
+	BlurScrolling.Position = UDim2.new(0.029000029, 0, 0.670000017, 0)
+	BlurScrolling.Size = UDim2.new(0, 400, 0, 50)
+	BlurScrolling.BottomImage = ""
+	BlurScrolling.CanvasSize = UDim2.new(0, 0, 0, 0)
+	BlurScrolling.MidImage = ""
+	BlurScrolling.TopImage = ""
+
+	BlurLabel.Parent = BlurScrolling
+	BlurLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+	BlurLabel.BorderColor3 = Color3.fromRGB(40, 40, 40)
+	BlurLabel.Position = UDim2.new(0, 0, 1, 0)
+	BlurLabel.Size = UDim2.new(0, 400, 0, 30)
+	BlurLabel.Font = Enum.Font.Gotham
+	BlurLabel.Text = ""
+	BlurLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	BlurLabel.TextSize = 12.000
+	BlurLabel.TextWrapped = true
+
+	UICorner_32.CornerRadius = UDim.new(0, 4)
+	UICorner_32.Parent = BlurLabel
+
+	Discord.MouseButton1Click:connect(function()
+		HttpService = game:GetService("HttpService")
+		local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
+
+		if httprequest then
+			httprequest({
+				Url = 'http://127.0.0.1:6463/rpc?v=1',
+				Method = 'POST',
+				Headers = {
+					['Content-Type'] = 'application/json',
+					Origin = 'https://discord.com'
+				},
+				Body = HttpService:JSONEncode({
+					cmd = 'INVITE_BROWSER',
+					nonce = HttpService:GenerateGUID(false),
+					args = {code = 'eRzY9DYTch'}
+				})
+			})
+		end
+		wait()
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "Succefully"; 
+			Text = "Discord copied to clipboard !"; 
+			Icon = ""; 
+			Duration = 3;
+		})
+		spawn(function()
+			setclipboard("https://discord.com/invite/eRzY9DYTch")
+		end)
+		spawn(function()
+			toclipboard("https://discord.com/invite/eRzY9DYTch")
+		end)
+	end)
+
+	local frame = MenuPage
+	local player = game.Players.LocalPlayer
+	local userId = player.UserId
+	local thumbType = Enum.ThumbnailType.AvatarBust
+	local thumbSize = Enum.ThumbnailSize.Size420x420
+	local content, isReady = game.Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
+	frame.ImageLabel.Image = content
+	frame.NameLabel.Text = "Hey, "..player.Name.." !"
+
+	local Frame = MenuPage
+	local ThumbType = Enum.ThumbnailType.AvatarBust
+	local ThumbSize = Enum.ThumbnailSize.Size420x420
+	local Content, isReady = game.Players:GetUserThumbnailAsync(1574272059, ThumbType, ThumbSize)
+	Frame.IcyImage.Image = Content
+
+	local Frame = MenuPage
+	local ThumbType = Enum.ThumbnailType.AvatarBust
+	local ThumbSize = Enum.ThumbnailSize.Size420x420
+	local Content, isReady = game.Players:GetUserThumbnailAsync(406707268, ThumbType, ThumbSize)
+	Frame.NillestImage.Image = Content
+
+	Menu.MouseButton1Click:Connect(function()
+		for i,v in pairs(TabContainer.ScrollingFrame:GetChildren()) do
+			if v:IsA("TextButton") then
+				v.TextColor3 = Color3.fromRGB(255, 255, 255)
+			end
+		end
+		Menu.TextColor3 = Color3.fromRGB(0, 255, 255)
+		for i,v in pairs(FrameContainer:GetChildren()) do
+			if v:IsA("ScrollingFrame") then
+				v.Visible = false
+			end
+		end
+		FrameContainer.MenuPage.Visible = true
+	end)
+
+	local Minimizer = false
+	Minimize.MouseButton1Click:Connect(function()
+
+		if Minimizer == true then 
+			Minimizer = false 
+		else
+			Minimizer = true
+		end
+
+		if Minimizer == true then 
+			Minimize.Text = "+"
+		end
+
+		if Minimizer == false then 
+			Minimize.Text = "-"
+		end
+
+		if Minimizer == true then
+			_G.FrameName = nil
+			for i,v in pairs(FrameContainer:GetChildren()) do
+				if v:IsA("ScrollingFrame") and v.Visible == true then
+					_G.FrameName = v
+				end
+			end
+
+			for i,v in pairs(FrameContainer:GetChildren()) do
+				if v:IsA("ScrollingFrame") then
+					v.Visible = false
+				end
+			end
+			TabContainer.Visible = false
+			MainFrame:TweenSize(UDim2.new(0, 425, 0, 30), Enum.EasingDirection.InOut, Enum.EasingStyle.Quad, 0.6, true)
+		end
+
+		if Minimizer == false then 
+			local FrameName = _G.FrameName
+			MainFrame:TweenSize(UDim2.new(0, 425, 0, 210), Enum.EasingDirection.InOut, Enum.EasingStyle.Quad, 0.6, true)
+			wait(0.5)
+			TabContainer.Visible = true
+			FrameName.Visible = true
+		end
+	end)
+
+	local Opened = false
+	_G.CanClose = true
+	Close.MouseButton1Click:Connect(function()
+		if Opened == false then
+			Opened = true
+			CloseFrame:TweenSizeAndPosition(UDim2.new(0, 304, 0, 149), UDim2.new(0.142, 0, 0.144, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.6, true)
+			ClosePage.Visible = true
+			wait(0.1)
+			YesClose.Visible = true
+			DontClose.Visible = true
+			CloseFrame.CloseMessage.Visible = true
+			if _G.CanClose == true then
+				for i= 1, 10 do
+					wait(0.05)
+					ClosePage.Transparency = ClosePage.Transparency - 0.05
+				end
+			end
+			Opened = false
+			_G.CanClose = false
+		end
+	end)
+
+	DontClose.MouseButton1Click:Connect(function()
+		CloseFrame:TweenSizeAndPosition(UDim2.new(0, 0, 0, 0), UDim2.new(0.485, 0, 0.467, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Quint, 0.6, true)
+		wait(0.1)
+		YesClose.Visible = false
+		DontClose.Visible = false
+		CloseMessage.Visible = false
+		wait(0.5)
+		for i= 1, 15 do
+			wait(0.05)
+			ClosePage.Transparency = ClosePage.Transparency + 0.05
+		end
+		ClosePage.Visible = false
+		_G.CanClose = true
+	end)
+
+	YesClose.MouseButton1Click:Connect(function()
+		IceHub:Destroy()
+	end)
+
+	local Tabs = {}
+	local First = true
+
+	function Tabs:NewTab(TabName, TemplateName)
+		-- TemplateTab
+		local TemplateTab = Instance.new("TextButton")
+		local UICorner_3 = Instance.new("UICorner")
+		-- TemplatePage
+		local TemplatePage = Instance.new("ScrollingFrame")
+		local PageListLayout = Instance.new("UIListLayout")
+
+		-- UpdateSize
+		local function UpdateSize()
+			local cS = PageListLayout.AbsoluteContentSize
+
+			game.TweenService:Create(TemplatePage, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+				CanvasSize = UDim2.new(0, 0, 0, cS.Y)
+			}):Play()
+		end
+
+		-- TemplateTab
+		TemplateTab.Name = "TemplateTab"
+		TemplateTab.Parent = ScrollingFrame
+		TemplateTab.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+		TemplateTab.BorderColor3 = Color3.fromRGB(20, 20, 20)
+		TemplateTab.Position = UDim2.new(0, 0, -1.77427779e-07, 0)
+		TemplateTab.Size = UDim2.new(0, 99, 0, 30)
+		TemplateTab.AutoButtonColor = false
+		TemplateTab.Font = Enum.Font.Gotham
+		TemplateTab.Text = ""..TabName
+		TemplateTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TemplateTab.TextSize = 12.000
+
+		UICorner_3.CornerRadius = UDim.new(0, 3)
+		UICorner_3.Parent = TemplateTab
+
+		-- TemplatePage
+		TemplatePage.Name = ""..TemplateName
+		TemplatePage.Parent = FrameContainer
+		TemplatePage.Active = true
+		TemplatePage.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+		TemplatePage.BorderColor3 = Color3.fromRGB(30, 30, 30)
+		TemplatePage.Position = UDim2.new(0.273000062, 0, 0.160000026, 0)
+		TemplatePage.Size = UDim2.new(0, 303, 0, 170)
+		TemplatePage.Visible = false
+		TemplatePage.ScrollBarThickness = 5
+		TemplatePage.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
+
+		PageListLayout.Parent = TemplatePage
+		PageListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		PageListLayout.Padding = UDim.new(0, 3)
+
+		table.insert(Tabs, TabName)
+
+		UpdateSize()
+
+		TemplatePage.ChildAdded:Connect(UpdateSize)
+		TemplatePage.ChildRemoved:Connect(UpdateSize)
+
+		TemplateTab.MouseButton1Click:Connect(function()
+			UpdateSize()
+			for i,v in next, FrameContainer:GetChildren() do
+				if v:IsA("ScrollingFrame") then
+					v.Visible = false
+				end
+			end
+			TemplatePage.Visible = true
+			for i,v in next, TabContainer.ScrollingFrame:GetChildren() do
+				if v:IsA("TextButton") then
+					v.TextColor3 = Color3.fromRGB(255, 255, 255)
+				end
+			end
+			TemplateTab.TextColor3 = Color3.fromRGB(0, 255, 255)
+		end)
+
+		local Sections = {}
+		local focusing = false
+		local viewDe = false
+
+		function Sections:NewSection()
+			-- TemplateSection
+			local TemplateSection = Instance.new("Frame")
+			local SectionListLayout = Instance.new("UIListLayout")
+
+			-- UpdateSection
+			local function updateSectionFrame()
+				local frameSc = SectionListLayout.AbsoluteContentSize
+				TemplateSection.Size = UDim2.new(0, 352, 0, frameSc.Y)
+			end
+
+			-- TemplateSection
+			TemplateSection.Name = "TemplateSection"
+			TemplateSection.Parent = TemplatePage
+			TemplateSection.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			TemplateSection.BackgroundTransparency = 1.000
+			TemplateSection.Size = UDim2.new(0, 280, 0, 30)
+
+			SectionListLayout.Parent = TemplateSection
+			SectionListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+			SectionListLayout.Padding = UDim.new(0, 3)
+
+			updateSectionFrame()
+			UpdateSize()
+
+			local Elements = {}
+			function Elements:NewButton(ButtonName, HelpText, callback)
+				local UpdateButtons = {}
+				callback = callback or function() end
+				-- TemplateButton
+				local TemplateTextButton = Instance.new("TextButton")
+				local UICornerButton1 = Instance.new("UICorner")
+				local HelpButton = Instance.new("ImageButton")
+				local UICornerButton2 = Instance.new("UICorner")
+				local IconButton = Instance.new("ImageLabel")
+				local TextTextButton = Instance.new("TextLabel")
+
+				-- TemplateButton
+				TemplateTextButton.Name = "TemplateTextButton"
+				TemplateTextButton.Parent = TemplatePage
+				TemplateTextButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateTextButton.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateTextButton.Position = UDim2.new(0.0656108633, 0, 0.196325853, 0)
+				TemplateTextButton.Size = UDim2.new(0, 295, 0, 30)
+				TemplateTextButton.AutoButtonColor = false
+				TemplateTextButton.Font = Enum.Font.Gotham
+				TemplateTextButton.Text = ""
+				TemplateTextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TemplateTextButton.TextSize = 12.000
+				TemplateTextButton.TextXAlignment = Enum.TextXAlignment.Left
+
+				UICornerButton1.CornerRadius = UDim.new(0, 4)
+				UICornerButton1.Parent = TemplateTextButton
+
+				HelpButton.Name = "Help"
+				HelpButton.Parent = TemplateTextButton
+				HelpButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				HelpButton.BackgroundTransparency = 1.000
+				HelpButton.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				HelpButton.Position = UDim2.new(0.901694894, 0, 0.13333334, 0)
+				HelpButton.Size = UDim2.new(0, 23, 0, 23)
+				HelpButton.AutoButtonColor = false
+				HelpButton.Image = "rbxassetid://3926305904"
+				HelpButton.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				HelpButton.ImageRectOffset = Vector2.new(764, 764)
+				HelpButton.ImageRectSize = Vector2.new(36, 36)
+
+				UICornerButton2.CornerRadius = UDim.new(0, 4)
+				UICornerButton2.Parent = HelpButton
+
+				IconButton.Name = "Icon"
+				IconButton.Parent = TemplateTextButton
+				IconButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				IconButton.BackgroundTransparency = 1.000
+				IconButton.Position = UDim2.new(0.0270000007, 0, 0.246999994, 0)
+				IconButton.Rotation = 270.000
+				IconButton.Size = UDim2.new(0, 15, 0, 15)
+				IconButton.Image = "http://www.roblox.com/asset/?id=12596469486"
+				IconButton.ImageColor3 = Color3.fromRGB(65, 65, 65)
+
+				TextTextButton.Name = "Text"
+				TextTextButton.Parent = TemplateTextButton
+				TextTextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextTextButton.BackgroundTransparency = 1.000
+				TextTextButton.Position = UDim2.new(0.125389844, 0, 0.25, 0)
+				TextTextButton.Size = UDim2.new(0, 223, 0, 14)
+				TextTextButton.Font = Enum.Font.Gotham
+				TextTextButton.Text = ""..ButtonName
+				TextTextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TextTextButton.TextSize = 13.000
+				TextTextButton.TextXAlignment = Enum.TextXAlignment.Left
+
+				updateSectionFrame()
+				UpdateSize()
+
+				HelpButton.MouseButton1Click:Connect(function()
+					BlurFrame.Visible = true
+					BlurLabel.Text = HelpText
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 0.5}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 0.4, 0)}, 0.2)
+					wait(1.5)
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 1}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 1, 0)}, 0.2)
+					wait(0.3)
+					BlurLabel.Text = ""
+					BlurFrame.Visible = false
+				end)
+
+				TemplateTextButton.MouseButton1Click:Connect(function()
+					callback()
+				end)
+				function UpdateButtons:UpdateButton(newText)
+					if TemplateTextButton.Text ~= "  "..newText then
+						TemplateTextButton.Text = "  "..newText
+					end
+				end	
+				return UpdateButtons
+			end
+
+			function Elements:NewButtonC5(ButtonC5Name, HelpText, callback)
+				callback = callback or function() end
+				-- TemplateButtonc5
+				local TemplateButtonc5 = Instance.new("TextButton")
+				local UICornerButton1 = Instance.new("UICorner")
+				local HelpButton = Instance.new("ImageButton")
+				local UICornerButton2 = Instance.new("UICorner")
+				local IconButton = Instance.new("ImageLabel")
+				local TextTextButton = Instance.new("TextLabel")
+
+				-- TemplateButtonc5
+				TemplateButtonc5.Name = "TemplateTextButton"
+				TemplateButtonc5.Parent = TemplatePage
+				TemplateButtonc5.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateButtonc5.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateButtonc5.Position = UDim2.new(0.0656108633, 0, 0.196325853, 0)
+				TemplateButtonc5.Size = UDim2.new(0, 295, 0, 30)
+				TemplateButtonc5.AutoButtonColor = false
+				TemplateButtonc5.Font = Enum.Font.Gotham
+				TemplateButtonc5.Text = ""
+				TemplateButtonc5.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TemplateButtonc5.TextSize = 12.000
+				TemplateButtonc5.TextXAlignment = Enum.TextXAlignment.Left
+
+				UICornerButton1.CornerRadius = UDim.new(0, 4)
+				UICornerButton1.Parent = TemplateButtonc5
+
+				HelpButton.Name = "Help"
+				HelpButton.Parent = TemplateButtonc5
+				HelpButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				HelpButton.BackgroundTransparency = 1.000
+				HelpButton.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				HelpButton.Position = UDim2.new(0.901694894, 0, 0.13333334, 0)
+				HelpButton.Size = UDim2.new(0, 23, 0, 23)
+				HelpButton.AutoButtonColor = false
+				HelpButton.Image = "rbxassetid://3926305904"
+				HelpButton.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				HelpButton.ImageRectOffset = Vector2.new(764, 764)
+				HelpButton.ImageRectSize = Vector2.new(36, 36)
+
+				UICornerButton2.CornerRadius = UDim.new(0, 4)
+				UICornerButton2.Parent = HelpButton
+
+				IconButton.Name = "Icon"
+				IconButton.Parent = TemplateButtonc5
+				IconButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				IconButton.BackgroundTransparency = 1.000
+				IconButton.Position = UDim2.new(0.0270000007, 0, 0.246999994, 0)
+				IconButton.Rotation = 270.000
+				IconButton.Size = UDim2.new(0, 15, 0, 15)
+				IconButton.Image = "http://www.roblox.com/asset/?id=12596469486"
+				IconButton.ImageColor3 = Color3.fromRGB(65, 65, 65)
+
+				TextTextButton.Name = "Text"
+				TextTextButton.Parent = TemplateButtonc5
+				TextTextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextTextButton.BackgroundTransparency = 1.000
+				TextTextButton.Position = UDim2.new(0.125389844, 0, 0.25, 0)
+				TextTextButton.Size = UDim2.new(0, 223, 0, 14)
+				TextTextButton.Font = Enum.Font.Gotham
+				TextTextButton.Text = ""..ButtonC5Name
+				TextTextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TextTextButton.TextSize = 13.000
+				TextTextButton.TextXAlignment = Enum.TextXAlignment.Left
+
+				updateSectionFrame()
+				UpdateSize()
+
+				HelpButton.MouseButton1Click:Connect(function()
+					BlurFrame.Visible = true
+					BlurLabel.Text = HelpText
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 0.5}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 0.4, 0)}, 0.2)
+					wait(1.5)
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 1}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 1, 0)}, 0.2)
+					wait(0.3)
+					BlurLabel.Text = ""
+					BlurFrame.Visible = false
+				end)
+
+				local C5Cooldown = false
+				TemplateButtonc5.MouseButton1Click:Connect(function()
+					if C5Cooldown == false then
+						C5Cooldown = true
+						callback()
+						TextTextButton.TextColor3 = Color3.fromRGB(255, 0, 0)
+						TextTextButton.Text = "Kick prevent... Please wait 5 seconds"
+						wait(1)
+						TextTextButton.Text = "Kick prevent... Please wait 4 seconds"
+						wait(1)
+						TextTextButton.Text = "Kick prevent... Please wait 3 seconds"
+						wait(1)
+						TextTextButton.Text = "Kick prevent... Please wait 2 seconds"
+						wait(1)
+						TextTextButton.Text = "Kick prevent... Please wait 1 second"
+						wait(1)
+						TextTextButton.Text = ""..ButtonC5Name
+						TextTextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextTextButton.Active = true
+						C5Cooldown = false
+					end
+				end)
+			end
+
+			function Elements:NewButtonC10(ButtonC10Name, HelpText, callback)
+				callback = callback or function() end
+				-- TemplateButtonc10
+				local TemplateButtonc10 = Instance.new("TextButton")
+				local UICornerButton1 = Instance.new("UICorner")
+				local HelpButton = Instance.new("ImageButton")
+				local UICornerButton2 = Instance.new("UICorner")
+				local IconButton = Instance.new("ImageLabel")
+				local TextTextButton = Instance.new("TextLabel")
+
+				-- TemplateButtonc10
+				TemplateButtonc10.Name = "TemplateTextButton"
+				TemplateButtonc10.Parent = TemplatePage
+				TemplateButtonc10.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateButtonc10.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateButtonc10.Position = UDim2.new(0.0656108633, 0, 0.196325853, 0)
+				TemplateButtonc10.Size = UDim2.new(0, 295, 0, 30)
+				TemplateButtonc10.AutoButtonColor = false
+				TemplateButtonc10.Font = Enum.Font.Gotham
+				TemplateButtonc10.Text = ""
+				TemplateButtonc10.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TemplateButtonc10.TextSize = 12.000
+				TemplateButtonc10.TextXAlignment = Enum.TextXAlignment.Left
+
+				UICornerButton1.CornerRadius = UDim.new(0, 4)
+				UICornerButton1.Parent = TemplateButtonc10
+
+				HelpButton.Name = "Help"
+				HelpButton.Parent = TemplateButtonc10
+				HelpButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				HelpButton.BackgroundTransparency = 1.000
+				HelpButton.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				HelpButton.Position = UDim2.new(0.901694894, 0, 0.13333334, 0)
+				HelpButton.Size = UDim2.new(0, 23, 0, 23)
+				HelpButton.AutoButtonColor = false
+				HelpButton.Image = "rbxassetid://3926305904"
+				HelpButton.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				HelpButton.ImageRectOffset = Vector2.new(764, 764)
+				HelpButton.ImageRectSize = Vector2.new(36, 36)
+
+				UICornerButton2.CornerRadius = UDim.new(0, 4)
+				UICornerButton2.Parent = HelpButton
+
+				IconButton.Name = "Icon"
+				IconButton.Parent = TemplateButtonc10
+				IconButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				IconButton.BackgroundTransparency = 1.000
+				IconButton.Position = UDim2.new(0.0270000007, 0, 0.246999994, 0)
+				IconButton.Rotation = 270.000
+				IconButton.Size = UDim2.new(0, 15, 0, 15)
+				IconButton.Image = "http://www.roblox.com/asset/?id=12596469486"
+				IconButton.ImageColor3 = Color3.fromRGB(65, 65, 65)
+
+				TextTextButton.Name = "Text"
+				TextTextButton.Parent = TemplateButtonc10
+				TextTextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextTextButton.BackgroundTransparency = 1.000
+				TextTextButton.Position = UDim2.new(0.125389844, 0, 0.25, 0)
+				TextTextButton.Size = UDim2.new(0, 223, 0, 14)
+				TextTextButton.Font = Enum.Font.Gotham
+				TextTextButton.Text = ""..ButtonC10Name
+				TextTextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TextTextButton.TextSize = 13.000
+				TextTextButton.TextXAlignment = Enum.TextXAlignment.Left
+
+				updateSectionFrame()
+				UpdateSize()
+
+				HelpButton.MouseButton1Click:Connect(function()
+					BlurFrame.Visible = true
+					BlurLabel.Text = HelpText
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 0.5}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 0.4, 0)}, 0.2)
+					wait(1.5)
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 1}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 1, 0)}, 0.2)
+					wait(0.3)
+					BlurLabel.Text = ""
+					BlurFrame.Visible = false
+				end)
+
+				local C10Cooldown = false
+				TemplateButtonc10.MouseButton1Click:Connect(function()
+					if C10Cooldown == false then
+						C10Cooldown = true
+						callback()
+						TextTextButton.TextColor3 = Color3.fromRGB(255, 0, 0)
+						TextTextButton.Text = "Kick prevent... Please wait 10 seconds"
+						wait(1)
+						TextTextButton.Text = "Kick prevent... Please wait 9 seconds"
+						wait(1)
+						TextTextButton.Text = "Kick prevent... Please wait 8 seconds"
+						wait(1)
+						TextTextButton.Text = "Kick prevent... Please wait 7 seconds"
+						wait(1)
+						TextTextButton.Text = "Kick prevent... Please wait 6 seconds"
+						wait(1)
+						TextTextButton.Text = "Kick prevent... Please wait 5 seconds"
+						wait(1)
+						TextTextButton.Text = "Kick prevent... Please wait 4 seconds"
+						wait(1)
+						TextTextButton.Text = "Kick prevent... Please wait 3 seconds"
+						wait(1)
+						TextTextButton.Text = "Kick prevent... Please wait 2 seconds"
+						wait(1)
+						TextTextButton.Text = "Kick prevent... Please wait 1 second"
+						wait(1)
+						TextTextButton.Text = ""..ButtonC10Name
+						TextTextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextTextButton.Active = true
+						C10Cooldown = false
+					end
+				end)
+			end
+
+			function Elements:NewToggle(ToggleName, HelpText, callback)
+				local UpdateToggles = {}
+				callback = callback or function() end
+				-- TemplateToggle
+				local TemplateToggle = Instance.new("TextButton")
+				local UICornerToggle1 = Instance.new("UICorner")
+				local HelpToggle = Instance.new("ImageButton")
+				local UICornerToggle2 = Instance.new("UICorner")
+				local IconToggle = Instance.new("ImageLabel")
+				local ToggleText = Instance.new("TextLabel")
+
+				-- TemplateToggle
+				TemplateToggle.Name = "TemplateTextButton"
+				TemplateToggle.Parent = TemplatePage
+				TemplateToggle.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateToggle.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateToggle.Position = UDim2.new(0.0656108633, 0, 0.196325853, 0)
+				TemplateToggle.Size = UDim2.new(0, 295, 0, 30)
+				TemplateToggle.AutoButtonColor = false
+				TemplateToggle.Font = Enum.Font.Gotham
+				TemplateToggle.Text = ""
+				TemplateToggle.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TemplateToggle.TextSize = 12.000
+				TemplateToggle.TextXAlignment = Enum.TextXAlignment.Left
+
+				UICornerToggle1.CornerRadius = UDim.new(0, 4)
+				UICornerToggle1.Parent = TemplateToggle
+
+				HelpToggle.Name = "Help"
+				HelpToggle.Parent = TemplateToggle
+				HelpToggle.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				HelpToggle.BackgroundTransparency = 1.000
+				HelpToggle.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				HelpToggle.Position = UDim2.new(0.901694894, 0, 0.13333334, 0)
+				HelpToggle.Size = UDim2.new(0, 23, 0, 23)
+				HelpToggle.AutoButtonColor = false
+				HelpToggle.Image = "rbxassetid://3926305904"
+				HelpToggle.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				HelpToggle.ImageRectOffset = Vector2.new(764, 764)
+				HelpToggle.ImageRectSize = Vector2.new(36, 36)
+
+				UICornerToggle2.CornerRadius = UDim.new(0, 4)
+				UICornerToggle2.Parent = HelpToggle
+
+				IconToggle.Name = "Icon"
+				IconToggle.Parent = TemplateToggle
+				IconToggle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				IconToggle.BackgroundTransparency = 1.000
+				IconToggle.Position = UDim2.new(0.0270000007, 0, 0.246999994, 0)
+				IconToggle.Rotation = 270.000
+				IconToggle.Size = UDim2.new(0, 15, 0, 15)
+				IconToggle.Image = "rbxassetid://3926309567"
+				IconToggle.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				IconToggle.ImageRectOffset = Vector2.new(628, 420)
+				IconToggle.ImageRectSize = Vector2.new(48, 48)
+
+				ToggleText.Name = "Text"
+				ToggleText.Parent = TemplateToggle
+				ToggleText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ToggleText.BackgroundTransparency = 1.000
+				ToggleText.Position = UDim2.new(0.125389844, 0, 0.25, 0)
+				ToggleText.Size = UDim2.new(0, 223, 0, 14)
+				ToggleText.Font = Enum.Font.Gotham
+				ToggleText.Text = ""..ToggleName
+				ToggleText.TextColor3 = Color3.fromRGB(255, 255, 255)
+				ToggleText.TextSize = 13.000
+				ToggleText.TextXAlignment = Enum.TextXAlignment.Left
+
+				updateSectionFrame()
+				UpdateSize()
+
+				HelpToggle.MouseButton1Click:Connect(function()
+					BlurFrame.Visible = true
+					BlurLabel.Text = HelpText
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 0.5}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 0.4, 0)}, 0.2)
+					wait(1.5)
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 1}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 1, 0)}, 0.2)
+					wait(0.3)
+					BlurLabel.Text = ""
+					BlurFrame.Visible = false
+				end)
+
+				local Toggled = false
+				TemplateToggle.MouseButton1Click:Connect(function()
+					if not focusing then
+						if Toggled == false then
+							IconToggle.ImageRectOffset = Vector2.new(784, 420)
+						else
+							IconToggle.ImageRectOffset = Vector2.new(628, 420)
+						end
+						Toggled = not Toggled
+						pcall(callback, Toggled)
+					end
+				end)
+
+				function UpdateToggles:UpdateToggle(newText)
+					if TemplateToggle.Text ~= "  "..newText then
+						TemplateToggle.Text = "  "..newText
+					end
+				end	
+				return UpdateToggles
+			end
+
+			function Elements:NewToggleC5(ToggleC5Name, HelpToggleC5Text, callback)
+				callback = callback or function() end
+				-- TemplateToggleC5
+				local TemplateToggleC5 = Instance.new("TextButton")
+				local UICornerToggleC51 = Instance.new("UICorner")
+				local HelpToggleC5 = Instance.new("ImageButton")
+				local UICornerToggleC52 = Instance.new("UICorner")
+				local IconToggleC5 = Instance.new("ImageLabel")
+				local ToggleC5Text = Instance.new("TextLabel")
+
+				-- TemplateToggleC5
+				TemplateToggleC5.Name = "TemplateTextButton"
+				TemplateToggleC5.Parent = TemplatePage
+				TemplateToggleC5.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateToggleC5.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateToggleC5.Position = UDim2.new(0.0656108633, 0, 0.196325853, 0)
+				TemplateToggleC5.Size = UDim2.new(0, 295, 0, 30)
+				TemplateToggleC5.AutoButtonColor = false
+				TemplateToggleC5.Font = Enum.Font.Gotham
+				TemplateToggleC5.Text = ""
+				TemplateToggleC5.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TemplateToggleC5.TextSize = 12.000
+				TemplateToggleC5.TextXAlignment = Enum.TextXAlignment.Left
+
+				UICornerToggleC51.CornerRadius = UDim.new(0, 4)
+				UICornerToggleC51.Parent = TemplateToggleC5
+
+				HelpToggleC5.Name = "Help"
+				HelpToggleC5.Parent = TemplateToggleC5
+				HelpToggleC5.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				HelpToggleC5.BackgroundTransparency = 1.000
+				HelpToggleC5.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				HelpToggleC5.Position = UDim2.new(0.901694894, 0, 0.13333334, 0)
+				HelpToggleC5.Size = UDim2.new(0, 23, 0, 23)
+				HelpToggleC5.AutoButtonColor = false
+				HelpToggleC5.Image = "rbxassetid://3926305904"
+				HelpToggleC5.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				HelpToggleC5.ImageRectOffset = Vector2.new(764, 764)
+				HelpToggleC5.ImageRectSize = Vector2.new(36, 36)
+
+				UICornerToggleC52.CornerRadius = UDim.new(0, 4)
+				UICornerToggleC52.Parent = HelpToggleC5
+
+				IconToggleC5.Name = "Icon"
+				IconToggleC5.Parent = TemplateToggleC5
+				IconToggleC5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				IconToggleC5.BackgroundTransparency = 1.000
+				IconToggleC5.Position = UDim2.new(0.0270000007, 0, 0.246999994, 0)
+				IconToggleC5.Rotation = 270.000
+				IconToggleC5.Size = UDim2.new(0, 15, 0, 15)
+				IconToggleC5.Image = "rbxassetid://3926309567"
+				IconToggleC5.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				IconToggleC5.ImageRectOffset = Vector2.new(628, 420)
+				IconToggleC5.ImageRectSize = Vector2.new(48, 48)
+
+				ToggleC5Text.Name = "Text"
+				ToggleC5Text.Parent = TemplateToggleC5
+				ToggleC5Text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ToggleC5Text.BackgroundTransparency = 1.000
+				ToggleC5Text.Position = UDim2.new(0.125389844, 0, 0.25, 0)
+				ToggleC5Text.Size = UDim2.new(0, 223, 0, 14)
+				ToggleC5Text.Font = Enum.Font.Gotham
+				ToggleC5Text.Text = ""..ToggleC5Name
+				ToggleC5Text.TextColor3 = Color3.fromRGB(255, 255, 255)
+				ToggleC5Text.TextSize = 13.000
+				ToggleC5Text.TextXAlignment = Enum.TextXAlignment.Left
+
+				updateSectionFrame()
+				UpdateSize()
+
+				HelpToggleC5.MouseButton1Click:Connect(function()
+					BlurFrame.Visible = true
+					BlurLabel.Text = HelpToggleC5Text
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 0.5}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 0.4, 0)}, 0.2)
+					wait(1.5)
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 1}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 1, 0)}, 0.2)
+					wait(0.3)
+					BlurLabel.Text = ""
+					BlurFrame.Visible = false
+				end)
+
+				local ToggleC5 = false
+				local Toggled = false
+				TemplateToggleC5.MouseButton1Click:Connect(function()
+					if not focusing then
+						if Toggled == false then
+							if ToggleC5 == false then
+								IconToggleC5.ImageRectOffset = Vector2.new(784, 420)
+								_G.EnabledC5 = true
+							end
+						else
+							if ToggleC5 == false then
+								ToggleC5 = true
+								Toggled = not Toggled
+								pcall(callback, Toggled)
+								_G.EnabledC5 = false
+								ToggleC5Text.TextColor3 = Color3.fromRGB(255, 0, 0)
+								ToggleC5Text.Text = "Kick prevent... Please wait 5 seconds"
+								wait(1)
+								ToggleC5Text.Text = "Kick prevent... Please wait 4 seconds"
+								wait(1)
+								ToggleC5Text.Text = "Kick prevent... Please wait 3 seconds"
+								wait(1)
+								ToggleC5Text.Text = "Kick prevent... Please wait 2 seconds"
+								wait(1)
+								ToggleC5Text.Text = "Kick prevent... Please wait 1 second"
+								wait(1)
+								ToggleC5Text.Text = ""..ToggleC5Name
+								IconToggleC5.ImageRectOffset = Vector2.new(628, 420)
+								ToggleC5Text.TextColor3 = Color3.fromRGB(255, 255, 255)
+								ToggleC5Text.Active = true
+								ToggleC5 = false
+							end
+						end
+						if _G.EnabledC5 == true then
+							Toggled = not Toggled
+							pcall(callback, Toggled)
+						end
+					end
+				end)
+			end
+
+			function Elements:NewToggleC10(ToggleC10Name, HelpToggleC10Text, callback)
+				callback = callback or function() end
+				-- TemplateToggleC10
+				local TemplateToggleC10 = Instance.new("TextButton")
+				local UICornerToggleC101 = Instance.new("UICorner")
+				local HelpToggleC10 = Instance.new("ImageButton")
+				local UICornerToggleC102 = Instance.new("UICorner")
+				local IconToggleC10 = Instance.new("ImageLabel")
+				local ToggleC10Text = Instance.new("TextLabel")
+
+				-- TemplateToggleC10
+				TemplateToggleC10.Name = "TemplateTextButton"
+				TemplateToggleC10.Parent = TemplatePage
+				TemplateToggleC10.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateToggleC10.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateToggleC10.Position = UDim2.new(0.0656108633, 0, 0.196325853, 0)
+				TemplateToggleC10.Size = UDim2.new(0, 295, 0, 30)
+				TemplateToggleC10.AutoButtonColor = false
+				TemplateToggleC10.Font = Enum.Font.Gotham
+				TemplateToggleC10.Text = ""
+				TemplateToggleC10.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TemplateToggleC10.TextSize = 12.000
+				TemplateToggleC10.TextXAlignment = Enum.TextXAlignment.Left
+
+				UICornerToggleC101.CornerRadius = UDim.new(0, 4)
+				UICornerToggleC101.Parent = TemplateToggleC10
+
+				HelpToggleC10.Name = "Help"
+				HelpToggleC10.Parent = TemplateToggleC10
+				HelpToggleC10.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				HelpToggleC10.BackgroundTransparency = 1.000
+				HelpToggleC10.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				HelpToggleC10.Position = UDim2.new(0.901694894, 0, 0.13333334, 0)
+				HelpToggleC10.Size = UDim2.new(0, 23, 0, 23)
+				HelpToggleC10.AutoButtonColor = false
+				HelpToggleC10.Image = "rbxassetid://3926305904"
+				HelpToggleC10.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				HelpToggleC10.ImageRectOffset = Vector2.new(764, 764)
+				HelpToggleC10.ImageRectSize = Vector2.new(36, 36)
+
+				UICornerToggleC102.CornerRadius = UDim.new(0, 4)
+				UICornerToggleC102.Parent = HelpToggleC10
+
+				IconToggleC10.Name = "Icon"
+				IconToggleC10.Parent = TemplateToggleC10
+				IconToggleC10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				IconToggleC10.BackgroundTransparency = 1.000
+				IconToggleC10.Position = UDim2.new(0.0270000007, 0, 0.246999994, 0)
+				IconToggleC10.Rotation = 270.000
+				IconToggleC10.Size = UDim2.new(0, 15, 0, 15)
+				IconToggleC10.Image = "rbxassetid://3926309567"
+				IconToggleC10.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				IconToggleC10.ImageRectOffset = Vector2.new(628, 420)
+				IconToggleC10.ImageRectSize = Vector2.new(48, 48)
+
+				ToggleC10Text.Name = "Text"
+				ToggleC10Text.Parent = TemplateToggleC10
+				ToggleC10Text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ToggleC10Text.BackgroundTransparency = 1.000
+				ToggleC10Text.Position = UDim2.new(0.125389844, 0, 0.25, 0)
+				ToggleC10Text.Size = UDim2.new(0, 223, 0, 14)
+				ToggleC10Text.Font = Enum.Font.Gotham
+				ToggleC10Text.Text = ""..ToggleC10Name
+				ToggleC10Text.TextColor3 = Color3.fromRGB(255, 255, 255)
+				ToggleC10Text.TextSize = 13.000
+				ToggleC10Text.TextXAlignment = Enum.TextXAlignment.Left
+
+				updateSectionFrame()
+				UpdateSize()
+
+				HelpToggleC10.MouseButton1Click:Connect(function()
+					BlurFrame.Visible = true
+					BlurLabel.Text = HelpToggleC10Text
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 0.5}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 0.4, 0)}, 0.2)
+					wait(1.5)
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 1}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 1, 0)}, 0.2)
+					wait(0.3)
+					BlurLabel.Text = ""
+					BlurFrame.Visible = false
+				end)
+
+				local ToggleC10 = false
+				local Toggledd = false
+				TemplateToggleC10.MouseButton1Click:Connect(function()
+					if not focusing then
+						if Toggledd == false then
+							if ToggleC10 == false then
+								IconToggleC10.ImageRectOffset = Vector2.new(784, 420)
+								_G.EnabledC10 = true
+							end
+						else
+							if ToggleC10 == false then
+								ToggleC10 = true
+								Toggledd = not Toggledd
+								pcall(callback, Toggledd)
+								_G.EnabledC10 = false
+								ToggleC10Text.TextColor3 = Color3.fromRGB(255, 0, 0)
+								ToggleC10Text.Text = "Kick prevent... Please wait 10 seconds"
+								wait(1)
+								ToggleC10Text.Text = "Kick prevent... Please wait 9 seconds"
+								wait(1)
+								ToggleC10Text.Text = "Kick prevent... Please wait 8 seconds"
+								wait(1)
+								ToggleC10Text.Text = "Kick prevent... Please wait 7 seconds"
+								wait(1)
+								ToggleC10Text.Text = "Kick prevent... Please wait 6 seconds"
+								wait(1)
+								ToggleC10Text.Text = "Kick prevent... Please wait 5 seconds"
+								wait(1)
+								ToggleC10Text.Text = "Kick prevent... Please wait 4 seconds"
+								wait(1)
+								ToggleC10Text.Text = "Kick prevent... Please wait 3 seconds"
+								wait(1)
+								ToggleC10Text.Text = "Kick prevent... Please wait 2 seconds"
+								wait(1)
+								ToggleC10Text.Text = "Kick prevent... Please wait 1 second"
+								wait(1)
+								ToggleC10Text.Text = ""..ToggleC10Name
+								IconToggleC10.ImageRectOffset = Vector2.new(628, 420)
+								ToggleC10Text.TextColor3 = Color3.fromRGB(255, 255, 255)
+								IconToggleC10.Active = true
+								ToggleC10 = false
+							end
+						end
+						if _G.EnabledC10 == true then
+							Toggledd = not Toggledd
+							pcall(callback, Toggledd)
+						end
+					end
+				end)
+			end
+
+			function Elements:NewLabel(LabelText)
+				local UpdateLabels = {}
+				-- TemplateLabel
+				local TemplateLabel = Instance.new("TextLabel")
+				local UICorner_10 = Instance.new("UICorner")
+
+				-- TemplateLabel
+				TemplateLabel.Name = "CustomLabel"
+				TemplateLabel.Parent = TemplatePage
+				TemplateLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateLabel.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateLabel.Size = UDim2.new(0, 295, 0, 30)
+				TemplateLabel.Font = Enum.Font.Gotham
+				TemplateLabel.Text = ""..LabelText
+				TemplateLabel.TextColor3 = Color3.fromRGB(0, 255, 255)
+				TemplateLabel.TextSize = 12.000
+
+				UICorner_10.CornerRadius = UDim.new(0, 4)
+				UICorner_10.Parent = TemplateLabel
+
+				updateSectionFrame()
+				UpdateSize()
+
+				function UpdateLabels:UpdateLabel(newText)
+					if TemplateLabel.Text ~= "  "..newText then
+						TemplateLabel.Text = "  "..newText
+					end
+				end	
+				return UpdateLabels
+			end
+
+			function Elements:NewTargetLabel(TargetLabelText)
+				local UpdateTargetLabels = {}
+				-- TemplateLabel
+				local TemplateTargetLabel = Instance.new("TextLabel")
+				local UICornerTarget = Instance.new("UICorner")
+
+				-- TemplateTargetLabel
+				TemplateTargetLabel.Name = "CustomLabel"
+				TemplateTargetLabel.Parent = TemplatePage
+				TemplateTargetLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateTargetLabel.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateTargetLabel.Size = UDim2.new(0, 295, 0, 30)
+				TemplateTargetLabel.Font = Enum.Font.Gotham
+				TemplateTargetLabel.Text = "Targeted : "..TargetLabelText
+				TemplateTargetLabel.TextColor3 = Color3.fromRGB(178, 178, 178)
+				TemplateTargetLabel.TextSize = 12.000
+
+				UICornerTarget.CornerRadius = UDim.new(0, 4)
+				UICornerTarget.Parent = TemplateTargetLabel
+
+				updateSectionFrame()
+				UpdateSize()
+
+				function UpdateTargetLabels:UpdateTargetLabel(newText)
+					if TemplateTargetLabel.Text ~= "  "..newText then
+						TemplateTargetLabel.Text = "  "..newText
+					end
+				end	
+				return UpdateTargetLabels
+			end
+
+			function Elements:NewTextBox(BoxText, PlaceholderText, TextBoxName, HelpBoxText, callback)
+				HelpBoxText = HelpBoxText or "This is a Textbox"
+				PlaceholderText = PlaceholderText or "Enter text here..."
+				callback = callback or function() end
+				-- TemplateBox
+				local TemplateTextBox = Instance.new("TextButton")
+				local UICornerTextBox = Instance.new("UICorner")
+				local HelpBox = Instance.new("ImageButton")
+				local UICornerTextBox2 = Instance.new("UICorner")
+				local IconBox = Instance.new("ImageLabel")
+				local Text = Instance.new("TextLabel")
+				local Box = Instance.new("TextBox")
+				local UICornerTextBox3 = Instance.new("UICorner")
+
+				-- TemplateBox
+				TemplateTextBox.Name = ""..TextBoxName
+				TemplateTextBox.Parent = TemplatePage
+				TemplateTextBox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateTextBox.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateTextBox.Position = UDim2.new(0.0656108633, 0, 0.143239439, 0)
+				TemplateTextBox.Size = UDim2.new(0, 295, 0, 30)
+				TemplateTextBox.AutoButtonColor = false
+				TemplateTextBox.Font = Enum.Font.Gotham
+				TemplateTextBox.Text = ""
+				TemplateTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TemplateTextBox.TextSize = 12.000
+				TemplateTextBox.TextXAlignment = Enum.TextXAlignment.Left
+
+				UICornerTextBox.CornerRadius = UDim.new(0, 4)
+				UICornerTextBox.Parent = TemplateTextBox
+
+				HelpBox.Name = "Help"
+				HelpBox.Parent = TemplateTextBox
+				HelpBox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				HelpBox.BackgroundTransparency = 1.000
+				HelpBox.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				HelpBox.Position = UDim2.new(0.901694894, 0, 0.13333334, 0)
+				HelpBox.Size = UDim2.new(0, 23, 0, 23)
+				HelpBox.AutoButtonColor = false
+				HelpBox.Image = "rbxassetid://3926305904"
+				HelpBox.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				HelpBox.ImageRectOffset = Vector2.new(764, 764)
+				HelpBox.ImageRectSize = Vector2.new(36, 36)
+
+				UICornerTextBox2.CornerRadius = UDim.new(0, 4)
+				UICornerTextBox2.Parent = HelpBox
+
+				IconBox.Name = "Icon"
+				IconBox.Parent = TemplateTextBox
+				IconBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				IconBox.BackgroundTransparency = 1.000
+				IconBox.Position = UDim2.new(0.026779661, 0, 0.24666667, 0)
+				IconBox.Rotation = 270.000
+				IconBox.Size = UDim2.new(0, 15, 0, 15)
+				IconBox.Image = "http://www.roblox.com/asset/?id=12596508432"
+				IconBox.ImageColor3 = Color3.fromRGB(65, 65, 65)
+
+				Text.Name = "Text"
+				Text.Parent = TemplateTextBox
+				Text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Text.BackgroundTransparency = 1.000
+				Text.Position = UDim2.new(0.125389844, 0, 0.25, 0)
+				Text.Size = UDim2.new(0, 102, 0, 14)
+				Text.Font = Enum.Font.Gotham
+				Text.Text = ""..BoxText
+				Text.TextColor3 = Color3.fromRGB(255, 255, 255)
+				Text.TextSize = 13.000
+				Text.TextXAlignment = Enum.TextXAlignment.Left
+
+				Box.Name = "Box"
+				Box.Parent = TemplateTextBox
+				Box.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				Box.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				Box.Position = UDim2.new(0.473479509, 0, 0.149442539, 0)
+				Box.Size = UDim2.new(0, 120, 0, 22)
+				Box.Font = Enum.Font.Gotham
+				Box.PlaceholderColor3 = Color3.fromRGB(178, 178, 178)
+				Box.PlaceholderText = ""..PlaceholderText
+				Box.Text = ""
+				Box.TextColor3 = Color3.fromRGB(255, 255, 255)
+				Box.TextSize = 11.000
+				Box.TextWrapped = true
+
+				UICornerTextBox3.CornerRadius = UDim.new(0, 4)
+				UICornerTextBox3.Parent = Box
+
+				updateSectionFrame()
+				UpdateSize()
+
+				HelpBox.MouseButton1Click:Connect(function()
+					BlurFrame.Visible = true
+					BlurLabel.Text = HelpBoxText
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 0.5}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 0.4, 0)}, 0.2)
+					wait(1.5)
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 1}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 1, 0)}, 0.2)
+					wait(0.3)
+					BlurLabel.Text = ""
+					BlurFrame.Visible = false
+				end)
+			end
+
+			function Elements:NewFocusTextBox(BoxText, PlaceholderText, FocusHelpBox, callback)
+				FocusHelpBox = FocusHelpBox or "This is a Textbox"
+				PlaceholderText = PlaceholderText or "Enter text here..."
+				callback = callback or function() end
+				-- TemplateFocusTextBox
+				local TemplateFocusTextBox = Instance.new("TextButton")
+				local UICornerFocusTextBox = Instance.new("UICorner")
+				local HelpFocusBox = Instance.new("ImageButton")
+				local UICornerFocusTextBox2 = Instance.new("UICorner")
+				local IconFocusBox = Instance.new("ImageLabel")
+				local TextFocus = Instance.new("TextLabel")
+				local FocusBox = Instance.new("TextBox")
+				local UICornerFocusTextBox3 = Instance.new("UICorner")
+
+				-- TemplateFocusTextBox
+				TemplateFocusTextBox.Name = "TemplateTextBox"
+				TemplateFocusTextBox.Parent = TemplatePage
+				TemplateFocusTextBox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateFocusTextBox.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateFocusTextBox.Position = UDim2.new(0.0656108633, 0, 0.143239439, 0)
+				TemplateFocusTextBox.Size = UDim2.new(0, 295, 0, 30)
+				TemplateFocusTextBox.AutoButtonColor = false
+				TemplateFocusTextBox.Font = Enum.Font.Gotham
+				TemplateFocusTextBox.Text = ""
+				TemplateFocusTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TemplateFocusTextBox.TextSize = 12.000
+				TemplateFocusTextBox.TextXAlignment = Enum.TextXAlignment.Left
+
+				UICornerFocusTextBox.CornerRadius = UDim.new(0, 4)
+				UICornerFocusTextBox.Parent = TemplateFocusTextBox
+
+				HelpFocusBox.Name = "Help"
+				HelpFocusBox.Parent = TemplateFocusTextBox
+				HelpFocusBox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				HelpFocusBox.BackgroundTransparency = 1.000
+				HelpFocusBox.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				HelpFocusBox.Position = UDim2.new(0.901694894, 0, 0.13333334, 0)
+				HelpFocusBox.Size = UDim2.new(0, 23, 0, 23)
+				HelpFocusBox.AutoButtonColor = false
+				HelpFocusBox.Image = "rbxassetid://3926305904"
+				HelpFocusBox.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				HelpFocusBox.ImageRectOffset = Vector2.new(764, 764)
+				HelpFocusBox.ImageRectSize = Vector2.new(36, 36)
+
+				UICornerFocusTextBox2.CornerRadius = UDim.new(0, 4)
+				UICornerFocusTextBox2.Parent = HelpFocusBox
+
+				IconFocusBox.Name = "Icon"
+				IconFocusBox.Parent = TemplateFocusTextBox
+				IconFocusBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				IconFocusBox.BackgroundTransparency = 1.000
+				IconFocusBox.Position = UDim2.new(0.026779661, 0, 0.24666667, 0)
+				IconFocusBox.Rotation = 270.000
+				IconFocusBox.Size = UDim2.new(0, 15, 0, 15)
+				IconFocusBox.Image = "http://www.roblox.com/asset/?id=12596508432"
+				IconFocusBox.ImageColor3 = Color3.fromRGB(65, 65, 65)
+
+				TextFocus.Name = "Text"
+				TextFocus.Parent = TemplateFocusTextBox
+				TextFocus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextFocus.BackgroundTransparency = 1.000
+				TextFocus.Position = UDim2.new(0.125389844, 0, 0.25, 0)
+				TextFocus.Size = UDim2.new(0, 102, 0, 14)
+				TextFocus.Font = Enum.Font.Gotham
+				TextFocus.Text = ""..BoxText
+				TextFocus.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TextFocus.TextSize = 13.000
+				TextFocus.TextXAlignment = Enum.TextXAlignment.Left
+
+				FocusBox.Name = "Box"
+				FocusBox.Parent = TemplateFocusTextBox
+				FocusBox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				FocusBox.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				FocusBox.Position = UDim2.new(0.473479509, 0, 0.149442539, 0)
+				FocusBox.Size = UDim2.new(0, 120, 0, 22)
+				FocusBox.Font = Enum.Font.Gotham
+				FocusBox.PlaceholderColor3 = Color3.fromRGB(178, 178, 178)
+				FocusBox.PlaceholderText = ""..PlaceholderText
+				FocusBox.Text = ""
+				FocusBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+				FocusBox.TextSize = 11.000
+				FocusBox.TextWrapped = true
+
+				UICornerFocusTextBox3.CornerRadius = UDim.new(0, 4)
+				UICornerFocusTextBox3.Parent = FocusBox
+
+				updateSectionFrame()
+				UpdateSize()
+
+				HelpFocusBox.MouseButton1Click:Connect(function()
+					BlurFrame.Visible = true
+					BlurLabel.Text = FocusHelpBox
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 0.5}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 0.4, 0)}, 0.2)
+					wait(1.5)
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 1}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 1, 0)}, 0.2)
+					wait(0.3)
+					BlurLabel.Text = ""
+					BlurFrame.Visible = false
+				end)
+
+				FocusBox.FocusLost:Connect(function()
+					callback(FocusBox.Text)
+					wait(0.1)
+					FocusBox.Text = ""
+				end)
+			end
+
+			function Elements:NewNotify(NotifyTexts)
+
+				for i,v in pairs(NotifyFolder:GetChildren()) do
+					if v:IsA("Frame") then
+						v:Destroy()
+					end
+				end
+
+				local Notify = Instance.new("Frame")
+				local UICornerNotify1 = Instance.new("UICorner")
+				local NotifyText = Instance.new("TextLabel")
+				local TimerBar = Instance.new("Frame")
+				local UICornerNotify2 = Instance.new("UICorner")
+
+				Notify.Name = "Notify"
+				Notify.Parent = NotifyFolder
+				Notify.AnchorPoint = Vector2.new(1, 1)
+				Notify.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+				Notify.BorderColor3 = Color3.fromRGB(30, 30, 30)
+				Notify.Position = UDim2.new(1.2, 0, 0.962383568, 0)
+				Notify.Size = UDim2.new(0, 225, 0, 75)
+				Notify.Visible = true
+
+				UICornerNotify1.CornerRadius = UDim.new(0, 4)
+				UICornerNotify1.Parent = Notify
+
+				NotifyText.Name = "NotifyText"
+				NotifyText.Parent = Notify
+				NotifyText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				NotifyText.BackgroundTransparency = 1.000
+				NotifyText.Size = UDim2.new(0, 225, 0, 75)
+				NotifyText.Font = Enum.Font.SourceSans
+				NotifyText.Text = ""..NotifyTexts
+				NotifyText.TextColor3 = Color3.fromRGB(255, 255, 255)
+				NotifyText.TextSize = 20.000
+				NotifyText.TextWrapped = true
+
+				TimerBar.Name = "TimerBar"
+				TimerBar.Parent = Notify
+				TimerBar.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+				TimerBar.BorderColor3 = Color3.fromRGB(0, 255, 255)
+				TimerBar.Position = UDim2.new(0, 0, 0.972999692, 0)
+				TimerBar.Size = UDim2.new(0, 225, 0, 2)
+
+				UICornerNotify2.Parent = TimerBar
+
+				Notify:TweenPosition(UDim2.new(0.977, 0, 0.962, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.5, true)
+				wait(0.5)
+
+				local Timings = 0
+				while wait() do
+					Timings = Timings + 0.5
+					TimerBar.Size = UDim2.new(1, Timings/-0.224, 0, 2)
+					if Timings == 50 then
+						wait(0.3)
+						Notify:TweenPosition(UDim2.new(1.2, 0, 0.962, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.5, true)
+						wait(0.5)
+						Notify:Destroy()
+					end
+				end
+			end
+
+			function Elements:NewImageNotify(NotifyTextss, Img)
+
+				for i,v in pairs(NotifyFolder:GetChildren()) do
+					if v:IsA("Frame") then
+						v:Destroy()
+					end
+				end
+
+				local ImageNotify = Instance.new("Frame")
+				local UICorner_23 = Instance.new("UICorner")
+				local ImageNotifyText = Instance.new("TextLabel")
+				local ImageTimerBar = Instance.new("Frame")
+				local UICorner_24 = Instance.new("UICorner")
+				local NotifyImage = Instance.new("ImageLabel")
+				local UICorner_25 = Instance.new("UICorner")
+
+				ImageNotify.Name = "ImageNotify"
+				ImageNotify.Parent = NotifyFolder
+				ImageNotify.AnchorPoint = Vector2.new(1, 1)
+				ImageNotify.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+				ImageNotify.BorderColor3 = Color3.fromRGB(30, 30, 30)
+				ImageNotify.Position = UDim2.new(1.2, 0, 0.962383568, 0)
+				ImageNotify.Size = UDim2.new(0, 225, 0, 75)
+				ImageNotify.Visible = true
+
+				UICorner_23.CornerRadius = UDim.new(0, 4)
+				UICorner_23.Parent = ImageNotify
+
+				ImageNotifyText.Name = "NotifyText"
+				ImageNotifyText.Parent = ImageNotify
+				ImageNotifyText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				ImageNotifyText.BackgroundTransparency = 1.000
+				ImageNotifyText.Position = UDim2.new(0.297777772, 0, 0, 0)
+				ImageNotifyText.Size = UDim2.new(0, 158, 0, 75)
+				ImageNotifyText.Font = Enum.Font.SourceSans
+				ImageNotifyText.Text = ""..NotifyTextss
+				ImageNotifyText.TextColor3 = Color3.fromRGB(255, 255, 255)
+				ImageNotifyText.TextSize = 18.000
+				ImageNotifyText.TextWrapped = true
+
+				ImageTimerBar.Name = "TimerBar"
+				ImageTimerBar.Parent = ImageNotify
+				ImageTimerBar.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+				ImageTimerBar.BorderColor3 = Color3.fromRGB(0, 255, 255)
+				ImageTimerBar.Position = UDim2.new(0, 0, 0.972999692, 0)
+				ImageTimerBar.Size = UDim2.new(0, 225, 0, 2)
+
+				UICorner_24.Parent = ImageTimerBar
+
+				NotifyImage.Name = "NotifyImage"
+				NotifyImage.Parent = ImageNotify
+				NotifyImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				NotifyImage.Position = UDim2.new(0.0311110616, 0, 0.0933332443, 0)
+				NotifyImage.Size = UDim2.new(0, 60, 0, 60)
+				NotifyImage.Image = ""..Img
+
+				UICorner_25.CornerRadius = UDim.new(0, 4)
+				UICorner_25.Parent = NotifyImage
+
+				ImageNotify:TweenPosition(UDim2.new(0.977, 0, 0.962, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.5, true)
+				wait(0.5)
+
+				local Timing = 0
+				while wait() do
+					Timing = Timing + 0.5
+					ImageTimerBar.Size = UDim2.new(1, Timing/-0.224, 0, 2)
+					if Timing == 50 then
+						wait(0.3)
+						ImageNotify:TweenPosition(UDim2.new(1.2, 0, 0.962, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 0.5, true)
+						wait(0.5)
+						ImageNotify:Destroy()
+					end
+				end
+			end
+
+			function Elements:NewSmall(SmallText, callback)
+				local UpdateSmalls = {}
+				callback = callback or function() end
+				-- TemplateSmall
+				local TemplateSmall = Instance.new("TextButton")
+				local UICornerSmall = Instance.new("UICorner")
+
+				-- TemplateSmall
+				TemplateSmall.Name = "TemplateSmall"
+				TemplateSmall.Parent = MenuPage
+				TemplateSmall.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateSmall.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateSmall.Position = UDim2.new(0.353135347, 0, 0.170588255, 0)
+				TemplateSmall.Size = UDim2.new(0, 185, 0, 27)
+				TemplateSmall.Font = Enum.Font.SourceSans
+				TemplateSmall.Text = ""..SmallText
+				TemplateSmall.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TemplateSmall.TextSize = 14.000
+
+				UICornerSmall.CornerRadius = UDim.new(0, 4)
+				UICornerSmall.Parent = TemplateSmall
+
+				TemplateSmall.MouseButton1Click:Connect(function()
+					callback()
+				end)
+
+				function UpdateSmalls:UpdateSmall(newText)
+					if TemplateSmall.Text ~= "  "..newText then
+						TemplateSmall.Text = "  "..newText
+					end
+				end	
+				return UpdateSmalls
+			end
+
+			function Elements:NewDropdown(dropname, Txttt, list, callback)
+				local DropFunction = {}
+				dropname = dropname or "Dropdown"
+				list = list or {}
+				callback = callback or function() end   
+
+				local opened = false
+
+				local dropFrame = Instance.new("Frame")
+				local dropOpen = Instance.new("TextButton")
+				local listImg = Instance.new("ImageLabel")
+				local itemTextbox = Instance.new("TextLabel")
+				local viewInfo = Instance.new("ImageButton")
+				local UICornerzzzz = Instance.new("UICorner")
+				local UIListLayoutz = Instance.new("UIListLayout")
+
+				dropFrame.Name = "dropFrame"
+				dropFrame.Parent = TemplatePage
+				dropFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				dropFrame.BackgroundTransparency = 1.000
+				dropFrame.BorderSizePixel = 0
+				dropFrame.Position = UDim2.new(0, 0, 1.23571432, 0)
+				dropFrame.Size = UDim2.new(0, 295, 0, 30)
+				dropFrame.ClipsDescendants = true
+				
+				dropOpen.Name = "dropOpen"
+				dropOpen.Parent = dropFrame
+				dropOpen.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				dropOpen.Size = UDim2.new(0, 295, 0, 30)
+				dropOpen.AutoButtonColor = false
+				dropOpen.Font = Enum.Font.SourceSans
+				dropOpen.Text = ""
+				dropOpen.TextColor3 = Color3.fromRGB(255, 255, 255)
+				dropOpen.TextSize = 14.000
+				dropOpen.ClipsDescendants = true
+				dropOpen.MouseButton1Click:Connect(function()
+					if not focusing then
+						if opened then
+							opened = false
+							dropFrame:TweenSize(UDim2.new(0, 295, 0, 30), "InOut", "Linear", 0.08)
+							wait(0.1)
+							updateSectionFrame()
+							UpdateSize()
+						else
+							opened = true
+							dropFrame:TweenSize(UDim2.new(0, 295, 0, UIListLayoutz.AbsoluteContentSize.Y), "InOut", "Linear", 0.08, true)
+							wait(0.1)
+							updateSectionFrame()
+							UpdateSize()
+						end
+					end
+				end)
+
+				listImg.Name = "listImg"
+				listImg.Parent = dropOpen
+				listImg.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				listImg.BackgroundTransparency = 1.000
+				listImg.BorderColor3 = Color3.fromRGB(27, 42, 53)
+				listImg.Position = UDim2.new(0.0199999996, 0, 0.12, 0)
+				listImg.Size = UDim2.new(0, 23, 0, 23)
+				listImg.Image = "rbxassetid://3926305904"
+				listImg.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				listImg.ImageRectOffset = Vector2.new(644, 364)
+				listImg.ImageRectSize = Vector2.new(36, 36)
+
+				itemTextbox.Name = "itemTextbox"
+				itemTextbox.Parent = dropOpen
+				itemTextbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				itemTextbox.BackgroundTransparency = 1.000
+				itemTextbox.Position = UDim2.new(0.125389844, 0, 0.25, 0)
+				itemTextbox.Size = UDim2.new(0, 223, 0, 14)
+				itemTextbox.Font = Enum.Font.Gotham
+				itemTextbox.Text = dropname
+				itemTextbox.TextColor3 = Color3.fromRGB(255, 255, 255)
+				itemTextbox.TextSize = 13.000
+				itemTextbox.TextXAlignment = Enum.TextXAlignment.Left
+
+				viewInfo.Name = "viewInfo"
+				viewInfo.Parent = dropOpen
+				viewInfo.BackgroundTransparency = 1.000
+				viewInfo.Position = UDim2.new(0.901694894, 0, 0.13333334, 0)
+				viewInfo.Size = UDim2.new(0, 23, 0, 23)
+				viewInfo.Image = "rbxassetid://3926305904"
+				viewInfo.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				viewInfo.ImageRectOffset = Vector2.new(764, 764)
+				viewInfo.ImageRectSize = Vector2.new(36, 36)
+				
+				viewInfo.MouseButton1Click:Connect(function()
+					BlurFrame.Visible = true
+					BlurLabel.Text = Txttt
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 0.5}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 0.4, 0)}, 0.2)
+					wait(1.5)
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 1}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 1, 0)}, 0.2)
+					wait(0.3)
+					BlurLabel.Text = ""
+					BlurFrame.Visible = false
+				end)
+
+				UICornerzzzz.CornerRadius = UDim.new(0, 4)
+				UICornerzzzz.Parent = dropOpen
+
+				UIListLayoutz.Parent = dropFrame
+				UIListLayoutz.SortOrder = Enum.SortOrder.LayoutOrder
+				UIListLayoutz.Padding = UDim.new(0, 3)
+
+				updateSectionFrame() 
+				UpdateSize()
+				
+				for i,v in next, list do
+					local optionSelect = Instance.new("TextButton")
+					local UICornerzzf = Instance.new("UICorner")
+					local Sample1 = Instance.new("ImageLabel")
+
+					local ms = game.Players.LocalPlayer:GetMouse()
+					Sample1.Name = "Sample1"
+					Sample1.Parent = optionSelect
+					Sample1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					Sample1.BackgroundTransparency = 1.000
+					Sample1.Image = "http://www.roblox.com/asset/?id=4560909609"
+					Sample1.ImageColor3 = Color3.fromRGB(20, 20, 20)
+					Sample1.ImageTransparency = 0.600
+
+					optionSelect.Name = "optionSelect"
+					optionSelect.Parent = dropFrame
+					optionSelect.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+					optionSelect.Position = UDim2.new(0, 0, 0.235294119, 0)
+					optionSelect.Size = UDim2.new(0, 295, 0, 30)
+					optionSelect.AutoButtonColor = false
+					optionSelect.Font = Enum.Font.GothamSemibold
+					optionSelect.Text = "  "..v
+					optionSelect.TextColor3 = Color3.fromRGB(255, 255, 255)
+					optionSelect.TextSize = 14.000
+					optionSelect.TextXAlignment = Enum.TextXAlignment.Left
+					optionSelect.ClipsDescendants = true
+					optionSelect.MouseButton1Click:Connect(function()
+						if not focusing then
+							opened = false
+							itemTextbox.Text = v
+							callback(v)
+							dropFrame:TweenSize(UDim2.new(0, 295, 0, 30), 'InOut', 'Linear', 0.08)
+							wait(0.1)
+							updateSectionFrame()
+							UpdateSize()
+			   			end
+					end)
+					
+					UICornerzzf.CornerRadius = UDim.new(0, 4)
+					UICornerzzf.Parent = optionSelect
+					
+					
+					function DropFunction:Refresh(newList)
+						newList = newList or {}
+						for i,v in next, dropFrame:GetChildren() do
+							if v.Name == "optionSelect" then
+								v:Destroy()
+							end
+						end
+						
+						for i,v in next, newList do
+						
+						local optionSelect = Instance.new("TextButton")
+						local UICornereee = Instance.new("UICorner")
+						optionSelect.Name = "optionSelect"
+						optionSelect.Parent = dropFrame
+						optionSelect.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+						optionSelect.Position = UDim2.new(0, 0, 0.235294119, 0)
+						optionSelect.Size = UDim2.new(0, 295, 0, 30)
+						optionSelect.AutoButtonColor = false
+						optionSelect.Font = Enum.Font.GothamSemibold
+						optionSelect.Text = "  "..v
+						optionSelect.TextColor3 = Color3.fromRGB(255, 255, 255)
+						optionSelect.TextSize = 14.000
+						optionSelect.TextXAlignment = Enum.TextXAlignment.Left
+						optionSelect.ClipsDescendants = true
+						UICornereee.CornerRadius = UDim.new(0, 4)
+						UICornereee.Parent = optionSelect
+						optionSelect.MouseButton1Click:Connect(function()
+							if not focusing then
+								opened = false
+								callback(v)
+								itemTextbox.Text = v
+								dropFrame:TweenSize(UDim2.new(0, 352, 0, 33), 'InOut', 'Linear', 0.08)
+								wait(0.1)
+								updateSectionFrame()
+								UpdateSize()     
+								end
+							end)
+							
+							updateSectionFrame()
+							UpdateSize()
+						end
+					end
+				end
+				return DropFunction
+			end
+
+			function Elements:NewTutorial(TutorialInfo, Image, TutorialText)
+				TutorialText = TutorialText or "Tutorial"
+				TutorialInfo = TutorialInfo or "This is a tutorial button"
+				-- TemplateTutorial
+				local TemplateTutorial = Instance.new("TextButton")
+				local UICornerTuto1 = Instance.new("UICorner")
+				local Help = Instance.new("ImageButton")
+				local UICornerTuto2 = Instance.new("UICorner")
+				local Icon = Instance.new("ImageLabel")
+				local Text = Instance.new("TextLabel")
+
+				-- TemplateTutorial
+				TemplateTutorial.Name = "TemplateTutorial"
+				TemplateTutorial.Parent = TemplatePage
+				TemplateTutorial.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateTutorial.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				TemplateTutorial.Position = UDim2.new(0.0656108633, 0, 0.244473994, 0)
+				TemplateTutorial.Size = UDim2.new(0, 295, 0, 30)
+				TemplateTutorial.AutoButtonColor = false
+				TemplateTutorial.Font = Enum.Font.Gotham
+				TemplateTutorial.Text = ""
+				TemplateTutorial.TextColor3 = Color3.fromRGB(255, 255, 255)
+				TemplateTutorial.TextSize = 12.000
+				TemplateTutorial.TextXAlignment = Enum.TextXAlignment.Left
+
+				UICornerTuto1.CornerRadius = UDim.new(0, 4)
+				UICornerTuto1.Parent = TemplateTutorial
+
+				Help.Name = "Help"
+				Help.Parent = TemplateTutorial
+				Help.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				Help.BackgroundTransparency = 1.000
+				Help.BorderColor3 = Color3.fromRGB(20, 20, 20)
+				Help.Position = UDim2.new(0.901694894, 0, 0.13333334, 0)
+				Help.Size = UDim2.new(0, 23, 0, 23)
+				Help.AutoButtonColor = false
+				Help.Image = "rbxassetid://3926305904"
+				Help.ImageColor3 = Color3.fromRGB(65, 65, 65)
+				Help.ImageRectOffset = Vector2.new(764, 764)
+				Help.ImageRectSize = Vector2.new(36, 36)
+
+				UICornerTuto2.CornerRadius = UDim.new(0, 4)
+				UICornerTuto2.Parent = Help
+
+				Icon.Name = "Icon"
+				Icon.Parent = TemplateTutorial
+				Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Icon.BackgroundTransparency = 1.000
+				Icon.Position = UDim2.new(0.0270000007, 0, 0.246999994, 0)
+				Icon.Rotation = 270.000
+				Icon.Size = UDim2.new(0, 15, 0, 15)
+				Icon.Image = "http://www.roblox.com/asset/?id=12596469486"
+				Icon.ImageColor3 = Color3.fromRGB(65, 65, 65)
+
+				Text.Name = "Text"
+				Text.Parent = TemplateTutorial
+				Text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Text.BackgroundTransparency = 1.000
+				Text.Position = UDim2.new(0.125389844, 0, 0.25, 0)
+				Text.Size = UDim2.new(0, 223, 0, 14)
+				Text.Font = Enum.Font.Gotham
+				Text.Text = ""..TutorialText
+				Text.TextColor3 = Color3.fromRGB(255, 255, 255)
+				Text.TextSize = 13.000
+				Text.TextXAlignment = Enum.TextXAlignment.Left
+
+				updateSectionFrame()
+				UpdateSize()
+
+				Help.MouseButton1Click:Connect(function()
+					BlurFrame.Visible = true
+					BlurLabel.Text = TutorialInfo
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 0.5}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 0.4, 0)}, 0.2)
+					wait(1.5)
+					Utility:TweenObject(BlurFrame, {BackgroundTransparency = 1}, 0.2)
+					Utility:TweenObject(BlurLabel, {Position = UDim2.new(0, 0, 1, 0)}, 0.2)
+					wait(0.3)
+					BlurLabel.Text = ""
+					BlurFrame.Visible = false
+				end)
+
+				_G.TutorialTweening = false
+				TemplateTutorial.MouseButton1Click:Connect(function()
+					local TutorialFrame = Instance.new("Frame")
+					local UICornerTTF1 = Instance.new("UICorner")
+					local Understand = Instance.new("TextButton")
+					local UICornerTTF2 = Instance.new("UICorner")
+					local TutorialImage = Instance.new("ImageLabel")
+					local UICornerTTF3 = Instance.new("UICorner")
+					local TutorialPage = Instance.new("ScrollingFrame")
+					local ClickBlock = Instance.new("TextButton")
+
+					TutorialPage.Name = "TutorialPage"
+					TutorialPage.Parent = FrameContainer
+					TutorialPage.Active = true
+					TutorialPage.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+					TutorialPage.BackgroundTransparency = 1.000
+					TutorialPage.BorderColor3 = Color3.fromRGB(30, 30, 30)
+					TutorialPage.Position = UDim2.new(0, 0, 0.136466324, 0)
+					TutorialPage.Size = UDim2.new(0, 425, 0, 181)
+					TutorialPage.Visible = false
+					TutorialPage.ScrollBarThickness = 1
+					TutorialPage.BottomImage = ""
+					TutorialPage.MidImage = ""
+					TutorialPage.TopImage = ""
+
+					ClickBlock.Name = "ClickBlock"
+					ClickBlock.Parent = TutorialPage
+					ClickBlock.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					ClickBlock.BackgroundTransparency = 1.000
+					ClickBlock.Size = UDim2.new(0, 425, 0, 181)
+					ClickBlock.Visible = false
+					ClickBlock.AutoButtonColor = false
+					ClickBlock.Font = Enum.Font.SourceSans
+					ClickBlock.Text = ""
+					ClickBlock.TextColor3 = Color3.fromRGB(0, 0, 0)
+					ClickBlock.TextSize = 14.000
+
+					TutorialFrame.Name = "TutorialFrame"
+					TutorialFrame.Parent = TutorialPage
+					TutorialFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+					TutorialFrame.BorderColor3 = Color3.fromRGB(30, 30, 30)
+					TutorialFrame.Position = UDim2.new(0, 0, -0.5, 0)
+					TutorialFrame.Size = UDim2.new(0, 425, 0, 181)
+
+					UICornerTTF1.CornerRadius = UDim.new(0, 4)
+					UICornerTTF1.Parent = TutorialFrame
+
+					Understand.Name = "Understand"
+					Understand.Parent = TutorialFrame
+					Understand.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+					Understand.BorderColor3 = Color3.fromRGB(20, 20, 20)
+					Understand.Position = UDim2.new(0.0199999996, 0, 0.828000009, 0)
+					Understand.Size = UDim2.new(0, 410, 0, 25)
+					Understand.AutoButtonColor = false
+					Understand.Font = Enum.Font.SourceSans
+					Understand.Text = "Okay, I understand."
+					Understand.TextColor3 = Color3.fromRGB(255, 255, 255)
+					Understand.TextSize = 15.000
+					Understand.MouseButton1Click:Connect(function()
+						if _G.TutorialTweening == false then
+							_G.TutorialTweening = true
+							TabContainer.Visible = true
+							TutorialFrame:TweenPosition(UDim2.new(0, 0, -0.5, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Quad, 1, true)
+							wait(1)
+							ClickBlock.Visible = false
+							_G.TutorialTweening = false
+							TutorialPage:Destroy()
+						end
+					end)
+
+					UICornerTTF2.CornerRadius = UDim.new(0, 4)
+					UICornerTTF2.Parent = Understand
+
+					TutorialImage.Name = "TutorialImage"
+					TutorialImage.Parent = TutorialFrame
+					TutorialImage.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+					TutorialImage.BorderColor3 = Color3.fromRGB(30, 30, 30)
+					TutorialImage.Position = UDim2.new(0.0178458244, 0, 0.0309286155, 0)
+					TutorialImage.Size = UDim2.new(0, 410, 0, 140)
+					TutorialImage.Image = "http://www.roblox.com/asset/?id="..Image
+
+					UICornerTTF3.CornerRadius = UDim.new(0, 4)
+					UICornerTTF3.Parent = TutorialImage
+
+					if _G.TutorialTweening == false then
+						_G.TutorialTweening = true
+						TutorialPage.Visible = true
+						ClickBlock.Visible = true
+						TutorialFrame:TweenPosition(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Quad, 1, true)
+						wait(1)
+						TabContainer.Visible = false
+						_G.TutorialTweening = false
+					end
+				end)
+			end
+			return Elements
+		end
+		return Sections
+	end
+	return Tabs
+end

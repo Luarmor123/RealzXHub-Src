@@ -2585,23 +2585,23 @@ function redzlib:MakeWindow(Configs)
         end
     end
 
-    -- تغيير اللون أثناء الكتابة
+    -- تغيير اللون أثناء الكتابة بدون Tween
     TextBoxInput:GetPropertyChangedSignal("Text"):Connect(function()
         if TextBoxInput.Text:gsub(" ", ""):len() > 0 then
-            CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(0, 255, 255), 0.2}) -- عند الكتابة يصبح اللون سماوي
+            TextBoxInput.TextColor3 = Color3.fromRGB(0, 255, 255) -- عند الكتابة يصبح اللون سماوي
         else
-            CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(255, 255, 255), 0.2}) -- يعود إلى الأبيض إذا كان فارغًا
+            TextBoxInput.TextColor3 = Color3.fromRGB(255, 255, 255) -- يعود إلى الأبيض إذا كان فارغًا
         end
     end)
 
-    -- تغيير اللون عند فقدان التركيز
+    -- تغيير اللون عند فقدان التركيز باستخدام Tween
     TextBoxInput.FocusLost:Connect(function()
         CreateTween({Pencil, "ImageColor3", Color3.fromRGB(255, 255, 255), 0.2})
         CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(255, 255, 255), 0.2}) -- عند فقدان التركيز يعود اللون للأبيض
         Input()
     end)
 
-    -- تغيير اللون عند التركيز
+    -- تغيير اللون عند التركيز باستخدام Tween
     TextBoxInput.Focused:Connect(function()
         CreateTween({Pencil, "ImageColor3", Theme["Color Theme"], 0.2})
         CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(0, 255, 255), 0.2}) -- عند التركيز يصبح اللون سماوي

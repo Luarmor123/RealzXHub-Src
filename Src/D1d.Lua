@@ -1458,7 +1458,7 @@ function redzlib:MakeWindow(Configs)
 		TextSize = 12,
 		TextColor3 = Theme["Color Text"],
 		BackgroundTransparency = 1,
-		Font = Enum.Font.GothamMedium,
+		Font = Enum.Font.FredokaOne,
 		Name = "Title"
 	}, {
 		InsertTheme(Create("TextLabel", {
@@ -1581,7 +1581,7 @@ function redzlib:MakeWindow(Configs)
 	function Window:CloseBtn()
 		local Dialog = Window:Dialog({
 			Title = "Close",
-			Text = "You Want Close Ui?",
+			Text = "You want to close ui ?",
 			Options = {
 				{"Confirm", function()
 					ScreenGui:Destroy()
@@ -1956,7 +1956,7 @@ function redzlib:MakeWindow(Configs)
 				Position = UDim2.new(1, -10, 0.5),
 				AnchorPoint = Vector2.new(1, 0.5),
 				BackgroundTransparency = 1,
-				Image = "rbxassetid://10709791437"
+				Image = "rbxassetid://10723375250"
 			})
 			
 			FButton.Activated:Connect(function()
@@ -2222,26 +2222,26 @@ function redzlib:MakeWindow(Configs)
 						ActiveLabel.Text = tostring(Selected or "...")
 					end
 				end
-				
-				local function UpdateSelected()
-					if MultiSelect then
-						for _,v in pairs(Options) do
-							local nodes, Stats = v.nodes, v.Stats
-							CreateTween({nodes[2], "BackgroundTransparency", Stats and 0 or 0.8, 0.35})
-							CreateTween({nodes[2], "Size", Stats and UDim2.fromOffset(4, 12) or UDim2.fromOffset(4, 4), 0.35})
-							CreateTween({nodes[3], "TextTransparency", Stats and 0 or 0.4, 0.35})
-						end
-					else
-						for _,v in pairs(Options) do
-							local Slt = v.Value == Selected
-							local nodes = v.nodes
-							CreateTween({nodes[2], "BackgroundTransparency", Slt and 0 or 1, 0.35})
-							CreateTween({nodes[2], "Size", Slt and UDim2.fromOffset(4, 14) or UDim2.fromOffset(4, 4), 0.35})
-							CreateTween({nodes[3], "TextTransparency", Slt and 0 or 0.4, 0.35})
-						end
-					end
-					UpdateLabel()
-				end
+			local function UpdateSelected()
+	if MultiSelect then
+		for _,v in pairs(Options) do
+			local nodes, Stats = v.nodes, v.Stats
+			CreateTween({nodes[2], "BackgroundTransparency", Stats and 0 or 0.8, 0.35})
+			CreateTween({nodes[2], "Size", Stats and UDim2.fromOffset(4, 12) or UDim2.fromOffset(4, 4), 0.35})
+			CreateTween({nodes[3], "TextTransparency", Stats and 0 or 0.4, 0.35})
+		end
+	else
+		for _,v in pairs(Options) do
+			local Slt = v.Value == Selected
+			local nodes = v.nodes
+			CreateTween({nodes[2], "BackgroundTransparency", Slt and 0 or 1, 0.35})
+			CreateTween({nodes[2], "Size", Slt and UDim2.fromOffset(4, 14) or UDim2.fromOffset(4, 4), 0.35})
+			CreateTween({nodes[3], "TextTransparency", Slt and 0 or 0.4, 0.35})
+			CreateTween({nodes[3], "TextColor3", Slt and Color3.fromRGB(0, 255, 255) or Theme["Color Text"], 0.35}) -- تغيير اللون عند التحديد
+		end
+	end
+	UpdateLabel()
+end
 				
 				local function Select(Option)
 					if MultiSelect then
@@ -2433,14 +2433,18 @@ function redzlib:MakeWindow(Configs)
 				Size = UDim2.fromScale(0.3, 1),
 				BorderSizePixel = 0
 			}), "Theme")Make("Corner", Indicator)
-			
-			local SliderIcon = Create("Frame", SliderBar, {
-				Size = UDim2.new(0, 6, 0, 12),
-				BackgroundColor3 = Color3.fromRGB(220, 220, 220),
-				Position = UDim2.fromScale(0.3, 0.5),
-				AnchorPoint = Vector2.new(0.5, 0.5),
-				BackgroundTransparency = 0.2
-			})Make("Corner", SliderIcon)
+
+local SliderIcon = Create("Frame", SliderBar, {
+    Size = UDim2.new(0, 12, 0, 12),
+    BackgroundColor3 = Color3.fromRGB(220, 220, 220),
+    Position = UDim2.fromScale(0.3, 0.5),
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    BackgroundTransparency = 0.2
+})
+
+local SliderIconCorner = Create("UICorner", SliderIcon, {
+    CornerRadius = UDim.new(1, 0) -- جعل الزوايا دائرية بالكامل
+})
 			
 			local LabelVal = InsertTheme(Create("TextLabel", SliderHolder, {
 				Size = UDim2.new(0, 14, 0, 14),
@@ -2533,85 +2537,72 @@ function redzlib:MakeWindow(Configs)
 			return Slider
 		end
 		function Tab:AddTextBox(Configs)
-    local TName = Configs[1] or Configs.Name or Configs.Title or "Text Box"
-    local TDesc = Configs.Desc or Configs.Description or ""
-    local TDefault = Configs[2] or Configs.Default or ""
-    local TPlaceholderText = Configs[5] or Configs.PlaceholderText or "Input"
-    local TClearText = Configs[3] or Configs.ClearText or false
-    local Callback = Funcs:GetCallback(Configs, 4)
-
-    if type(TDefault) ~= "string" or TDefault:gsub(" ", ""):len() < 1 then
-        TDefault = false
-    end
-
-    local Button, LabelFunc = ButtonFrame(Container, TName, TDesc, UDim2.new(1, -38))
-
-    local SelectedFrame = InsertTheme(Create("Frame", Button, {
-        Size = UDim2.new(0, 150, 0, 18),
-        Position = UDim2.new(1, -10, 0.5),
-        AnchorPoint = Vector2.new(1, 0.5),
-        BackgroundColor3 = Theme["Color Stroke"]
-    }), "Stroke") 
-    Make("Corner", SelectedFrame, UDim.new(0, 4))
-
-    local TextBoxInput = InsertTheme(Create("TextBox", SelectedFrame, {
-        Size = UDim2.new(0.85, 0, 0.85, 0),
-        AnchorPoint = Vector2.new(0.5, 0.5),
-        Position = UDim2.new(0.5, 0, 0.5, 0),
-        BackgroundTransparency = 1,
-        Font = Enum.Font.GothamBold,
-        TextScaled = true,
-        TextColor3 = Color3.fromRGB(255, 255, 255), -- النص يبدأ باللون الأبيض
-        ClearTextOnFocus = TClearText,
-        PlaceholderText = TPlaceholderText,
-        Text = ""
-    }), "Text")
-
-    local Pencil = Create("ImageLabel", SelectedFrame, {
-        Size = UDim2.new(0, 12, 0, 12),
-        Position = UDim2.new(0, -5, 0.5),
-        AnchorPoint = Vector2.new(1, 0.5),
-        Image = "rbxassetid://15637081879",
-        BackgroundTransparency = 1
-    })
-
-    local TextBox = {}
-    local function Input()
-        local Text = TextBoxInput.Text
-        if Text:gsub(" ", ""):len() > 0 then
-            if TextBox.OnChanging then Text = TextBox.OnChanging(Text) or Text end
-            Funcs:FireCallback(Callback, Text)
-            TextBoxInput.Text = Text
-        end
-    end
-
-    -- تغيير اللون أثناء الكتابة بدون Tween
-    TextBoxInput:GetPropertyChangedSignal("Text"):Connect(function()
-        if TextBoxInput.Text:gsub(" ", ""):len() > 0 then
-            TextBoxInput.TextColor3 = Color3.fromRGB(0, 255, 255) -- عند الكتابة يصبح اللون سماوي
-        else
-            TextBoxInput.TextColor3 = Color3.fromRGB(255, 255, 255) -- يعود إلى الأبيض إذا كان فارغًا
-        end
-    end)
-
-    -- تغيير اللون عند فقدان التركيز باستخدام Tween
-    TextBoxInput.FocusLost:Connect(function()
-        CreateTween({Pencil, "ImageColor3", Color3.fromRGB(255, 255, 255), 0.2})
-        CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(255, 255, 255), 0.2}) -- عند فقدان التركيز يعود اللون للأبيض
-        Input()
-    end)
-
-    -- تغيير اللون عند التركيز باستخدام Tween
-    TextBoxInput.Focused:Connect(function()
-        CreateTween({Pencil, "ImageColor3", Theme["Color Theme"], 0.2})
-        CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(0, 255, 255), 0.2}) -- عند التركيز يصبح اللون سماوي
-    end)
-
-    TextBox.OnChanging = false
-    function TextBox:Visible(...) Funcs:ToggleVisible(Button, ...) end
-    function TextBox:Destroy() Button:Destroy() end
-    return TextBox
-end
+			local TName = Configs[1] or Configs.Name or Configs.Title or "Text Box"
+			local TDesc = Configs.Desc or Configs.Description or ""
+			local TDefault = Configs[2] or Configs.Default or ""
+			local TPlaceholderText = Configs[5] or Configs.PlaceholderText or "Input"
+			local TClearText = Configs[3] or Configs.ClearText or false
+			local Callback = Funcs:GetCallback(Configs, 4)
+			
+			if type(TDefault) ~= "string" or TDefault:gsub(" ", ""):len() < 1 then
+				TDefault = false
+			end
+			
+			local Button, LabelFunc = ButtonFrame(Container, TName, TDesc, UDim2.new(1, -38))
+			
+			local SelectedFrame = InsertTheme(Create("Frame", Button, {
+				Size = UDim2.new(0, 150, 0, 18),
+				Position = UDim2.new(1, -10, 0.5),
+				AnchorPoint = Vector2.new(1, 0.5),
+				BackgroundColor3 = Theme["Color Stroke"]
+			}), "Stroke")Make("Corner", SelectedFrame, UDim.new(0, 4))
+			
+			local TextBoxInput = InsertTheme(Create("TextBox", SelectedFrame, {
+				Size = UDim2.new(0.85, 0, 0.85, 0),
+				AnchorPoint = Vector2.new(0.5, 0.5),
+				Position = UDim2.new(0.5, 0, 0.5, 0),
+				BackgroundTransparency = 1,
+				Font = Enum.Font.GothamBold,
+				TextScaled = true,
+				ClearTextOnFocus = TClearText,
+				PlaceholderText = TPlaceholderText,
+				Text = ""
+			}), "Text")
+			
+			local Pencil = Create("ImageLabel", SelectedFrame, {
+				Size = UDim2.new(0, 12, 0, 12),
+				Position = UDim2.new(0, -5, 0.5),
+				AnchorPoint = Vector2.new(1, 0.5),
+				Image = "rbxassetid://15637081879",
+				BackgroundTransparency = 1
+			})
+			
+			local TextBox = {}
+			local function Input()
+				local Text = TextBoxInput.Text
+				if Text:gsub(" ", ""):len() > 0 then
+					if TextBox.OnChanging then Text = TextBox.OnChanging(Text) or Text end
+					Funcs:FireCallback(Callback, Text)
+					TextBoxInput.Text = Text
+				end
+			end
+			
+			TextBoxInput.FocusLost:Connect(Input)Input()
+			
+			TextBoxInput.FocusLost:Connect(function()
+				CreateTween({Pencil, "ImageColor3", Color3.fromRGB(255, 255, 255), 0.2})
+				CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(255, 255, 255), 0.2})
+			end)
+			TextBoxInput.Focused:Connect(function()
+				CreateTween({Pencil, "ImageColor3", Theme["Color Theme"], 0.2})
+				CreateTween({TextBoxInput, "TextColor3", Theme["Color Theme"], 0.2})
+			end)
+			
+			TextBox.OnChanging = false
+			function TextBox:Visible(...) Funcs:ToggleVisible(Button, ...) end
+			function TextBox:Destroy() Button:Destroy() end
+			return TextBox
+		end
 		function Tab:AddDiscordInvite(Configs)
 			local Title = Configs[1] or Configs.Name or Configs.Title or "Discord"
 			local Desc = Configs.Desc or Configs.Description or ""
@@ -2716,3 +2707,4 @@ end
 end
 
 return redzlib
+

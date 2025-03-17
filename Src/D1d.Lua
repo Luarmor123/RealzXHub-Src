@@ -2551,7 +2551,8 @@ function redzlib:MakeWindow(Configs)
         Position = UDim2.new(1, -10, 0.5),
         AnchorPoint = Vector2.new(1, 0.5),
         BackgroundColor3 = Theme["Color Stroke"]
-    }), "Stroke") Make("Corner", SelectedFrame, UDim.new(0, 4))
+    }), "Stroke") 
+    Make("Corner", SelectedFrame, UDim.new(0, 4))
 
     local TextBoxInput = InsertTheme(Create("TextBox", SelectedFrame, {
         Size = UDim2.new(0.85, 0, 0.85, 0),
@@ -2584,16 +2585,26 @@ function redzlib:MakeWindow(Configs)
         end
     end
 
-    TextBoxInput.FocusLost:Connect(Input) Input()
+    -- تغيير اللون أثناء الكتابة
+    TextBoxInput:GetPropertyChangedSignal("Text"):Connect(function()
+        if TextBoxInput.Text:gsub(" ", ""):len() > 0 then
+            CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(0, 255, 255), 0.2}) -- عند الكتابة يصبح اللون سماوي
+        else
+            CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(255, 255, 255), 0.2}) -- يعود إلى الأبيض إذا كان فارغًا
+        end
+    end)
 
+    -- تغيير اللون عند فقدان التركيز
     TextBoxInput.FocusLost:Connect(function()
         CreateTween({Pencil, "ImageColor3", Color3.fromRGB(255, 255, 255), 0.2})
         CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(255, 255, 255), 0.2}) -- عند فقدان التركيز يعود اللون للأبيض
+        Input()
     end)
 
+    -- تغيير اللون عند التركيز
     TextBoxInput.Focused:Connect(function()
         CreateTween({Pencil, "ImageColor3", Theme["Color Theme"], 0.2})
-        CreateTween({TextBoxInput, "TextColor3", Theme["Color Theme"], 0.2}) -- عند التركيز يصبح اللون سماوي
+        CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(0, 255, 255), 0.2}) -- عند التركيز يصبح اللون سماوي
     end)
 
     TextBox.OnChanging = false

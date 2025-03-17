@@ -2588,9 +2588,11 @@ function redzlib:MakeWindow(Configs)
 			
 			TextBoxInput.FocusLost:Connect(function()
 				CreateTween({Pencil, "ImageColor3", Color3.fromRGB(255, 255, 255), 0.2})
+				TextBoxInput.TextColor3 = Color3.fromRGB(255, 255, 255)
 			end)
 			TextBoxInput.Focused:Connect(function()
 				CreateTween({Pencil, "ImageColor3", Theme["Color Theme"], 0.2})
+				TextBoxInput.TextColor3 = Color3.fromRGB(0, 255, 255)
 			end)
 			
 			TextBox.OnChanging = false

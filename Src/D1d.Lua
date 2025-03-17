@@ -2591,11 +2591,11 @@ local SliderIconCorner = Create("UICorner", SliderIcon, {
 			
 			TextBoxInput.FocusLost:Connect(function()
 				CreateTween({Pencil, "ImageColor3", Color3.fromRGB(255, 255, 255), 0.2})
-				CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(255, 0, 0), 0.2})
+				TextBoxInput.TextColor3 = Color3.fromRGB(255, 255, 255)
 			end)
 			TextBoxInput.Focused:Connect(function()
 				CreateTween({Pencil, "ImageColor3", Theme["Color Theme"], 0.2})
-				CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(255, 255, 255), 0.2})
+				TextBoxInput.TextColor3 = Color3.fromRGB(0, 255, 255)
 			end)
 			
 			TextBox.OnChanging = false
@@ -2672,7 +2672,7 @@ local SliderIconCorner = Create("UICorner", SliderIcon, {
 				Font = Enum.Font.GothamBold,
 				TextSize = 12,
 				TextColor3 = Color3.fromRGB(220, 220, 220),
-				BackgroundColor3 = Color3.fromRGB(50, 150, 50)
+				BackgroundColor3 = Color3.fromRGB(0, 0, 255)
 			})Make("Corner", JoinButton, UDim.new(0, 5))
 			
 			local ClickDelay

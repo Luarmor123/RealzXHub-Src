@@ -2591,7 +2591,7 @@ local SliderIconCorner = Create("UICorner", SliderIcon, {
 			
 			TextBoxInput.FocusLost:Connect(function()
 				CreateTween({Pencil, "ImageColor3", Color3.fromRGB(255, 255, 255), 0.2})
-				CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(255, 255, 255), 0.2})
+				CreateTween({TextBoxInput, "TextColor3", Color3.fromRGB(255, 0, 0), 0.2})
 			end)
 			TextBoxInput.Focused:Connect(function()
 				CreateTween({Pencil, "ImageColor3", Theme["Color Theme"], 0.2})

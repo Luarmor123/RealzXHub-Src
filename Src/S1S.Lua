@@ -51,7 +51,7 @@ local redzlib = {
 		Version = "1.1.0"
 	},
 	Save = {
-		UISize = {488, 302},
+		UISize = {550, 380},
 		TabSize = 160,
 		Theme = "Darker"
 	},
@@ -1902,7 +1902,6 @@ function redzlib:MakeWindow(Configs)
 				BackgroundTransparency = 1,
 				TextTruncate = "AtEnd",
 				TextSize = 14,
-				RichText = true
 				TextXAlignment = "Left"
 			}), "Text")
 			
@@ -2652,7 +2651,6 @@ TextBoxInput.FocusLost:Connect(function()
 				TextXAlignment = "Left",
 				BackgroundTransparency = 1,
 				TextSize = 10,
-				RichText = true
 				Text = Title
 			}), "Text")
 			
@@ -2666,7 +2664,6 @@ TextBoxInput.FocusLost:Connect(function()
 				TextXAlignment = "Left",
 				BackgroundTransparency = 1,
 				TextSize = 8,
-				RichText = true
 				Text = Desc
 			}), "DarkText")
 			

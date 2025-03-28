@@ -1902,6 +1902,7 @@ function redzlib:MakeWindow(Configs)
 				BackgroundTransparency = 1,
 				TextTruncate = "AtEnd",
 				TextSize = 14,
+                                RichText = true,
 				TextXAlignment = "Left"
 			}), "Text")
 			

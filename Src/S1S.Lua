@@ -1961,7 +1961,7 @@ function redzlib:MakeWindow(Configs)
         Position = UDim2.new(1, -10, 0.5),
         AnchorPoint = Vector2.new(1, 0.5),
         BackgroundTransparency = 1,
-        Image = IconID -- الأيقونة الأصلية
+        Image = IconID
     })
 
     -- إضافة وظيفة عند الضغط على الزر
@@ -1996,8 +1996,6 @@ function redzlib:MakeWindow(Configs)
             ButtonIcon.Visible = true
         end)
     end)
-
-end
 
     -- تعريف كائن الزر وإضافة وظائف تحكم
     local Button = {}

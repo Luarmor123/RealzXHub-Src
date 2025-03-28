@@ -1459,7 +1459,6 @@ function redzlib:MakeWindow(Configs)
 		TextColor3 = Theme["Color Text"],
 		BackgroundTransparency = 1,
 		Font = Enum.Font.FredokaOne,
-		RichText = true,
 		Name = "Title"
 	}, {
 		InsertTheme(Create("TextLabel", {
@@ -1474,7 +1473,6 @@ function redzlib:MakeWindow(Configs)
 			TextYAlignment = "Bottom",
 			TextSize = 8,
 			Font = Enum.Font.Gotham,
-			RichText = true,
 			Name = "SubTitle"
 		}), "DarkText")
 	}), "Text")
@@ -1947,40 +1945,80 @@ function redzlib:MakeWindow(Configs)
 			return Paragraph
 		end
 		function Tab:AddButton(Configs)
-			local BName = Configs[1] or Configs.Name or Configs.Title or "Button!"
-			local BDescription = Configs.Desc or Configs.Description or ""
-			local Callback = Funcs:GetCallback(Configs, 2)
-			
-			local FButton, LabelFunc = ButtonFrame(Container, BName, BDescription, UDim2.new(1, -20))
-			
-			local ButtonIcon = Create("ImageLabel", FButton, {
-				Size = UDim2.new(0, 14, 0, 14),
-				Position = UDim2.new(1, -10, 0.5),
-				AnchorPoint = Vector2.new(1, 0.5),
-				BackgroundTransparency = 1,
-				Image = "rbxassetid://10723375250"
-			})
-			
-			FButton.Activated:Connect(function()
-				Funcs:FireCallback(Callback)
-			end)
-			
-			local Button = {}
-			function Button:Visible(...) Funcs:ToggleVisible(FButton, ...) end
-			function Button:Destroy() FButton:Destroy() end
-			function Button:Callback(...) Funcs:InsertCallback(Callback, ...) end
-			function Button:Set(Val1, Val2)
-				if type(Val1) == "string" and type(Val2) == "string" then
-					LabelFunc:SetTitle(Val1)
-					LabelFunc:SetDesc(Val2)
-				elseif type(Val1) == "string" then
-					LabelFunc:SetTitle(Val1)
-				elseif type(Val1) == "function" then
-					Callback = Val1
-				end
-			end
-			return Button
-		end
+    local BName = Configs.Name or Configs.Title or Configs[1] or "Button!"
+    local BDescription = Configs.Desc or Configs.Description or ""
+    local Callback = Funcs:GetCallback(Configs, 2)
+    local IconID = Configs.Icon or "rbxassetid://10723375250"
+    local CooldownTime = Configs.Cooldown or 5 -- مدة التبريد الافتراضية (5 ثوانٍ)
+    local IsOnCooldown = false -- متغير يمنع الضغط أثناء التبريد
+
+    -- إنشاء الزر وإطاره
+    local FButton, LabelFunc = ButtonFrame(Container, BName, BDescription, UDim2.new(1, -20))
+
+    -- إنشاء أيقونة الزر
+    local ButtonIcon = Create("ImageLabel", FButton, {
+        Size = UDim2.new(0, 14, 0, 14),
+        Position = UDim2.new(1, -10, 0.5),
+        AnchorPoint = Vector2.new(1, 0.5),
+        BackgroundTransparency = 1,
+        Image = IconID
+    })
+
+    -- إضافة وظيفة عند الضغط على الزر
+    FButton.Activated:Connect(function()
+        if IsOnCooldown then return end -- منع الضغط إذا كان في فترة التبريد
+        
+        IsOnCooldown = true -- تفعيل التبريد
+        Funcs:FireCallback(Callback)
+
+        -- تغيير النص للإشارة إلى التبريد
+        LabelFunc:SetTitle("Wait " .. CooldownTime .. "s")
+        LabelFunc:SetDesc("Please wait before using again.")
+        FButton.Active = false -- تعطيل الزر مؤقتًا
+
+        -- مؤقت التبريد
+        task.spawn(function()
+            for i = CooldownTime, 1, -1 do
+                LabelFunc:SetTitle("Wait " .. i .. "s")
+                task.wait(1)
+            end
+
+            -- إعادة الزر إلى حالته الأصلية
+            LabelFunc:SetTitle(BName)
+            LabelFunc:SetDesc(BDescription)
+            FButton.Active = true
+            IsOnCooldown = false
+        end)
+    end)
+
+    -- تعريف كائن الزر وإضافة وظائف تحكم
+    local Button = {}
+
+    function Button:Visible(...) 
+        Funcs:ToggleVisible(FButton, ...) 
+    end
+
+    function Button:Destroy() 
+        FButton:Destroy() 
+    end
+
+    function Button:Callback(newCallback) 
+        if type(newCallback) == "function" then
+            Callback = newCallback
+        end
+    end
+
+    function Button:Set(Title, Desc)
+        if type(Title) == "string" then
+            LabelFunc:SetTitle(Title)
+        end
+        if type(Desc) == "string" then
+            LabelFunc:SetDesc(Desc)
+        end
+    end
+
+    return Button
+end
 		function Tab:AddToggle(Configs)
 			local TName = Configs[1] or Configs.Name or Configs.Title or "Toggle"
 			local TDesc = Configs.Desc or Configs.Description or ""

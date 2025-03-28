@@ -1972,8 +1972,8 @@ function redzlib:MakeWindow(Configs)
         Funcs:FireCallback(Callback)
 
         -- تغيير النص للإشارة إلى التبريد
-        LabelFunc:SetTitle("Wait " .. CooldownTime .. "s")
-        LabelFunc:SetDesc("Please wait before using again.")
+        LabelFunc:SetTitle("Wait.." .. CooldownTime .. "s")
+        LabelFunc:SetDesc("<font color='rgb(0, 255, 255)'>Please wait before using again</font>.")
         FButton.Active = false -- تعطيل الزر مؤقتًا
 
         -- مؤقت التبريد

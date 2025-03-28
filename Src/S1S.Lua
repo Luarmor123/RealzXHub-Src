@@ -1961,7 +1961,7 @@ function redzlib:MakeWindow(Configs)
         Position = UDim2.new(1, -10, 0.5),
         AnchorPoint = Vector2.new(1, 0.5),
         BackgroundTransparency = 1,
-        Image = IconID
+        Image = IconID -- الأيقونة الأصلية
     })
 
     -- إضافة وظيفة عند الضغط على الزر
@@ -1976,10 +1976,13 @@ function redzlib:MakeWindow(Configs)
         LabelFunc:SetDesc("<font color='rgb(0, 255, 255)'>Please wait before using again</font>.")
         FButton.Active = false -- تعطيل الزر مؤقتًا
 
+        -- إخفاء الأيقونة أثناء التبريد
+        ButtonIcon.Visible = false
+
         -- مؤقت التبريد
         task.spawn(function()
             for i = CooldownTime, 1, -1 do
-                LabelFunc:SetTitle("Wait " .. i .. "s")
+                LabelFunc:SetTitle("Wait.. " .. i .. "s")
                 task.wait(1)
             end
 
@@ -1988,8 +1991,13 @@ function redzlib:MakeWindow(Configs)
             LabelFunc:SetDesc(BDescription)
             FButton.Active = true
             IsOnCooldown = false
+
+            -- إعادة إظهار الأيقونة بعد التبريد
+            ButtonIcon.Visible = true
         end)
     end)
+
+end
 
     -- تعريف كائن الزر وإضافة وظائف تحكم
     local Button = {}

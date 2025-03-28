@@ -1459,6 +1459,7 @@ function redzlib:MakeWindow(Configs)
 		TextColor3 = Theme["Color Text"],
 		BackgroundTransparency = 1,
 		Font = Enum.Font.FredokaOne,
+                RichText = true,
 		Name = "Title"
 	}, {
 		InsertTheme(Create("TextLabel", {
@@ -1473,6 +1474,7 @@ function redzlib:MakeWindow(Configs)
 			TextYAlignment = "Bottom",
 			TextSize = 8,
 			Font = Enum.Font.Gotham,
+                        RichText = true,
 			Name = "SubTitle"
 		}), "DarkText")
 	}), "Text")

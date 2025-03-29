@@ -1,3 +1,4 @@
+-- Redz Ui Modified By YHUB.
 local MarketplaceService = game:GetService("MarketplaceService")
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -885,7 +886,7 @@ local redzlib = {
 			["zoomout"] = "rbxassetid://10747384679"
 		}
 	end)()
-}
+} -- more icons soon!
 
 local ViewportSize = workspace.CurrentCamera.ViewportSize
 local UIScale = ViewportSize.Y / 450
@@ -1951,7 +1952,7 @@ function redzlib:MakeWindow(Configs)
     local BName = Configs.Name or Configs.Title or Configs[1] or "ButtonAS!"
     local BDescription = Configs.Desc or Configs.Description or ""
     local Callback = Funcs:GetCallback(Configs, 2)
-    local IconID = Configs.Icon or "rbxassetid://10723375250"
+    local IconID = Configs.Icon or "rbxassetid://10723375250" -- new
     local CooldownTime = Configs.Cooldown or 5
     local IsOnCooldown = false 
 
@@ -1995,8 +1996,24 @@ function redzlib:MakeWindow(Configs)
             FButton.Active = true
             IsOnCooldown = false
 
-
             ButtonIcon.Visible = true
+            
+--[[
+Set ButtonAS Visibility:
+ButtonAS:Visible(false)
+
+Destroy ButtonAS:
+ButtonAS:Destroy()
+
+Set ButtonAS New Callback:
+ButtonAS:Callback(function()
+
+end)
+
+Set ButtonAS New Title And Description:
+ButtonAS:Set("New Title", "New Description")
+]] 
+            
         end)
     end)
 
@@ -2752,33 +2769,39 @@ TextBoxInput.FocusLost:Connect(function()
 			}), "DarkText")
 			
 			local JoinButton = Create("TextButton", FrameHolder, {
-				Size = UDim2.new(1, -14, 0, 16),
-				AnchorPoint = Vector2.new(0.5, 1),
-				Position = UDim2.new(0.5, 0, 1, -7),
-				Text = "Join",
-				Font = Enum.Font.GothamBold,
-				TextSize = 12,
-				TextColor3 = Color3.fromRGB(220, 220, 220),
-				BackgroundColor3 = Color3.fromRGB(50, 150, 50)
-			})Make("Corner", JoinButton, UDim.new(0, 5))
-			
-			local ClickDelay
-			JoinButton.Activated:Connect(function()
-				setclipboard(Invite)
-				if ClickDelay then return end
-				
-				ClickDelay = true
-				SetProps(JoinButton, {
-					Text = "Copied to Clipboard",
-					BackgroundColor3 = Color3.fromRGB(100, 100, 100),
-					TextColor3 = Color3.fromRGB(150, 150, 150)
-				})task.wait(5)
-				SetProps(JoinButton, {
-					Text = "Join",
-					BackgroundColor3 = Color3.fromRGB(50, 150, 50),
-					TextColor3 = Color3.fromRGB(220, 220, 220)
-				})ClickDelay = false
-			end)
+    Size = UDim2.new(1, -14, 0, 16),
+    AnchorPoint = Vector2.new(0.5, 1),
+    Position = UDim2.new(0.5, 0, 1, -7),
+    Text = "Join",
+    Font = Enum.Font.GothamBold,
+    TextSize = 12,
+    TextColor3 = Color3.fromRGB(220, 220, 220),
+    BackgroundColor3 = Color3.fromRGB(50, 150, 50)
+})
+Make("Corner", JoinButton, UDim.new(0, 5))
+
+local ClickDelay
+JoinButton.Activated:Connect(function()
+    -- فتح الرابط في المتصفح
+    game:GetService("GuiService"):OpenBrowserWindow(Invite)
+
+    if ClickDelay then return end
+    
+    ClickDelay = true
+    SetProps(JoinButton, {
+        Text = "Opening in Browser...",
+        BackgroundColor3 = Color3.fromRGB(100, 100, 100),
+        TextColor3 = Color3.fromRGB(150, 150, 150)
+    })
+    task.wait(2)  -- الانتظار لبضع ثوانٍ
+
+    SetProps(JoinButton, {
+        Text = "Join",
+        BackgroundColor3 = Color3.fromRGB(50, 150, 50),
+        TextColor3 = Color3.fromRGB(220, 220, 220)
+    })
+    ClickDelay = false
+end)
 			
 			local DiscordInvite = {}
 			function DiscordInvite:Destroy() InviteHolder:Destroy() end

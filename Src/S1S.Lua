@@ -1401,7 +1401,7 @@ function redzlib:SetScale(NewScale)
 end
 
 function redzlib:MakeWindow(Configs)
-	local WTitle = Configs[1] or Configs.Name or Configs.Title or "redz Library V5"
+	local WTitle = Configs[1] or Configs.Name or Configs.Title or "redz Library V5 [ Modified by YHUB ]"
 	local WMiniText = Configs[2] or Configs.SubTitle or "by : redz9999"
 	
 	Settings.ScriptFile = Configs[3] or Configs.SaveFolder or false
@@ -1459,6 +1459,7 @@ function redzlib:MakeWindow(Configs)
 		TextColor3 = Theme["Color Text"],
 		BackgroundTransparency = 1,
 		Font = Enum.Font.FredokaOne,
+        RichText = true,
 		Name = "Title"
 	}, {
 		InsertTheme(Create("TextLabel", {
@@ -1473,6 +1474,7 @@ function redzlib:MakeWindow(Configs)
 			TextYAlignment = "Bottom",
 			TextSize = 8,
 			Font = Enum.Font.Gotham,
+            RichText = true,
 			Name = "SubTitle"
 		}), "DarkText")
 	}), "Text")
@@ -1900,6 +1902,7 @@ function redzlib:MakeWindow(Configs)
 				BackgroundTransparency = 1,
 				TextTruncate = "AtEnd",
 				TextSize = 14,
+                RichText = true,
 				TextXAlignment = "Left"
 			}), "Text")
 			
@@ -1944,18 +1947,18 @@ function redzlib:MakeWindow(Configs)
 			end
 			return Paragraph
 		end
-		function Tab:AddButton(Configs)
-    local BName = Configs.Name or Configs.Title or Configs[1] or "Button!"
+		function Tab:AddButtonAS(Configs)
+    local BName = Configs.Name or Configs.Title or Configs[1] or "ButtonAS!"
     local BDescription = Configs.Desc or Configs.Description or ""
     local Callback = Funcs:GetCallback(Configs, 2)
     local IconID = Configs.Icon or "rbxassetid://10723375250"
-    local CooldownTime = Configs.Cooldown or 5 -- مدة التبريد الافتراضية (5 ثوانٍ)
-    local IsOnCooldown = false -- متغير يمنع الضغط أثناء التبريد
+    local CooldownTime = Configs.Cooldown or 5
+    local IsOnCooldown = false 
 
-    -- إنشاء الزر وإطاره
+
     local FButton, LabelFunc = ButtonFrame(Container, BName, BDescription, UDim2.new(1, -20))
 
-    -- إنشاء أيقونة الزر
+
     local ButtonIcon = Create("ImageLabel", FButton, {
         Size = UDim2.new(0, 14, 0, 14),
         Position = UDim2.new(1, -10, 0.5),
@@ -1964,57 +1967,57 @@ function redzlib:MakeWindow(Configs)
         Image = IconID
     })
 
-    -- إضافة وظيفة عند الضغط على الزر
+
     FButton.Activated:Connect(function()
-        if IsOnCooldown then return end -- منع الضغط إذا كان في فترة التبريد
+        if IsOnCooldown then return end
         
-        IsOnCooldown = true -- تفعيل التبريد
+        IsOnCooldown = true
         Funcs:FireCallback(Callback)
 
-        -- تغيير النص للإشارة إلى التبريد
+
         LabelFunc:SetTitle("Wait.." .. CooldownTime .. "s")
         LabelFunc:SetDesc("<font color='rgb(0, 255, 255)'>Please wait before using again</font>.")
-        FButton.Active = false -- تعطيل الزر مؤقتًا
+        FButton.Active = false
 
-        -- إخفاء الأيقونة أثناء التبريد
+
         ButtonIcon.Visible = false
 
-        -- مؤقت التبريد
+
         task.spawn(function()
             for i = CooldownTime, 1, -1 do
                 LabelFunc:SetTitle("Wait.. " .. i .. "s")
                 task.wait(1)
             end
 
-            -- إعادة الزر إلى حالته الأصلية
+
             LabelFunc:SetTitle(BName)
             LabelFunc:SetDesc(BDescription)
             FButton.Active = true
             IsOnCooldown = false
 
-            -- إعادة إظهار الأيقونة بعد التبريد
+
             ButtonIcon.Visible = true
         end)
     end)
 
-    -- تعريف كائن الزر وإضافة وظائف تحكم
-    local Button = {}
 
-    function Button:Visible(...) 
+    local ButtonAS = {}
+
+    function ButtonAS:Visible(...) 
         Funcs:ToggleVisible(FButton, ...) 
     end
 
-    function Button:Destroy() 
+    function ButtonAS:Destroy() 
         FButton:Destroy() 
     end
 
-    function Button:Callback(newCallback) 
+    function ButtonAS:Callback(newCallback) 
         if type(newCallback) == "function" then
             Callback = newCallback
         end
     end
 
-    function Button:Set(Title, Desc)
+    function ButtonAS:Set(Title, Desc)
         if type(Title) == "string" then
             LabelFunc:SetTitle(Title)
         end
@@ -2022,9 +2025,44 @@ function redzlib:MakeWindow(Configs)
             LabelFunc:SetDesc(Desc)
         end
     end
-
-    return Button
-end
+           return ButtonAS
+        end
+        
+         function Tab:AddButton(Configs)
+			local BName = Configs[1] or Configs.Name or Configs.Title or "Button!"
+			local BDescription = Configs.Desc or Configs.Description or ""
+			local Callback = Funcs:GetCallback(Configs, 2)
+			
+			local FButton, LabelFunc = ButtonFrame(Container, BName, BDescription, UDim2.new(1, -20))
+			
+			local ButtonIcon = Create("ImageLabel", FButton, {
+				Size = UDim2.new(0, 14, 0, 14),
+				Position = UDim2.new(1, -10, 0.5),
+				AnchorPoint = Vector2.new(1, 0.5),
+				BackgroundTransparency = 1,
+				Image = "rbxassetid://10723375250"
+			})
+			
+			FButton.Activated:Connect(function()
+				Funcs:FireCallback(Callback)
+			end)
+			
+			local Button = {}
+			function Button:Visible(...) Funcs:ToggleVisible(FButton, ...) end
+			function Button:Destroy() FButton:Destroy() end
+			function Button:Callback(...) Funcs:InsertCallback(Callback, ...) end
+			function Button:Set(Val1, Val2)
+				if type(Val1) == "string" and type(Val2) == "string" then
+					LabelFunc:SetTitle(Val1)
+					LabelFunc:SetDesc(Val2)
+				elseif type(Val1) == "string" then
+					LabelFunc:SetTitle(Val1)
+				elseif type(Val1) == "function" then
+					Callback = Val1
+				end
+			end
+	         return Button
+         end
 		function Tab:AddToggle(Configs)
 			local TName = Configs[1] or Configs.Name or Configs.Title or "Toggle"
 			local TDesc = Configs.Desc or Configs.Description or ""
@@ -2695,7 +2733,8 @@ TextBoxInput.FocusLost:Connect(function()
 				TextXAlignment = "Left",
 				BackgroundTransparency = 1,
 				TextSize = 10,
-				Text = Title
+				Text = Title,
+				RichText = true
 			}), "Text")
 			
 			local LDesc = InsertTheme(Create("TextLabel", FrameHolder, {
@@ -2708,7 +2747,8 @@ TextBoxInput.FocusLost:Connect(function()
 				TextXAlignment = "Left",
 				BackgroundTransparency = 1,
 				TextSize = 8,
-				Text = Desc
+				Text = Desc,
+				RichText = true
 			}), "DarkText")
 			
 			local JoinButton = Create("TextButton", FrameHolder, {

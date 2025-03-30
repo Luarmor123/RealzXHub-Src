@@ -1620,31 +1620,26 @@ function redzlib:MakeWindow(Configs)
 
 function Window:Minimize()
 	local isVisible = MainFrame.Visible -- معرفة حالة الظهور الحالية
-	local targetTransparency = isVisible and 1 or 0 -- تحديد الشفافية المستهدفة
-	local targetScale = isVisible and UDim2.fromScale(0.8, 0.8) or UDim2.fromScale(1, 1) -- تصغير أو تكبير تدريجي
+	local targetTransparency = isVisible and 1 or 0 -- الشفافية المستهدفة
 	
-	-- إعداد معلومات الـ Tween لتأثير سلس
-	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out) -- مدة 0.4 ثانية
+	-- إعداد معلومات الأنيميشن لتأثير سلس وجميل
+	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut) -- مدة 0.4 ثانية بحركة ناعمة
 	
-	-- تحريك الشفافية والحجم معًا
+	-- تحريك الشفافية تدريجياً
 	local fadeTween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = targetTransparency})
-	local scaleTween = TweenService:Create(MainFrame, tweenInfo, {Size = targetScale})
 	
 	if isVisible then
-		-- إغلاق النافذة (إخفاء تدريجي + تصغير)
+		-- إخفاء تدريجي
 		fadeTween:Play()
-		scaleTween:Play()
 		fadeTween.Completed:Connect(function()
-			MainFrame.Visible = false -- إخفاء بعد انتهاء الأنيميشن
+			MainFrame.Visible = false -- إخفاء بعد انتهاء التلاشي
 		end)
 	else
-		-- فتح النافذة (إظهار تدريجي + تكبير)
-		MainFrame.Size = UDim2.fromScale(0.8, 0.8) -- البدء بحجم أصغر
-		MainFrame.Visible = true -- إظهار النافذة أولًا
+		-- إظهار تدريجي
+		MainFrame.BackgroundTransparency = 1 -- اجعلها شفافة أولًا
+		MainFrame.Visible = true -- ثم اجعلها مرئية
 		local fadeInTween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = 0})
-		local scaleInTween = TweenService:Create(MainFrame, tweenInfo, {Size = UDim2.fromScale(1, 1)})
 		fadeInTween:Play()
-		scaleInTween:Play()
 	end
 end
 	function Window:AddMinimizeButton(Configs)

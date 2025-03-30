@@ -1627,8 +1627,6 @@ function Window:Minimize()
     local isVisible = MainFrame.Visible
     local tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
-    -- تأكد أن نقطة الارتساء هي المنتصف
-    MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 
     -- المواضع عند الفتح والإغلاق
     local frameOut = {
@@ -1641,6 +1639,12 @@ function Window:Minimize()
         BackgroundTransparency = 0
     }
 
+    -- **تأكد أن الموضع صحيح عند بدء التشغيل لأول مرة**
+    if not MainFrame:GetAttribute("Initialized") then
+        MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0) -- الموضع الافتراضي في المنتصف
+        MainFrame:SetAttribute("Initialized", true) -- وسم النافذة بأنها تم ضبطها
+    end
+
     if isVisible then
         -- تصغير النافذة (انزلاق للأسفل مع اختفاء تدريجي)
         local slideOutTween = TweenService:Create(MainFrame, tweenInfo, frameOut)
@@ -1649,13 +1653,10 @@ function Window:Minimize()
             MainFrame.Visible = false
         end)
     else
-        -- **حل مشكلة الظهور من الأعلى عبر إزالة النافذة وإعادتها**
-        local parent = MainFrame.Parent  -- حفظ الـ Parent الحالي
-        MainFrame.Parent = nil  -- إزالته مؤقتًا لمنع أي تحديث غير متوقع
-        MainFrame.Position = UDim2.new(0.5, 0, 1.5, 0) -- ضبط الموقع الصحيح أسفل الشاشة
-        MainFrame.Parent = parent -- إعادته إلى الـ Parent الأساسي
+        -- تأكد من ضبط الموضع قبل إظهار النافذة
+        MainFrame.Position = UDim2.new(0.5, 0, 1.5, 0)
         MainFrame.BackgroundTransparency = 1
-        MainFrame.Visible = true
+        MainFrame.Visible = true  -- يتم الإظهار بعد ضبط الموضع الصحيح
 
         -- تكبير النافذة (انزلاق للأعلى مع ظهور تدريجي)
         local slideInTween = TweenService:Create(MainFrame, tweenInfo, frameIn)

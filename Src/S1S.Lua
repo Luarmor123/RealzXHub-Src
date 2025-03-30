@@ -1619,31 +1619,37 @@ function redzlib:MakeWindow(Configs)
 
 
 
-
 function Window:Minimize()
-	local isVisible = MainFrame.Visible 
-	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut) 
+	local isVisible = MainFrame.Visible
+	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
+
+	-- تحديد مواضع الدخول والخروج
+	local frameIn = {
+		Position = UDim2.new(MainFrame.Position.X.Scale, 0, 0.5, 0), -- وسط الشاشة عند الفتح
+		BackgroundTransparency = 0
+	}
+
+	local frameOut = {
+		Position = UDim2.new(MainFrame.Position.X.Scale, 0, 1.2, 0), -- أسفل الشاشة عند التصغير
+		BackgroundTransparency = 1
+	}
 
 	if isVisible then
-		local fadeOutTween = TweenService:Create(MainFrame, tweenInfo, {
-			BackgroundTransparency = 1, 
-			Size = UDim2.new(0, 0, 0, 0) -- تصغير الحجم إلى الصفر
-		})
-		fadeOutTween:Play()
-
-		fadeOutTween.Completed:Connect(function()
-			MainFrame.Visible = false 
+		-- انزلاق لأسفل + اختفاء
+		local slideOutTween = TweenService:Create(MainFrame, tweenInfo, frameOut)
+		slideOutTween:Play()
+		slideOutTween.Completed:Connect(function()
+			MainFrame.Visible = false
 		end)
 	else
-		MainFrame.Size = UDim2.new(0, 0, 0, 0) -- ضبط الحجم إلى الصفر قبل الفتح
+		-- ضبط الموضع والشفافية قبل التشغيل
+		MainFrame.Position = UDim2.new(MainFrame.Position.X.Scale, 0, 1.2, 0) -- وضعها خارج الشاشة قبل الفتح
 		MainFrame.BackgroundTransparency = 1
 		MainFrame.Visible = true 
 
-		local fadeInTween = TweenService:Create(MainFrame, tweenInfo, {
-			BackgroundTransparency = 0, 
-			Size = UDim2.new(0.3, 0, 0.3, 0) -- إعادة الحجم إلى الطبيعي
-		})
-		fadeInTween:Play()
+		-- انزلاق للأعلى + ظهور تدريجي
+		local slideInTween = TweenService:Create(MainFrame, tweenInfo, frameIn)
+		slideInTween:Play()
 	end
 end
 

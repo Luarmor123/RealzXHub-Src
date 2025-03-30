@@ -1626,47 +1626,46 @@ function redzlib:MakeWindow(Configs)
 local TweenService = game:GetService("TweenService")
 
 function Window:Minimize()
-	local isVisible = MainFrame.Visible
-	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
+    local isVisible = MainFrame.Visible
+    local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut) -- مدة التفاعل مع حركة انزلاق ناعمة
 
-	-- الحصول على الأبعاد الفعلية للنافذة
-	local frameWidth = MainFrame.Size.X.Offset -- عرض النافذة (بالبكسل)
-	local frameHeight = MainFrame.Size.Y.Offset -- ارتفاع النافذة (بالبكسل)
-	local screenWidth = game:GetService("Workspace").CurrentCamera.ViewportSize.X
-	local screenHeight = game:GetService("Workspace").CurrentCamera.ViewportSize.Y
+    -- الحجم الثابت للنافذة
+    local UISizeX, UISizeY = 550, 380  -- الحجم الثابت للنافذة
+    local screenWidth = game:GetService("Workspace").CurrentCamera.ViewportSize.X
+    local screenHeight = game:GetService("Workspace").CurrentCamera.ViewportSize.Y
 
-	-- حساب الموقع الذي يجب أن تكون فيه النافذة في المنتصف
-	local centerX = (screenWidth - frameWidth) / 2 -- حساب مركز الشاشة أفقيًا
-	local centerY = (screenHeight - frameHeight) / 2 -- حساب مركز الشاشة عموديًا
+    -- حساب الموقع الذي يجب أن تكون فيه النافذة في المنتصف
+    local centerX = (screenWidth - UISizeX) / 2 -- حساب مركز الشاشة أفقيًا
+    local centerY = (screenHeight - UISizeY) / 2 -- حساب مركز الشاشة عموديًا
 
-	-- تحديد مواضع الدخول والخروج مع الحفاظ على المنتصف
-	local frameIn = {
-		Position = UDim2.new(0, centerX, 0, centerY), -- وسط الشاشة عند الفتح
-		BackgroundTransparency = 0
-	}
+    -- تحديد مواضع الدخول والخروج مع الحفاظ على المنتصف
+    local frameIn = {
+        Position = UDim2.new(0, centerX, 0, centerY), -- وسط الشاشة عند الفتح
+        BackgroundTransparency = 0
+    }
 
-	local frameOut = {
-		Position = UDim2.new(0, centerX, 0, screenHeight + 50), -- أسفل الشاشة عند التصغير
-		BackgroundTransparency = 1
-	}
+    local frameOut = {
+        Position = UDim2.new(0, centerX, 0, screenHeight + UISizeY / 2), -- أسفل الشاشة عند التصغير
+        BackgroundTransparency = 1
+    }
 
-	if isVisible then
-		-- انزلاق لأسفل + اختفاء تدريجي
-		local slideOutTween = TweenService:Create(MainFrame, tweenInfo, frameOut)
-		slideOutTween:Play()
-		slideOutTween.Completed:Connect(function()
-			MainFrame.Visible = false
-		end)
-	else
-		-- ضبط الموضع والشفافية قبل التشغيل
-		MainFrame.Position = UDim2.new(0, centerX, 0, screenHeight + 50) -- وضعها خارج الشاشة قبل الفتح
-		MainFrame.BackgroundTransparency = 1
-		MainFrame.Visible = true 
+    if isVisible then
+        -- انزلاق لأسفل + اختفاء تدريجي
+        local slideOutTween = TweenService:Create(MainFrame, tweenInfo, frameOut)
+        slideOutTween:Play()
+        slideOutTween.Completed:Connect(function()
+            MainFrame.Visible = false
+        end)
+    else
+        -- وضعها خارج الشاشة قبل الفتح مع تحديد الشفافية
+        MainFrame.Position = UDim2.new(0, centerX, 0, screenHeight + UISizeY / 2)
+        MainFrame.BackgroundTransparency = 1
+        MainFrame.Visible = true
 
-		-- انزلاق للأعلى + ظهور تدريجي
-		local slideInTween = TweenService:Create(MainFrame, tweenInfo, frameIn)
-		slideInTween:Play()
-	end
+        -- انزلاق للأعلى + ظهور تدريجي
+        local slideInTween = TweenService:Create(MainFrame, tweenInfo, frameIn)
+        slideInTween:Play()
+    end
 end
 	function Window:AddMinimizeButton(Configs)
 		local Button = MakeDrag(Create("ImageButton", ScreenGui, {

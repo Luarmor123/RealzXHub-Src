@@ -1426,7 +1426,7 @@ function redzlib:MakeWindow(Configs)
 	local UISizeX, UISizeY = unpack(redzlib.Save.UISize)
 	local MainFrame = InsertTheme(Create("ImageButton", ScreenGui, {
 		Size = UDim2.fromOffset(UISizeX, UISizeY),
-		Position = UDim2.new(0.5, 0, 0.5, -0),
+		Position = UDim2.new(0.5, -UISizeX/2, 0.5, -UISizeY/2),
 		BackgroundTransparency = 0.03,
 		Name = "Hub"
 	}), "Main")
@@ -1628,7 +1628,7 @@ function Window:Minimize()
     local tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
     -- تأكد أن نقطة الارتساء هي المنتصف
-    
+    MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 
     -- المواضع عند الفتح والإغلاق
     local frameOut = {

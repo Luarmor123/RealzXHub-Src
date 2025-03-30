@@ -1619,23 +1619,28 @@ function redzlib:MakeWindow(Configs)
 
 
 
+
+
 function Window:Minimize()
 	local isVisible = MainFrame.Visible
 	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
-	-- تحديد مواضع الدخول والخروج
+	-- استخدم القيم الأصلية للموضع الأفقي لتجنب تحركها إلى اليسار
+	local centerX = 0.5 -- هذا يجعلها في المنتصف أفقيًا دائماً
+
+	-- تحديد مواضع الدخول والخروج مع الحفاظ على المنتصف أفقيًا
 	local frameIn = {
-		Position = UDim2.new(MainFrame.Position.X.Scale, 0, 0.5, 0), -- وسط الشاشة عند الفتح
+		Position = UDim2.new(centerX, 0, 0.5, 0), -- وسط الشاشة عند الفتح
 		BackgroundTransparency = 0
 	}
 
 	local frameOut = {
-		Position = UDim2.new(MainFrame.Position.X.Scale, 0, 1.2, 0), -- أسفل الشاشة عند التصغير
+		Position = UDim2.new(centerX, 0, 1.2, 0), -- أسفل الشاشة عند التصغير
 		BackgroundTransparency = 1
 	}
 
 	if isVisible then
-		-- انزلاق لأسفل + اختفاء
+		-- انزلاق لأسفل + اختفاء تدريجي
 		local slideOutTween = TweenService:Create(MainFrame, tweenInfo, frameOut)
 		slideOutTween:Play()
 		slideOutTween.Completed:Connect(function()
@@ -1643,7 +1648,7 @@ function Window:Minimize()
 		end)
 	else
 		-- ضبط الموضع والشفافية قبل التشغيل
-		MainFrame.Position = UDim2.new(MainFrame.Position.X.Scale, 0, 1.2, 0) -- وضعها خارج الشاشة قبل الفتح
+		MainFrame.Position = UDim2.new(centerX, 0, 1.2, 0) -- وضعها خارج الشاشة قبل الفتح
 		MainFrame.BackgroundTransparency = 1
 		MainFrame.Visible = true 
 

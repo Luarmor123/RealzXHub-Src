@@ -2045,6 +2045,73 @@ ButtonAS:Set("New Title", "New Description")
            return ButtonAS
         end
         
+        function Tab:AddColorPickerAS(Configs)
+    -- تعيين اسم أداة اختيار اللون
+    local PickerName = Configs.Name or Configs.Title or Configs[1] or "Color Picker!"
+    
+    -- تعيين وصف أداة اختيار اللون
+    local PickerDescription = Configs.Desc or Configs.Description or ""
+    
+    -- الحصول على الـ Callback من Configs (إذا تم تحديده)
+    local Callback = Funcs:GetCallback(Configs, 2)
+    
+    -- إنشاء الزر لاختيار اللون باستخدام الإعدادات
+    local FButton, LabelFunc = ButtonFrame(Container, PickerName, PickerDescription, UDim2.new(1, -20))
+
+    -- إضافة أيقونة (اختياري)
+    local ButtonIcon = Create("ImageLabel", FButton, {
+        Size = UDim2.new(0, 14, 0, 14),
+        Position = UDim2.new(1, -10, 0.5),
+        AnchorPoint = Vector2.new(1, 0.5),
+        BackgroundTransparency = 1,
+        Image = "rbxassetid://10723375250"  -- استبدل هذه الصورة بأيقونة من اختيارك
+    })
+
+    -- عند الضغط على الزر، ستفتح نافذة لاختيار اللون
+    FButton.Activated:Connect(function()
+        -- إنشاء نافذة لاختيار اللون
+        local colorPickerFrame = Instance.new("Frame")
+        colorPickerFrame.Size = UDim2.new(0, 300, 0, 200)
+        colorPickerFrame.Position = UDim2.new(0.5, -150, 0.5, -100)
+        colorPickerFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        colorPickerFrame.BackgroundTransparency = 0.8
+        colorPickerFrame.Parent = game.Players.LocalPlayer.PlayerGui.ScreenGui  -- افترض وجود ScreenGui في اللعبة
+
+        -- إضافة شريط لاختيار اللون
+        local colorBar = Instance.new("TextButton")
+        colorBar.Size = UDim2.new(0, 250, 0, 40)
+        colorBar.Position = UDim2.new(0.5, -125, 0.5, -50)
+        colorBar.Text = "اختر اللون"
+        colorBar.Parent = colorPickerFrame
+
+        -- عند اختيار اللون
+        colorBar.MouseButton1Click:Connect(function()
+            local selectedColor = Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))
+            colorPickerFrame.BackgroundColor3 = selectedColor  -- تغيير لون خلفية النافذة
+            Funcs:FireCallback(Callback, selectedColor)  -- استدعاء الـ Callback مع اللون المختار
+            colorPickerFrame:Destroy()  -- إغلاق النافذة بعد اختيار اللون
+        end)
+    end)
+
+    -- الدالة الخاصة بزر الاختيار
+    local Button = {}
+    function Button:Visible(...) Funcs:ToggleVisible(FButton, ...) end
+    function Button:Destroy() FButton:Destroy() end
+    function Button:Callback(...) Funcs:InsertCallback(Callback, ...) end
+    function Button:Set(Val1, Val2)
+        if type(Val1) == "string" and type(Val2) == "string" then
+            LabelFunc:SetTitle(Val1)
+            LabelFunc:SetDesc(Val2)
+        elseif type(Val1) == "string" then
+            LabelFunc:SetTitle(Val1)
+        elseif type(Val1) == "function" then
+            Callback = Val1
+        end
+    end
+    
+    return Button
+end
+        
          function Tab:AddButton(Configs)
 			local BName = Configs[1] or Configs.Name or Configs.Title or "Button!"
 			local BDescription = Configs.Desc or Configs.Description or ""
@@ -2535,17 +2602,17 @@ end
 				BorderSizePixel = 0
 			}), "Theme")Make("Corner", Indicator)
 
-local SliderIcon = Create("Frame", SliderBar, {
-    Size = UDim2.new(0, 12, 0, 12),
-    BackgroundColor3 = Color3.fromRGB(220, 220, 220),
-    Position = UDim2.fromScale(0.3, 0.5),
-    AnchorPoint = Vector2.new(0.5, 0.5),
-    BackgroundTransparency = 0.2
-})
+           local SliderIcon = Create("Frame", SliderBar, {
+               Size = UDim2.new(0, 12, 0, 12),
+               BackgroundColor3 = Color3.fromRGB(220, 220, 220),
+               Position = UDim2.fromScale(0.3, 0.5),
+               AnchorPoint = Vector2.new(0.5, 0.5),
+               BackgroundTransparency = 0.2
+             })
 
-local SliderIconCorner = Create("UICorner", SliderIcon, {
-    CornerRadius = UDim.new(1, 0) 
-})
+       local SliderIconCorner = Create("UICorner", SliderIcon, {
+            CornerRadius = UDim.new(1, 0) 
+           })
 			
 			local LabelVal = InsertTheme(Create("TextLabel", SliderHolder, {
 				Size = UDim2.new(0, 14, 0, 14),
@@ -2769,39 +2836,33 @@ TextBoxInput.FocusLost:Connect(function()
 			}), "DarkText")
 			
 			local JoinButton = Create("TextButton", FrameHolder, {
-    Size = UDim2.new(1, -14, 0, 16),
-    AnchorPoint = Vector2.new(0.5, 1),
-    Position = UDim2.new(0.5, 0, 1, -7),
-    Text = "Join",
-    Font = Enum.Font.GothamBold,
-    TextSize = 12,
-    TextColor3 = Color3.fromRGB(220, 220, 220),
-    BackgroundColor3 = Color3.fromRGB(50, 150, 50)
-})
-Make("Corner", JoinButton, UDim.new(0, 5))
-
-local ClickDelay
-JoinButton.Activated:Connect(function()
-    -- فتح الرابط في المتصفح
-    game:GetService("GuiService"):OpenBrowserWindow(Invite)
-
-    if ClickDelay then return end
-    
-    ClickDelay = true
-    SetProps(JoinButton, {
-        Text = "Opening in Browser...",
-        BackgroundColor3 = Color3.fromRGB(100, 100, 100),
-        TextColor3 = Color3.fromRGB(150, 150, 150)
-    })
-    task.wait(2)  -- الانتظار لبضع ثوانٍ
-
-    SetProps(JoinButton, {
-        Text = "Join",
-        BackgroundColor3 = Color3.fromRGB(50, 150, 50),
-        TextColor3 = Color3.fromRGB(220, 220, 220)
-    })
-    ClickDelay = false
-end)
+				Size = UDim2.new(1, -14, 0, 16),
+				AnchorPoint = Vector2.new(0.5, 1),
+				Position = UDim2.new(0.5, 0, 1, -7),
+				Text = "Join",
+				Font = Enum.Font.GothamBold,
+				TextSize = 12,
+				TextColor3 = Color3.fromRGB(220, 220, 220),
+				BackgroundColor3 = Color3.fromRGB(50, 150, 50)
+			})Make("Corner", JoinButton, UDim.new(0, 5))
+			
+			local ClickDelay
+			JoinButton.Activated:Connect(function()
+				setclipboard(Invite)
+				if ClickDelay then return end
+				
+				ClickDelay = true
+				SetProps(JoinButton, {
+					Text = "Copied to Clipboard",
+					BackgroundColor3 = Color3.fromRGB(100, 100, 100),
+					TextColor3 = Color3.fromRGB(150, 150, 150)
+				})task.wait(5)
+				SetProps(JoinButton, {
+					Text = "Join",
+					BackgroundColor3 = Color3.fromRGB(50, 150, 50),
+					TextColor3 = Color3.fromRGB(220, 220, 220)
+				})ClickDelay = false
+			end)
 			
 			local DiscordInvite = {}
 			function DiscordInvite:Destroy() InviteHolder:Destroy() end

@@ -1621,21 +1621,30 @@ function redzlib:MakeWindow(Configs)
 
 
 
+
+
 function Window:Minimize()
 	local isVisible = MainFrame.Visible
 	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
-	-- استخدم القيم الأصلية للموضع الأفقي لتجنب تحركها إلى اليسار
-	local centerX = 0.5 -- هذا يجعلها في المنتصف أفقيًا دائماً
+	-- الحصول على الأبعاد الفعلية للنافذة
+	local frameWidth = MainFrame.Size.X.Offset -- عرض النافذة (بالبكسل)
+	local frameHeight = MainFrame.Size.Y.Offset -- ارتفاع النافذة (بالبكسل)
+	local screenWidth = game:GetService("Workspace").CurrentCamera.ViewportSize.X
+	local screenHeight = game:GetService("Workspace").CurrentCamera.ViewportSize.Y
 
-	-- تحديد مواضع الدخول والخروج مع الحفاظ على المنتصف أفقيًا
+	-- حساب الموقع الذي يجب أن تكون فيه النافذة في المنتصف
+	local centerX = (screenWidth - frameWidth) / 2 -- حساب موقع وسط الشاشة أفقيًا
+	local centerY = (screenHeight - frameHeight) / 2 -- حساب موقع وسط الشاشة عموديًا
+
+	-- تحديد مواضع الدخول والخروج مع الحفاظ على المنتصف
 	local frameIn = {
-		Position = UDim2.new(centerX, 0, 0.5, 0), -- وسط الشاشة عند الفتح
+		Position = UDim2.new(0, centerX, 0, centerY), -- وسط الشاشة عند الفتح
 		BackgroundTransparency = 0
 	}
 
 	local frameOut = {
-		Position = UDim2.new(centerX, 0, 1.2, 0), -- أسفل الشاشة عند التصغير
+		Position = UDim2.new(0, centerX, 0, screenHeight + 50), -- أسفل الشاشة عند التصغير
 		BackgroundTransparency = 1
 	}
 
@@ -1648,7 +1657,7 @@ function Window:Minimize()
 		end)
 	else
 		-- ضبط الموضع والشفافية قبل التشغيل
-		MainFrame.Position = UDim2.new(centerX, 0, 1.2, 0) -- وضعها خارج الشاشة قبل الفتح
+		MainFrame.Position = UDim2.new(0, centerX, 0, screenHeight + 50) -- وضعها خارج الشاشة قبل الفتح
 		MainFrame.BackgroundTransparency = 1
 		MainFrame.Visible = true 
 
@@ -1657,7 +1666,6 @@ function Window:Minimize()
 		slideInTween:Play()
 	end
 end
-
 	function Window:AddMinimizeButton(Configs)
 		local Button = MakeDrag(Create("ImageButton", ScreenGui, {
 			Size = UDim2.fromOffset(35, 35),

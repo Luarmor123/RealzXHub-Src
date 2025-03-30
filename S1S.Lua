@@ -1614,41 +1614,35 @@ function redzlib:MakeWindow(Configs)
 		
 		WaitClick = false
 	end
-	
-
-
 
 function Window:Minimize()
-    local isVisible = MainFrame.Visible
-    local targetTransparency = isVisible and 1 or 0
-    local targetPosition = isVisible and UDim2.new(0.5, 0, 1.5, 0) or UDim2.new(0.5, 0, 0.5, 0) -- يتم تحريكه إلى أسفل الشاشة أثناء التصغير
+	local isVisible = MainFrame.Visible
+	local targetTransparency = isVisible and 1 or 0
+	local targetPosition = isVisible and UDim2.new(0.5, 0, 1.2, 0) or UDim2.new(0.5, 0, 0.5, 0)
 
-    local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut) -- مدة الحركة 0.4 ثانية بحركة ناعمة
+	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
-    -- إنشاء التويين لتحريك الموضع وتغيير الشفافية
-    local positionTween = TweenService:Create(MainFrame, tweenInfo, {Position = targetPosition})
-    local transparencyTween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = targetTransparency})
+	local fadeTween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = targetTransparency})
+	local slideTween = TweenService:Create(MainFrame, tweenInfo, {Position = targetPosition})
 
-    if isVisible then
-        -- إذا كان الإطار مرئيًا، نقوم بتصغيره وتحريكه إلى الأسفل تدريجيًا
-        positionTween:Play()
-        transparencyTween:Play()
+	if isVisible then
+		slideTween:Play()
+		fadeTween:Play()
+		slideTween.Completed:Connect(function()
+			MainFrame.Visible = false
+		end)
+	else
+		-- ضعها خارج الشاشة للأسفل قبل الإظهار
+		MainFrame.Position = UDim2.new(0.5, 0, 1.2, 0)
+		MainFrame.BackgroundTransparency = 1
+		MainFrame.Visible = true 
 
-        transparencyTween.Completed:Connect(function()
-            MainFrame.Visible = false
-        end)
-    else
-        -- إذا كان الإطار غير مرئي، نقوم بجعل الإطار مرئيًا أولاً ثم نعيده لموقعه الأصلي مع تأثير التلاشي
-        MainFrame.Visible = true
-        MainFrame.Position = UDim2.new(0.5, 0, 1.5, 0) -- تعيين الموقع خارج الشاشة لبدء التوسيع
+		local fadeInTween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = 0})
+		local slideInTween = TweenService:Create(MainFrame, tweenInfo, {Position = UDim2.new(0.5, 0, 0.5, 0)})
 
-        -- التأثيرات معًا
-        local fadeInTween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = 0})
-        local expandPositionTween = TweenService:Create(MainFrame, tweenInfo, {Position = UDim2.new(0.5, 0, 0.5, 0)})
-
-        fadeInTween:Play()
-        expandPositionTween:Play()
-    end
+		slideInTween:Play()
+		fadeInTween:Play()
+	end
 end
 
 	function Window:AddMinimizeButton(Configs)

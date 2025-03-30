@@ -1627,14 +1627,12 @@ function Window:Minimize()
     local isVisible = MainFrame.Visible
     local tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
-    local screenHeight = game:GetService("Workspace").CurrentCamera.ViewportSize.Y
-
     -- تأكد أن نقطة الارتساء هي المنتصف
     MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 
     -- المواضع عند الفتح والإغلاق
     local frameOut = {
-        Position = UDim2.new(0.5, 0, 1.2, 0), -- يخرج للأسفل عند التصغير
+        Position = UDim2.new(0.5, 0, 1.5, 0), -- يخرج للأسفل عند التصغير
         BackgroundTransparency = 1
     }
 
@@ -1651,8 +1649,11 @@ function Window:Minimize()
             MainFrame.Visible = false
         end)
     else
-        -- **قبل إظهار النافذة، تأكد أنها تبدأ من الأسفل**
-        MainFrame.Position = UDim2.new(0.5, 0, 1.2, 0)
+        -- **حل مشكلة الظهور من الأعلى عبر إزالة النافذة وإعادتها**
+        local parent = MainFrame.Parent  -- حفظ الـ Parent الحالي
+        MainFrame.Parent = nil  -- إزالته مؤقتًا لمنع أي تحديث غير متوقع
+        MainFrame.Position = UDim2.new(0.5, 0, 1.5, 0) -- ضبط الموقع الصحيح أسفل الشاشة
+        MainFrame.Parent = parent -- إعادته إلى الـ Parent الأساسي
         MainFrame.BackgroundTransparency = 1
         MainFrame.Visible = true
 

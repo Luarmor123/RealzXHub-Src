@@ -1616,23 +1616,36 @@ function redzlib:MakeWindow(Configs)
 	end
 	
 
+
+
 function Window:Minimize()
-	local targetTransparency = MainFrame.Visible and 1 or 0  -- تحديد الشفافية المستهدفة
-	local targetVisibility = not MainFrame.Visible           -- تحديد حالة الظهور بعد التلاشي
+	local isVisible = MainFrame.Visible -- معرفة حالة الظهور الحالية
+	local targetTransparency = isVisible and 1 or 0 -- تحديد الشفافية المستهدفة
+	local targetScale = isVisible and UDim2.fromScale(0.8, 0.8) or UDim2.fromScale(1, 1) -- تصغير أو تكبير تدريجي
 	
-	-- إنشاء تأثير تلاشي تدريجي باستخدام Tween
-	local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out) -- مدة 0.5 ثانية
-	local tween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = targetTransparency})
+	-- إعداد معلومات الـ Tween لتأثير سلس
+	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out) -- مدة 0.4 ثانية
 	
-	tween:Play()
-	tween.Completed:Connect(function()
-		MainFrame.Visible = targetVisibility  -- إخفاء/إظهار بعد انتهاء التلاشي
-		if targetVisibility then
-			-- إذا كان الظهور مطلوبًا، نعيد الشفافية إلى صفر لتأثير الظهور
-			local fadeIn = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = 0})
-			fadeIn:Play()
-		end
-	end)
+	-- تحريك الشفافية والحجم معًا
+	local fadeTween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = targetTransparency})
+	local scaleTween = TweenService:Create(MainFrame, tweenInfo, {Size = targetScale})
+	
+	if isVisible then
+		-- إغلاق النافذة (إخفاء تدريجي + تصغير)
+		fadeTween:Play()
+		scaleTween:Play()
+		fadeTween.Completed:Connect(function()
+			MainFrame.Visible = false -- إخفاء بعد انتهاء الأنيميشن
+		end)
+	else
+		-- فتح النافذة (إظهار تدريجي + تكبير)
+		MainFrame.Size = UDim2.fromScale(0.8, 0.8) -- البدء بحجم أصغر
+		MainFrame.Visible = true -- إظهار النافذة أولًا
+		local fadeInTween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = 0})
+		local scaleInTween = TweenService:Create(MainFrame, tweenInfo, {Size = UDim2.fromScale(1, 1)})
+		fadeInTween:Play()
+		scaleInTween:Play()
+	end
 end
 	function Window:AddMinimizeButton(Configs)
 		local Button = MakeDrag(Create("ImageButton", ScreenGui, {

@@ -1614,14 +1614,11 @@ function redzlib:MakeWindow(Configs)
 		
 		WaitClick = false
 	end
-	
-
-
 
 function Window:Minimize()
 	local isVisible = MainFrame.Visible
 	local targetTransparency = isVisible and 1 or 0
-	local targetPosition = isVisible and UDim2.new(0.5, 0, -1, 0) or UDim2.new(0.5, 0, 0.5, 0)
+	local targetPosition = isVisible and UDim2.new(0.5, 0, 1.2, 0) or UDim2.new(0.5, 0, 0.5, 0)
 
 	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
@@ -1635,7 +1632,8 @@ function Window:Minimize()
 			MainFrame.Visible = false
 		end)
 	else
-		MainFrame.Position = UDim2.new(0.5, 0, -1, 0)
+		-- ضعها خارج الشاشة للأسفل قبل الإظهار
+		MainFrame.Position = UDim2.new(0.5, 0, 1.2, 0)
 		MainFrame.BackgroundTransparency = 1
 		MainFrame.Visible = true 
 

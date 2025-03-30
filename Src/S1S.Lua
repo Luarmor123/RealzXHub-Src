@@ -1625,38 +1625,38 @@ function redzlib:MakeWindow(Configs)
 
 function Window:Minimize()
     local isVisible = MainFrame.Visible
-    local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
+    local tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
-    local screenWidth = game:GetService("Workspace").CurrentCamera.ViewportSize.X
     local screenHeight = game:GetService("Workspace").CurrentCamera.ViewportSize.Y
 
-    -- ضبط AnchorPoint إلى المنتصف
+    -- تأكد أن نقطة الارتساء هي المنتصف
     MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 
-    local centerX = screenWidth / 2
-    local centerY = screenHeight / 2
-
+    -- المواضع عند الفتح والإغلاق
     local frameOut = {
-        Position = UDim2.new(0.5, 0, 1.2, 0), -- 1.2 يضمن خروج النافذة بالكامل
+        Position = UDim2.new(0.5, 0, 1.2, 0), -- يخرج للأسفل عند التصغير
         BackgroundTransparency = 1
     }
 
     local frameIn = {
-        Position = UDim2.new(0.5, 0, 0.5, 0),
+        Position = UDim2.new(0.5, 0, 0.5, 0), -- يعود للمنتصف عند الفتح
         BackgroundTransparency = 0
     }
 
     if isVisible then
+        -- تصغير النافذة (انزلاق للأسفل مع اختفاء تدريجي)
         local slideOutTween = TweenService:Create(MainFrame, tweenInfo, frameOut)
         slideOutTween:Play()
         slideOutTween.Completed:Connect(function()
             MainFrame.Visible = false
         end)
     else
+        -- **قبل إظهار النافذة، تأكد أنها تبدأ من الأسفل**
         MainFrame.Position = UDim2.new(0.5, 0, 1.2, 0)
         MainFrame.BackgroundTransparency = 1
         MainFrame.Visible = true
 
+        -- تكبير النافذة (انزلاق للأعلى مع ظهور تدريجي)
         local slideInTween = TweenService:Create(MainFrame, tweenInfo, frameIn)
         slideInTween:Play()
     end

@@ -1582,17 +1582,17 @@ function redzlib:MakeWindow(Configs)
 	local Minimized, SaveSize, WaitClick
 	local Window, FirstTab = {}, false
 	function Window:CloseBtn()
-    local Dialog = Window:Dialog({
-        Title = "Close",
-        Text = "You want to close ui ?",
-        Options = {
-            {"Confirm", function()
-                ScreenGui:Destroy()
-            end, Color3.fromRGB(135, 206, 235)},  -- هنا تم إضافة اللون السماوي (Sky Blue)
-            {"Cancel"}
-        }
-    })
-end
+		local Dialog = Window:Dialog({
+			Title = "Close",
+			Text = "You want to close ui ?",
+			Options = {
+				{"Confirm", function()
+					ScreenGui:Destroy()
+				end},
+				{"Cancel"}
+			}
+		})
+	end
 	function Window:MinimizeBtn()
 		if WaitClick then return end
 		WaitClick = true
@@ -1623,13 +1623,13 @@ end
 
 
 
-function Window:Minimize()
+function Window:Minimize(animate)
+    if not animate then MainFrame.Visible = false end -- إذا كانت قيمة animate غير صحيحة، لن يتم تنفيذ الأنيميشن
+
     local isVisible = MainFrame.Visible
     local tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
-
     MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-
 
     local frameOut = {
         Position = UDim2.new(0.5, 0, 1.5, 0),
@@ -1641,25 +1641,21 @@ function Window:Minimize()
         BackgroundTransparency = 0
     }
 
-
     if not MainFrame:GetAttribute("Initialized") then
         MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
         MainFrame:SetAttribute("Initialized", true)
     end
 
     if isVisible then
-
         local slideOutTween = TweenService:Create(MainFrame, tweenInfo, frameOut)
         slideOutTween:Play()
         slideOutTween.Completed:Connect(function()
             MainFrame.Visible = false
         end)
     else
-
         MainFrame.Position = UDim2.new(0.5, 0, 1.5, 0)
         MainFrame.BackgroundTransparency = 1
         MainFrame.Visible = true
-
 
         local slideInTween = TweenService:Create(MainFrame, tweenInfo, frameIn)
         slideInTween:Play()

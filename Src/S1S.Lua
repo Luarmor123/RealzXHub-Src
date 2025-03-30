@@ -1623,47 +1623,40 @@ function redzlib:MakeWindow(Configs)
 
 
 
-local TweenService = game:GetService("TweenService")
-
 function Window:Minimize()
     local isVisible = MainFrame.Visible
-    local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut) -- مدة التفاعل مع حركة انزلاق ناعمة
+    local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
-    -- الحصول على الأبعاد الفعلية للنافذة
-    local frameWidth = MainFrame.Size.X.Offset -- عرض النافذة (بالبكسل)
-    local frameHeight = MainFrame.Size.Y.Offset -- ارتفاع النافذة (بالبكسل)
     local screenWidth = game:GetService("Workspace").CurrentCamera.ViewportSize.X
     local screenHeight = game:GetService("Workspace").CurrentCamera.ViewportSize.Y
 
-    -- حساب الموقع الذي يجب أن تكون فيه النافذة في المنتصف
-    local centerX = (screenWidth - frameWidth) / 2 -- حساب مركز الشاشة أفقيًا
-    local centerY = (screenHeight - frameHeight) / 2 -- حساب مركز الشاشة عموديًا
+    -- ضبط AnchorPoint إلى المنتصف
+    MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 
-    -- تحديد مواضع الدخول والخروج مع الحفاظ على المنتصف
-    local frameIn = {
-        Position = UDim2.new(0, centerX, 0, centerY), -- وسط الشاشة عند الفتح
-        BackgroundTransparency = 0
-    }
+    local centerX = screenWidth / 2
+    local centerY = screenHeight / 2
 
     local frameOut = {
-        Position = UDim2.new(0, centerX, 0, screenHeight + frameHeight / 2), -- أسفل الشاشة عند التصغير
+        Position = UDim2.new(0.5, 0, 1.2, 0), -- 1.2 يضمن خروج النافذة بالكامل
         BackgroundTransparency = 1
     }
 
+    local frameIn = {
+        Position = UDim2.new(0.5, 0, 0.5, 0),
+        BackgroundTransparency = 0
+    }
+
     if isVisible then
-        -- انزلاق لأسفل + اختفاء تدريجي
         local slideOutTween = TweenService:Create(MainFrame, tweenInfo, frameOut)
         slideOutTween:Play()
         slideOutTween.Completed:Connect(function()
             MainFrame.Visible = false
         end)
     else
-        -- وضعها خارج الشاشة قبل الفتح مع تحديد الشفافية
-        MainFrame.Position = UDim2.new(0, centerX, 0, screenHeight + frameHeight / 2)
+        MainFrame.Position = UDim2.new(0.5, 0, 1.2, 0)
         MainFrame.BackgroundTransparency = 1
         MainFrame.Visible = true
 
-        -- انزلاق للأعلى + ظهور تدريجي
         local slideInTween = TweenService:Create(MainFrame, tweenInfo, frameIn)
         slideInTween:Play()
     end

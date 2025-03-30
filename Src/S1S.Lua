@@ -1614,83 +1614,54 @@ function redzlib:MakeWindow(Configs)
 		
 		WaitClick = false
 	end
-	local TweenService = game:GetService("TweenService")
+	
 
 function Window:Minimize()
-    if not self.MainFrame then return end  -- تأكد أن النافذة موجودة
-
-    if self.MainFrame.Visible then
-        -- أنميشن الاختفاء التدريجي
-        local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-        local goal = {BackgroundTransparency = 1}  -- زيادة الشفافية تدريجياً
-
-        local tween = TweenService:Create(self.MainFrame, tweenInfo, goal)
-        tween:Play()
-
-        -- إخفاء كل العناصر داخل النافذة تدريجياً
-        for _, obj in ipairs(self.MainFrame:GetDescendants()) do
-            if obj:IsA("GuiObject") then
-                local textTween = TweenService:Create(obj, tweenInfo, {BackgroundTransparency = 1, TextTransparency = 1})
-                textTween:Play()
-            end
-        end
-
-        tween.Completed:Connect(function()
-            self.MainFrame.Visible = false  -- إخفاء النافذة بعد انتهاء الأنميشن
-        end)
-    else
-        -- إعادة الظهور التدريجي
-        self.MainFrame.Visible = true
-        self.MainFrame.BackgroundTransparency = 1  -- اجعلها شفافة أولاً
-
-        local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-        local goal = {BackgroundTransparency = 0}  -- تقليل الشفافية لجعلها مرئية
-
-        local tween = TweenService:Create(self.MainFrame, tweenInfo, goal)
-        tween:Play()
-
-        -- إعادة ظهور كل العناصر داخل النافذة
-        for _, obj in ipairs(self.MainFrame:GetDescendants()) do
-            if obj:IsA("GuiObject") then
-                obj.BackgroundTransparency = 1
-                obj.TextTransparency = 1
-                local textTween = TweenService:Create(obj, tweenInfo, {BackgroundTransparency = 0, TextTransparency = 0})
-                textTween:Play()
-            end
-        end
-    end
+	local targetTransparency = MainFrame.Visible and 1 or 0  -- تحديد الشفافية المستهدفة
+	local targetVisibility = not MainFrame.Visible           -- تحديد حالة الظهور بعد التلاشي
+	
+	-- إنشاء تأثير تلاشي تدريجي باستخدام Tween
+	local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out) -- مدة 0.5 ثانية
+	local tween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = targetTransparency})
+	
+	tween:Play()
+	tween.Completed:Connect(function()
+		MainFrame.Visible = targetVisibility  -- إخفاء/إظهار بعد انتهاء التلاشي
+		if targetVisibility then
+			-- إذا كان الظهور مطلوبًا، نعيد الشفافية إلى صفر لتأثير الظهور
+			local fadeIn = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = 0})
+			fadeIn:Play()
+		end
+	end)
 end
-
-function Window:AddMinimizeButton(Configs)
-    local Button = MakeDrag(Create("ImageButton", ScreenGui, {
-        Size = UDim2.fromOffset(35, 35),
-        Position = UDim2.fromScale(0.15, 0.15),
-        BackgroundTransparency = 1,
-        BackgroundColor3 = Theme["Color Hub 2"],
-        AutoButtonColor = false
-    }))
-
-    local Stroke, Corner
-    if Configs.Corner then
-        Corner = Make("Corner", Button)
-        SetProps(Corner, Configs.Corner)
-    end
-    if Configs.Stroke then
-        Stroke = Make("Stroke", Button)
-        SetProps(Stroke, Configs.Stroke)
-    end
-
-    SetProps(Button, Configs.Button)
-    Button.Activated:Connect(function()
-        Window:Minimize()  -- استخدام الدالة الجديدة مع الأنميشن
-    end)
-
-    return {
-        Stroke = Stroke,
-        Corner = Corner,
-        Button = Button
-    }
-end
+	function Window:AddMinimizeButton(Configs)
+		local Button = MakeDrag(Create("ImageButton", ScreenGui, {
+			Size = UDim2.fromOffset(35, 35),
+			Position = UDim2.fromScale(0.15, 0.15),
+			BackgroundTransparency = 1,
+			BackgroundColor3 = Theme["Color Hub 2"],
+			AutoButtonColor = false
+		}))
+		
+		local Stroke, Corner
+		if Configs.Corner then
+			Corner = Make("Corner", Button)
+			SetProps(Corner, Configs.Corner)
+		end
+		if Configs.Stroke then
+			Stroke = Make("Stroke", Button)
+			SetProps(Stroke, Configs.Corner)
+		end
+		
+		SetProps(Button, Configs.Button)
+		Button.Activated:Connect(Window.Minimize)
+		
+		return {
+			Stroke = Stroke,
+			Corner = Corner,
+			Button = Button
+		}
+	end
 	function Window:Set(Val1, Val2)
 		if type(Val1) == "string" and type(Val2) == "string" then
 			Title.Text = Val1

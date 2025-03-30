@@ -1629,14 +1629,15 @@ function Window:Minimize()
     local isVisible = MainFrame.Visible
     local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut) -- مدة التفاعل مع حركة انزلاق ناعمة
 
-    -- الحجم الثابت للنافذة
-    local UISizeX, UISizeY = 550, 380  -- الحجم الثابت للنافذة
+    -- الحصول على الأبعاد الفعلية للنافذة
+    local frameWidth = MainFrame.Size.X.Offset -- عرض النافذة (بالبكسل)
+    local frameHeight = MainFrame.Size.Y.Offset -- ارتفاع النافذة (بالبكسل)
     local screenWidth = game:GetService("Workspace").CurrentCamera.ViewportSize.X
     local screenHeight = game:GetService("Workspace").CurrentCamera.ViewportSize.Y
 
     -- حساب الموقع الذي يجب أن تكون فيه النافذة في المنتصف
-    local centerX = (screenWidth - UISizeX) / 2 -- حساب مركز الشاشة أفقيًا
-    local centerY = (screenHeight - UISizeY) / 2 -- حساب مركز الشاشة عموديًا
+    local centerX = (screenWidth - frameWidth) / 2 -- حساب مركز الشاشة أفقيًا
+    local centerY = (screenHeight - frameHeight) / 2 -- حساب مركز الشاشة عموديًا
 
     -- تحديد مواضع الدخول والخروج مع الحفاظ على المنتصف
     local frameIn = {
@@ -1645,7 +1646,7 @@ function Window:Minimize()
     }
 
     local frameOut = {
-        Position = UDim2.new(0, centerX, 0, screenHeight + UISizeY / 2), -- أسفل الشاشة عند التصغير
+        Position = UDim2.new(0, centerX, 0, screenHeight + frameHeight / 2), -- أسفل الشاشة عند التصغير
         BackgroundTransparency = 1
     }
 
@@ -1658,7 +1659,7 @@ function Window:Minimize()
         end)
     else
         -- وضعها خارج الشاشة قبل الفتح مع تحديد الشفافية
-        MainFrame.Position = UDim2.new(0, centerX, 0, screenHeight + UISizeY / 2)
+        MainFrame.Position = UDim2.new(0, centerX, 0, screenHeight + frameHeight / 2)
         MainFrame.BackgroundTransparency = 1
         MainFrame.Visible = true
 

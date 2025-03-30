@@ -1619,28 +1619,34 @@ function redzlib:MakeWindow(Configs)
 
 
 function Window:Minimize()
-	local isVisible = MainFrame.Visible -- معرفة حالة الظهور الحالية
-	local targetTransparency = isVisible and 1 or 0 -- الشفافية المستهدفة
-	
-	-- إعداد معلومات الأنيميشن لتأثير سلس وجميل
-	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut) -- مدة 0.4 ثانية بحركة ناعمة
-	
-	-- تحريك الشفافية تدريجياً
-	local fadeTween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = targetTransparency})
-	
-	if isVisible then
-		-- إخفاء تدريجي
-		fadeTween:Play()
-		fadeTween.Completed:Connect(function()
-			MainFrame.Visible = false -- إخفاء بعد انتهاء التلاشي
-		end)
-	else
-		-- إظهار تدريجي
-		MainFrame.BackgroundTransparency = 1 -- اجعلها شفافة أولًا
-		MainFrame.Visible = true -- ثم اجعلها مرئية
-		local fadeInTween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = 0})
-		fadeInTween:Play()
-	end
+    local isVisible = MainFrame.Visible -- معرفة حالة الظهور الحالية
+    local targetTransparency = isVisible and 1 or 0 -- الشفافية المستهدفة
+
+    -- إعداد معلومات الأنيميشن لتأثير سلس وجميل
+    local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut) -- مدة 0.4 ثانية بحركة ناعمة
+
+    -- إخفاء التبويبات (Tabs) أولًا
+    CreateTween({LabelTitle, "TextTransparency", 1, 0.4})  -- إخفاء عنوان التبويب
+    CreateTween({LabelIcon, "ImageTransparency", 1, 0.4})   -- إخفاء أيقونة التبويب
+    CreateTween({Selected, "BackgroundTransparency", 1, 0.4}) -- إخفاء الخلفية الخاصة بالتحديد
+    
+    -- بعد اكتمال إخفاء الـ Tabs، نبدأ في إخفاء الـ MainFrame
+    wait(0.2) -- الانتظار حتى تكتمل تأثيرات التلاشي على الـ Tabs
+    local fadeTween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = targetTransparency})
+
+    if isVisible then
+        -- إخفاء تدريجي
+        fadeTween:Play()
+        fadeTween.Completed:Connect(function()
+            MainFrame.Visible = false -- إخفاء بعد انتهاء التلاشي
+        end)
+    else
+        -- إظهار تدريجي
+        MainFrame.BackgroundTransparency = 1 -- اجعلها شفافة أولًا
+        MainFrame.Visible = true -- ثم اجعلها مرئية
+        local fadeInTween = TweenService:Create(MainFrame, tweenInfo, {BackgroundTransparency = 0})
+        fadeInTween:Play()
+    end
 end
 	function Window:AddMinimizeButton(Configs)
 		local Button = MakeDrag(Create("ImageButton", ScreenGui, {

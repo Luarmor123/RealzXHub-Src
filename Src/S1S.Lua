@@ -1623,6 +1623,8 @@ function redzlib:MakeWindow(Configs)
 
 
 
+local TweenService = game:GetService("TweenService")
+
 function Window:Minimize()
 	local isVisible = MainFrame.Visible
 	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
@@ -1634,8 +1636,8 @@ function Window:Minimize()
 	local screenHeight = game:GetService("Workspace").CurrentCamera.ViewportSize.Y
 
 	-- حساب الموقع الذي يجب أن تكون فيه النافذة في المنتصف
-	local centerX = (screenWidth - frameWidth) / 2 -- حساب موقع وسط الشاشة أفقيًا
-	local centerY = (screenHeight - frameHeight) / 2 -- حساب موقع وسط الشاشة عموديًا
+	local centerX = (screenWidth - frameWidth) / 2 -- حساب مركز الشاشة أفقيًا
+	local centerY = (screenHeight - frameHeight) / 2 -- حساب مركز الشاشة عموديًا
 
 	-- تحديد مواضع الدخول والخروج مع الحفاظ على المنتصف
 	local frameIn = {

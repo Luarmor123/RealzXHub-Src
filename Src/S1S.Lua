@@ -1582,17 +1582,17 @@ function redzlib:MakeWindow(Configs)
 	local Minimized, SaveSize, WaitClick
 	local Window, FirstTab = {}, false
 	function Window:CloseBtn()
-		local Dialog = Window:Dialog({
-			Title = "Close",
-			Text = "You want to close ui ?",
-			Options = {
-				{"Confirm", function()
-					ScreenGui:Destroy()
-				end},
-				{"Cancel"}
-			}
-		})
-	end
+    local Dialog = Window:Dialog({
+        Title = "Close",
+        Text = "You want to close ui ?",
+        Options = {
+            {"Confirm", function()
+                ScreenGui:Destroy()
+            end, Color3.fromRGB(135, 206, 235)},  -- هنا تم إضافة اللون السماوي (Sky Blue)
+            {"Cancel"}
+        }
+    })
+end
 	function Window:MinimizeBtn()
 		if WaitClick then return end
 		WaitClick = true
@@ -1627,40 +1627,40 @@ function Window:Minimize()
     local isVisible = MainFrame.Visible
     local tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
-    -- تأكد أن نقطة الارتساء هي المنتصف
+
     MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 
-    -- المواضع عند الفتح والإغلاق
+
     local frameOut = {
-        Position = UDim2.new(0.5, 0, 1.5, 0), -- يخرج للأسفل عند التصغير
+        Position = UDim2.new(0.5, 0, 1.5, 0),
         BackgroundTransparency = 1
     }
 
     local frameIn = {
-        Position = UDim2.new(0.5, 0, 0.5, 0), -- يعود للمنتصف عند الفتح
+        Position = UDim2.new(0.5, 0, 0.5, 0),
         BackgroundTransparency = 0
     }
 
-    -- **تأكد أن الموضع صحيح عند بدء التشغيل لأول مرة**
+
     if not MainFrame:GetAttribute("Initialized") then
-        MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0) -- الموضع الافتراضي في المنتصف
-        MainFrame:SetAttribute("Initialized", true) -- وسم النافذة بأنها تم ضبطها
+        MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+        MainFrame:SetAttribute("Initialized", true)
     end
 
     if isVisible then
-        -- تصغير النافذة (انزلاق للأسفل مع اختفاء تدريجي)
+
         local slideOutTween = TweenService:Create(MainFrame, tweenInfo, frameOut)
         slideOutTween:Play()
         slideOutTween.Completed:Connect(function()
             MainFrame.Visible = false
         end)
     else
-        -- تأكد من ضبط الموضع قبل إظهار النافذة
+
         MainFrame.Position = UDim2.new(0.5, 0, 1.5, 0)
         MainFrame.BackgroundTransparency = 1
-        MainFrame.Visible = true  -- يتم الإظهار بعد ضبط الموضع الصحيح
+        MainFrame.Visible = true
 
-        -- تكبير النافذة (انزلاق للأعلى مع ظهور تدريجي)
+
         local slideInTween = TweenService:Create(MainFrame, tweenInfo, frameIn)
         slideInTween:Play()
     end

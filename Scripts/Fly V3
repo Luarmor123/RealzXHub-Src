@@ -138,7 +138,7 @@ nowe = false
 
 game:GetService("StarterGui"):SetCore("SendNotification", { 
 	Title = "from RealzXHub";
-	Text = "by DeX";
+	Text = "By RealzXTeam";
 	Icon = "rbxassetid://130354880522665"})
 Duration = 5;
 

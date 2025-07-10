@@ -102,7 +102,7 @@ TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.BorderSizePixel = 0
 TextLabel.Size = UDim2.new(0, 294, 0, 19)
 TextLabel.Font = Enum.Font.SourceSans
-TextLabel.Text = "YHUB FLY V4"
+TextLabel.Text = "RealzXHub FLY V4"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextSize = 14.000
 
@@ -145,9 +145,9 @@ local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
 nowe = false
 
 game:GetService("StarterGui"):SetCore("SendNotification", { 
-	Title = "YHUB FLY V4";
-	Text = "";
-	Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
+	Title = "from RealzXHub";
+	Text = "By RealzXTeam";
+	Icon = "rbxassetid://130354880522665"})
 Duration = 5;
 
 main.Active = true -- main = gui

@@ -57,10 +57,10 @@ TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.Position = UDim2.new(0.469327301, 0, 0, 0)
 TextLabel.Size = UDim2.new(0, 100, 0, 28)
 TextLabel.Font = Enum.Font.IndieFlower
-TextLabel.Text = "YHUB FLY V3"
+TextLabel.Text = "RealzXHub FLY V3"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextScaled = true
-TextLabel.TextSize = 14.000
+TextLabel.TextSize = 13.000
 TextLabel.TextWrapped = true
 
 plus.Name = "plus"
@@ -137,9 +137,9 @@ local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
 nowe = false
 
 game:GetService("StarterGui"):SetCore("SendNotification", { 
-	Title = "from YHUB";
+	Title = "from RealzXHub";
 	Text = "by DeX";
-	Icon = "rbxassetid://88819916320666"})
+	Icon = "rbxassetid://130354880522665"})
 Duration = 5;
 
 Frame.Active = true -- main = gui
